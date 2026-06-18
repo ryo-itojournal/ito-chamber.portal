@@ -24,26 +24,18 @@ body{
 .container{
   max-width:1180px;
   margin:auto;
-  padding:22px 26px;
+  padding:26px;
 }
 
 .header{
   text-align:center;
-  margin-bottom:22px;
-}
-
-.logo{
-  width:170px;
-  max-width:70%;
-  height:auto;
-  display:block;
-  margin:12px auto 24px;
+  margin-bottom:24px;
 }
 
 h1{
-  font-size:28px;
+  font-size:30px;
   text-align:center;
-  margin:0 0 10px;
+  margin:0 0 12px;
   letter-spacing:0.03em;
 }
 
@@ -51,7 +43,7 @@ h1{
   text-align:center;
   font-size:14px;
   line-height:1.7;
-  margin:0 0 20px;
+  margin:0 0 22px;
 }
 
 .top-links{
@@ -89,7 +81,7 @@ h1{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
   gap:18px;
-  align-items:start;
+  align-items:stretch;
 }
 
 .section{
@@ -98,6 +90,8 @@ h1{
   padding:15px;
   box-shadow:0 4px 12px rgba(0,0,0,0.08);
   height:100%;
+  display:flex;
+  flex-direction:column;
 }
 
 .section h2{
@@ -111,12 +105,23 @@ h1{
   justify-content:center;
 }
 
-.section-image{
+.image-frame{
   width:100%;
-  height:auto;
-  display:block;
+  height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f4f4f4;
   border-radius:12px;
   margin-bottom:12px;
+  overflow:hidden;
+}
+
+.section-image{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
 }
 
 .description{
@@ -132,6 +137,7 @@ h1{
   gap:8px;
   justify-content:center;
   flex-wrap:wrap;
+  margin-top:auto;
 }
 
 .mini-link{
@@ -179,16 +185,11 @@ h1{
 
 @media(max-width:560px){
   .container{
-    padding:16px 14px;
-  }
-
-  .logo{
-    width:150px;
-    margin-bottom:20px;
+    padding:18px 14px;
   }
 
   h1{
-    font-size:22px;
+    font-size:23px;
   }
 
   .lead{
@@ -210,6 +211,10 @@ h1{
   .description{
     min-height:auto;
   }
+
+  .image-frame{
+    height:130px;
+  }
 }
 </style>
 </head>
@@ -219,12 +224,6 @@ h1{
 <div class="container">
 
   <header class="header">
-
-    <img
-      class="logo"
-      src="https://ito-cci.or.jp/wp-content/themes/ito-cci-wp2023/imgs/logo.svg"
-      alt="伊東商工会議所"
-    >
 
     <h1>ITO｜伊東市事業者ポータル</h1>
 
@@ -251,11 +250,13 @@ h1{
     <div class="section">
       <h2>🐟 伊豆・いとう地魚王国</h2>
 
-      <img
-        class="section-image"
-        src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_jizakana.jpg"
-        alt="伊豆・いとう地魚王国"
-      >
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_jizakana.jpg"
+          alt="伊豆・いとう地魚王国"
+        >
+      </div>
 
       <p class="description">
         伊東の魚・飲食店・水産事業者の魅力を紹介します。
@@ -277,11 +278,13 @@ h1{
     <div class="section">
       <h2>🍰 伊東お菓子ぃ共和国</h2>
 
-      <img
-        class="section-image"
-        src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_okashi.jpg"
-        alt="伊東お菓子ぃ共和国"
-      >
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_okashi.jpg"
+          alt="伊東お菓子ぃ共和国"
+        >
+      </div>
 
       <p class="description">
         伊東のお菓子店やスイーツ文化を紹介します。
@@ -303,11 +306,13 @@ h1{
     <div class="section">
       <h2>✨ いとうのいいもの</h2>
 
-      <img
-        class="section-image"
-        src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_itobrand.jpg"
-        alt="伊東ブランド いとうのいいもの"
-      >
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_itobrand.jpg"
+          alt="伊東ブランド いとうのいいもの"
+        >
+      </div>
 
       <p class="description">
         伊東を代表する商品やブランド認定品を紹介します。
@@ -329,11 +334,13 @@ h1{
     <div class="section">
       <h2>🎁 ふるさと納税（楽天）</h2>
 
-      <img
-        class="section-image"
-        src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
-        alt="伊東市ふるさと納税"
-      >
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
+          alt="伊東市ふるさと納税"
+        >
+      </div>
 
       <p class="description">
         返礼品と事業者・商品のストーリーを紹介します。
