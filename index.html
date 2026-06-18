@@ -1,528 +1,342 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ITO｜伊東市事業者ポータル</title>
+<title>ITO CITY｜事業者ポータル</title>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
-
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
-margin:0;
-font-family:sans-serif;
-background:#f7f3ea;
-color:#333;
+  margin:0;
+  font-family:sans-serif;
+  background:#f7f3ea;
+  color:#333;
 }
 
 .container{
-
-max-width:1200px;
-
-margin:auto;
-
-padding:30px 24px;
+  max-width:1200px;
+  margin:auto;
+  padding:30px 24px;
 }
 
 .header{
-
-text-align:center;
+  text-align:center;
 }
 
 .chamber{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 22px;
+  background:#fff;
+  border-radius:999px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+  margin-bottom:26px;
+}
 
-display:inline-flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:8px;
-
-padding:12px 18px;
-
-background:#fff;
-
-border-radius:999px;
-
-text-decoration:none;
-
-color:#333;
-
-font-weight:bold;
-
-box-shadow:0 3px 10px rgba(0,0,0,.08);
-
-margin-bottom:24px;
+.chamber img{
+  height:42px;
+  width:auto;
+  display:block;
 }
 
 h1{
-
-font-size:32px;
-
-margin:0 0 24px;
+  font-size:32px;
+  margin:0 0 24px;
 }
 
 .hito{
-
-display:inline-flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:8px;
-
-padding:12px 22px;
-
-background:#fff;
-
-border-radius:999px;
-
-text-decoration:none;
-
-color:#333;
-
-font-weight:bold;
-
-box-shadow:0 3px 10px rgba(0,0,0,.08);
-
-margin-bottom:36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 22px;
+  background:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  color:#333;
+  font-weight:bold;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+  margin-bottom:36px;
 }
 
 .grid{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:20px;
-
-margin-bottom:20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-bottom:20px;
 }
 
 .section{
-
-background:#fff;
-
-border-radius:20px;
-
-padding:16px;
-
-box-shadow:0 4px 12px rgba(0,0,0,.08);
+  background:#fff;
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
 .section h2{
-
-font-size:18px;
-
-margin:0 0 14px;
-
-text-align:center;
+  font-size:18px;
+  margin:0 0 14px;
+  text-align:center;
 }
 
 .image-frame{
-
-height:160px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-background:#f4f4f4;
-
-border-radius:14px;
-
-overflow:hidden;
-
-margin-bottom:14px;
+  height:160px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f4f4f4;
+  border-radius:14px;
+  overflow:hidden;
+  margin-bottom:14px;
 }
 
 .section-image{
-
-max-width:100%;
-
-max-height:100%;
-
-width:auto;
-
-height:auto;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
 }
 
 .button-row{
-
-display:flex;
-
-justify-content:center;
-
-gap:10px;
-
-flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 .mini-link{
-
-display:flex;
-
-align-items:center;
-
-gap:5px;
-
-padding:9px 12px;
-
-background:#f7f3ea;
-
-border-radius:999px;
-
-text-decoration:none;
-
-color:#333;
-
-font-size:13px;
-
-font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:42px;
+  background:#f7f3ea;
+  border-radius:999px;
+  text-decoration:none;
+  color:#333;
+  font-size:18px;
+  font-weight:bold;
 }
 
 .furusato{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
 
-background:#fff;
-
-border-radius:20px;
-
-padding:18px;
-
-box-shadow:0 4px 12px rgba(0,0,0,.08);
+.furusato h2{
+  text-align:center;
+  margin:0 0 16px;
+  font-size:20px;
 }
 
 .furusato-inner{
-
-display:grid;
-
-grid-template-columns:320px 1fr;
-
-gap:24px;
-
-align-items:center;
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:28px;
+  align-items:center;
 }
 
 .furusato-image{
-
-height:220px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-background:#f4f4f4;
-
-border-radius:14px;
-
-overflow:hidden;
+  height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f4f4f4;
+  border-radius:14px;
+  overflow:hidden;
 }
 
 .furusato-content{
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
 }
 
 .furusato-content p{
-
-font-size:15px;
-
-line-height:1.8;
+  font-size:15px;
+  line-height:1.8;
+  margin:0 0 18px;
 }
 
 .furusato-buttons{
-
-display:flex;
-
-gap:10px;
-
-margin-top:16px;
+  display:flex;
+  gap:10px;
 }
 
 .home{color:#0077cc;}
-
 .hitoicon{color:#555;}
-
 .map{color:#2f7d32;}
-
 .insta{color:#d6249f;}
-
 .tax{color:#d68b00;}
 
 .footer{
-
-text-align:center;
-
-font-size:12px;
-
-color:#777;
-
-margin-top:28px;
+  text-align:center;
+  font-size:12px;
+  color:#777;
+  margin-top:28px;
 }
 
 @media(max-width:900px){
+  .grid{
+    grid-template-columns:1fr;
+  }
 
-.grid{
+  .furusato-inner{
+    grid-template-columns:1fr;
+  }
 
-grid-template-columns:1fr;
+  .furusato-content{
+    align-items:center;
+    text-align:center;
+  }
+
+  .furusato-buttons{
+    justify-content:center;
+  }
 }
-
-.furusato-inner{
-
-grid-template-columns:1fr;
-}
-
-.furusato-buttons{
-
-justify-content:center;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="header">
-
-<a
-class="chamber"
-href="https://ito-cci.or.jp/"
-target="_blank">
-
-<i class="fa-solid fa-building home"></i>
-
-伊東商工会議所
-
-</a>
-
-<h1>
-
-ITO｜伊東市事業者ポータル
-
-</h1>
-
-<a
-class="hito"
-href="hito-zukan.html">
-
-<i class="fa-solid fa-book-open hitoicon"></i>
-
-ヒト図鑑
-
-</a>
-
-</div>
-
-<div class="grid">
-
-<div class="section">
-
-<h2>✨ いとうのいいもの</h2>
-
-<div class="image-frame">
-
-<img
-class="section-image"
-src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_itobrand.jpg">
-
-</div>
-
-<div class="button-row">
-
-<a
-class="mini-link"
-href="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing"
-target="_blank">
-
-<i class="fa-solid fa-map-location-dot map"></i>
-
-Map
-
-</a>
-
-<a
-class="mini-link"
-href="https://www.instagram.com/ito_iimono.brand/"
-target="_blank">
-
-<i class="fa-brands fa-instagram insta"></i>
-
-Instagram
-
-</a>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>🐟 地魚王国</h2>
-
-<div class="image-frame">
-
-<img
-class="section-image"
-src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_jizakana.jpg">
-
-</div>
-
-<div class="button-row">
-
-<a
-class="mini-link"
-href="https://www.google.com/maps/d/u/0/edit?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&usp=sharing"
-target="_blank">
-
-<i class="fa-solid fa-map-location-dot map"></i>
-
-Map
-
-</a>
-
-<a
-class="mini-link"
-href="https://www.instagram.com/ito_jizakana.kingdom/"
-target="_blank">
-
-<i class="fa-brands fa-instagram insta"></i>
-
-Instagram
-
-</a>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>🍰 お菓子ぃ共和国</h2>
-
-<div class="image-frame">
-
-<img
-class="section-image"
-src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_okashi.jpg">
-
-</div>
-
-<div class="button-row">
-
-<a
-class="mini-link"
-href="https://www.google.com/maps/d/u/0/edit?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&usp=sharing"
-target="_blank">
-
-<i class="fa-solid fa-map-location-dot map"></i>
-
-Map
-
-</a>
-
-<a
-class="mini-link"
-href="https://www.instagram.com/ito_okashi.republic/"
-target="_blank">
-
-<i class="fa-brands fa-instagram insta"></i>
-
-Instagram
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="furusato">
-
-<h2>🎁 ふるさと納税（楽天）</h2>
-
-<div class="furusato-inner">
-
-<div class="furusato-image">
-
-<img
-class="section-image"
-src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880">
-
-</div>
-
-<div class="furusato-content">
-
-<p>
-
-返礼品だけではなく、事業者や商品のストーリーも発信します。
-
-</p>
-
-<div class="furusato-buttons">
-
-<a
-class="mini-link"
-href="https://www.instagram.com/ito_furusato.donation/"
-target="_blank">
-
-<i class="fa-brands fa-instagram insta"></i>
-
-Instagram
-
-</a>
-
-<a
-class="mini-link"
-href="https://www.rakuten.co.jp/f222089-ito/"
-target="_blank">
-
-<i class="fa-solid fa-gift tax"></i>
-
-楽天
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="footer">
-
-運営：伊東商工会議所 / 地域おこし協力隊
-
-</div>
+  <div class="header">
+
+    <a class="chamber" href="https://ito-cci.or.jp/" target="_blank">
+      <img
+        src="https://ito-cci.or.jp/wp-content/themes/ito-cci-wp2023/imgs/logo.svg"
+        alt="伊東商工会議所"
+      >
+    </a>
+
+    <h1>ITO CITY｜事業者ポータル</h1>
+
+    <a class="hito" href="hito-zukan.html">
+      <i class="fa-solid fa-book-open hitoicon"></i>
+      ヒト図鑑
+    </a>
+
+  </div>
+
+  <div class="grid">
+
+    <div class="section">
+      <h2>✨ いとうのいいもの</h2>
+
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_itobrand.jpg"
+          alt="いとうのいいもの"
+        >
+      </div>
+
+      <div class="button-row">
+        <a class="mini-link" href="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing" target="_blank" aria-label="Google Map">
+          <i class="fa-solid fa-map-location-dot map"></i>
+        </a>
+
+        <a class="mini-link" href="https://www.instagram.com/ito_iimono.brand/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram insta"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🐟 地魚王国</h2>
+
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_jizakana.jpg"
+          alt="地魚王国"
+        >
+      </div>
+
+      <div class="button-row">
+        <a class="mini-link" href="https://www.google.com/maps/d/u/0/edit?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&usp=sharing" target="_blank" aria-label="Google Map">
+          <i class="fa-solid fa-map-location-dot map"></i>
+        </a>
+
+        <a class="mini-link" href="https://www.instagram.com/ito_jizakana.kingdom/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram insta"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🍰 お菓子ぃ共和国</h2>
+
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_okashi.jpg"
+          alt="お菓子ぃ共和国"
+        >
+      </div>
+
+      <div class="button-row">
+        <a class="mini-link" href="https://www.google.com/maps/d/u/0/edit?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&usp=sharing" target="_blank" aria-label="Google Map">
+          <i class="fa-solid fa-map-location-dot map"></i>
+        </a>
+
+        <a class="mini-link" href="https://www.instagram.com/ito_okashi.republic/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram insta"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="furusato">
+
+    <h2>🎁 ふるさと納税（楽天）</h2>
+
+    <div class="furusato-inner">
+
+      <div class="furusato-image">
+        <img
+          class="section-image"
+          src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
+          alt="伊東市ふるさと納税"
+        >
+      </div>
+
+      <div class="furusato-content">
+        <p>
+          返礼品だけではなく、事業者や商品のストーリーも発信します。
+        </p>
+
+        <div class="furusato-buttons">
+          <a class="mini-link" href="https://www.instagram.com/ito_furusato.donation/" target="_blank" aria-label="Instagram">
+            <i class="fa-brands fa-instagram insta"></i>
+          </a>
+
+          <a class="mini-link" href="https://www.rakuten.co.jp/f222089-ito/" target="_blank" aria-label="楽天ふるさと納税">
+            <i class="fa-solid fa-gift tax"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    運営：伊東商工会議所 / 地域おこし協力隊
+  </div>
 
 </div>
 
 </body>
-
 </html>
