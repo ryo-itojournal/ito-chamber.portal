@@ -1,29 +1,33 @@
-```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ITO CITY｜部門別ポータルサイト</title>
+  <title>ITO CITY｜伊東市事業者ポータル</title>
 
-  <!-- Font Awesome アイコン -->
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
     body {
       font-family: sans-serif;
       background: #f7f3ea;
       margin: 0;
-      padding: 24px;
+      padding: 0;
       color: #333;
       text-align: center;
     }
 
     .container {
-      max-width: 520px;
+      max-width: 720px;
       margin: auto;
+      padding: 24px;
+    }
+
+    .logo {
+      width: 120px;
+      margin: 24px auto 12px;
+      display: block;
     }
 
     h1 {
@@ -31,19 +35,36 @@
       margin-bottom: 8px;
     }
 
-    p {
-      line-height: 1.7;
+    .lead {
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 28px;
     }
 
     .section {
-      margin: 36px 0;
+      margin: 32px 0;
       padding: 18px;
-      background: rgba(255, 255, 255, 0.55);
-      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
     }
 
     h2 {
       font-size: 20px;
+      margin: 0 0 12px;
+    }
+
+    .section-image {
+      width: 100%;
+      border-radius: 16px;
+      margin: 8px 0 16px;
+      background: #eee;
+      display: block;
+    }
+
+    .description {
+      font-size: 14px;
+      line-height: 1.7;
       margin: 0 0 14px;
     }
 
@@ -54,18 +75,15 @@
       gap: 10px;
 
       background: #ffffff;
-      margin: 14px 0;
-      padding: 16px;
+      margin: 12px 0;
+      padding: 15px;
 
       border-radius: 14px;
-
       text-decoration: none;
       color: #333;
-
       font-weight: bold;
 
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-
       transition: 0.2s;
     }
 
@@ -86,10 +104,24 @@
       color: #d6249f;
     }
 
+    .page-icon {
+      color: #555;
+    }
+
+    .tax-icon {
+      color: #c47f00;
+    }
+
     .note {
       font-size: 13px;
       color: #666;
-      margin-top: 24px;
+      margin: 32px 0 10px;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #777;
+      padding-bottom: 24px;
     }
   </style>
 </head>
@@ -97,14 +129,41 @@
 <body>
   <div class="container">
 
-    <h1>ITO CITY｜部門別ポータルサイト</h1>
+    <!-- 伊東商工会議所ロゴ -->
+    <img class="logo" src="images/ito-chamber-logo.png" alt="伊東商工会議所ロゴ">
 
-    <p>
-      伊東市の魅力ある事業者・商品・ヒトの想いを紹介しています。
+    <h1>ITO CITY｜伊東市事業者ポータル</h1>
+
+    <p class="lead">
+      伊東市の魅力ある事業者・商品・ヒトの想いを、<br>
+      部門ごとに紹介しています。
     </p>
 
+    <!-- 事業者取材ページ -->
+    <div class="section">
+      <h2>📖 事業者取材ページ｜ヒト図鑑</h2>
+
+      <img class="section-image" src="images/hito-zukan.png" alt="事業者取材ページ ヒト図鑑">
+
+      <p class="description">
+        伊東で働く人、商品が生まれる背景、仕事へのこだわりを紹介する取材ページです。
+      </p>
+
+      <a class="link" href="hito-zukan.html">
+        <i class="fa-solid fa-book-open page-icon"></i>
+        ヒト図鑑を見る
+      </a>
+    </div>
+
+    <!-- 地魚王国 -->
     <div class="section">
       <h2>🐟 伊豆・いとう地魚王国 🐟</h2>
+
+      <img class="section-image" src="images/jizakana.png" alt="伊豆・いとう地魚王国 紹介画像">
+
+      <p class="description">
+        伊東の地魚や水産事業者の魅力を発信しています。
+      </p>
 
       <a class="link"
       href="https://www.google.com/maps/d/u/0/edit?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&usp=sharing"
@@ -112,7 +171,6 @@
 
         <i class="fa-solid fa-map-location-dot map-icon"></i>
         Googleマップ
-
       </a>
 
       <a class="link"
@@ -121,12 +179,18 @@
 
         <i class="fa-brands fa-instagram instagram-icon"></i>
         公式Instagram
-
       </a>
     </div>
 
+    <!-- お菓子ぃ共和国 -->
     <div class="section">
       <h2>🍰 伊東お菓子ぃ共和国 🍰</h2>
+
+      <img class="section-image" src="images/okashi.png" alt="伊東お菓子ぃ共和国 紹介画像">
+
+      <p class="description">
+        伊東のお菓子店やスイーツ文化を紹介しています。
+      </p>
 
       <a class="link"
       href="https://www.google.com/maps/d/u/0/edit?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&usp=sharing"
@@ -134,7 +198,6 @@
 
         <i class="fa-solid fa-map-location-dot map-icon"></i>
         Googleマップ
-
       </a>
 
       <a class="link"
@@ -143,12 +206,18 @@
 
         <i class="fa-brands fa-instagram instagram-icon"></i>
         公式Instagram
-
       </a>
     </div>
 
+    <!-- いとうのいいもの -->
     <div class="section">
       <h2>✨ 伊東ブランド「いとうのいいもの」 ✨</h2>
+
+      <img class="section-image" src="images/iimono.png" alt="伊東ブランド いとうのいいもの 紹介画像">
+
+      <p class="description">
+        伊東らしさが詰まった商品やブランド認定品を紹介しています。
+      </p>
 
       <a class="link"
       href="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing"
@@ -156,7 +225,6 @@
 
         <i class="fa-solid fa-map-location-dot map-icon"></i>
         Googleマップ
-
       </a>
 
       <a class="link"
@@ -165,20 +233,24 @@
 
         <i class="fa-brands fa-instagram instagram-icon"></i>
         公式Instagram
-
       </a>
     </div>
 
+    <!-- ふるさと納税 -->
     <div class="section">
-      <h2>🎁 ふるさと納税（楽天） 🎁</h2>
+      <h2>🎁 伊東市ふるさと納税 🎁</h2>
+
+      <img class="section-image" src="images/furusato.png" alt="伊東市ふるさと納税 紹介画像">
+
+      <p class="description">
+        伊東市の返礼品や、事業者の想い、商品の背景を紹介しています。
+      </p>
 
       <a class="link"
-      href="#"
-      target="_blank">
+      href="furusato.html">
 
-        <i class="fa-solid fa-map-location-dot map-icon"></i>
-        Googleマップ
-
+        <i class="fa-solid fa-gift tax-icon"></i>
+        ふるさと納税ページ
       </a>
 
       <a class="link"
@@ -187,7 +259,14 @@
 
         <i class="fa-brands fa-instagram instagram-icon"></i>
         公式Instagram
+      </a>
 
+      <a class="link"
+      href="https://www.rakuten.co.jp/f222089-ito/"
+      target="_blank">
+
+        <i class="fa-solid fa-cart-shopping tax-icon"></i>
+        楽天ふるさと納税
       </a>
     </div>
 
@@ -195,7 +274,10 @@
       運営：伊東商工会議所 / 地域おこし協力隊
     </p>
 
+    <p class="footer">
+      © ITO Chamber of Commerce and Industry
+    </p>
+
   </div>
 </body>
 </html>
-```
