@@ -1,9 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ITO CITY｜部門別ポータルサイト</title>
+
+  <!-- Font Awesome アイコン -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
     body {
@@ -32,7 +38,7 @@
     .section {
       margin: 36px 0;
       padding: 18px;
-      background: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.55);
       border-radius: 18px;
     }
 
@@ -42,19 +48,42 @@
     }
 
     .link {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
       background: #ffffff;
       margin: 14px 0;
       padding: 16px;
+
       border-radius: 14px;
+
       text-decoration: none;
       color: #333;
+
       font-weight: bold;
+
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+      transition: 0.2s;
     }
 
     .link:hover {
       background: #fff7df;
+      transform: translateY(-2px);
+    }
+
+    .link i {
+      font-size: 22px;
+    }
+
+    .map-icon {
+      color: #2f7d32;
+    }
+
+    .instagram-icon {
+      color: #d6249f;
     }
 
     .note {
@@ -67,58 +96,106 @@
 
 <body>
   <div class="container">
-    <h1>ITO CITY｜部門別ポータルサイト</h1>
-    <p>伊東市の魅力ある事業者・商品・ヒトの想いを紹介しています。</p>
-    
-    <div class="section">
-      <h2>🐟 伊豆・いとう地魚王国　🐟</h2>
 
-      <a class="link" href="https://www.google.com/maps/d/u/0/edit?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&usp=sharing">
-        🗺️ Googleマップ
+    <h1>ITO CITY｜部門別ポータルサイト</h1>
+
+    <p>
+      伊東市の魅力ある事業者・商品・ヒトの想いを紹介しています。
+    </p>
+
+    <div class="section">
+      <h2>🐟 伊豆・いとう地魚王国 🐟</h2>
+
+      <a class="link"
+      href="https://www.google.com/maps/d/u/0/edit?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&usp=sharing"
+      target="_blank">
+
+        <i class="fa-solid fa-map-location-dot map-icon"></i>
+        Googleマップ
+
       </a>
 
-      <a class="link" href="https://www.instagram.com/ito_jizakana.kingdom/">
-        📷 公式Instagram
+      <a class="link"
+      href="https://www.instagram.com/ito_jizakana.kingdom/"
+      target="_blank">
+
+        <i class="fa-brands fa-instagram instagram-icon"></i>
+        公式Instagram
+
       </a>
     </div>
 
     <div class="section">
       <h2>🍰 伊東お菓子ぃ共和国 🍰</h2>
 
-      <a class="link" href="https://www.google.com/maps/d/u/0/edit?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&usp=sharing">
-        🗺️ Googleマップ
+      <a class="link"
+      href="https://www.google.com/maps/d/u/0/edit?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&usp=sharing"
+      target="_blank">
+
+        <i class="fa-solid fa-map-location-dot map-icon"></i>
+        Googleマップ
+
       </a>
 
-      <a class="link" href="https://www.instagram.com/ito_okashi.republic/">
-        📷 公式Instagram
+      <a class="link"
+      href="https://www.instagram.com/ito_okashi.republic/"
+      target="_blank">
+
+        <i class="fa-brands fa-instagram instagram-icon"></i>
+        公式Instagram
+
       </a>
     </div>
 
     <div class="section">
-      <h2>✨ 伊東ブランド「いとうのいいもの」✨</h2>
+      <h2>✨ 伊東ブランド「いとうのいいもの」 ✨</h2>
 
-      <a class="link" href="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing">
-        🗺️ Googleマップ
+      <a class="link"
+      href="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing"
+      target="_blank">
+
+        <i class="fa-solid fa-map-location-dot map-icon"></i>
+        Googleマップ
+
       </a>
 
-      <a class="link" href="https://www.instagram.com/ito_iimono.brand/">
-        📷 公式Instagram
+      <a class="link"
+      href="https://www.instagram.com/ito_iimono.brand/"
+      target="_blank">
+
+        <i class="fa-brands fa-instagram instagram-icon"></i>
+        公式Instagram
+
       </a>
     </div>
 
     <div class="section">
       <h2>🎁 ふるさと納税（楽天） 🎁</h2>
 
-      <a class="link" href="">
-        🗺️ Googleマップ
+      <a class="link"
+      href="#"
+      target="_blank">
+
+        <i class="fa-solid fa-map-location-dot map-icon"></i>
+        Googleマップ
+
       </a>
 
-      <a class="link" href="https://www.instagram.com/ito_furusato.donation/">
-        📷 公式Instagram
+      <a class="link"
+      href="https://www.instagram.com/ito_furusato.donation/"
+      target="_blank">
+
+        <i class="fa-brands fa-instagram instagram-icon"></i>
+        公式Instagram
+
       </a>
     </div>
 
-    <p class="note">運営：伊東商工会議所 / 地域おこし協力隊</p>
+    <p class="note">
+      運営：伊東商工会議所 / 地域おこし協力隊
+    </p>
+
   </div>
 </body>
 </html>
+```
