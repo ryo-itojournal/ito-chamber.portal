@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -29,7 +30,7 @@ body{
 
 .header{
   text-align:center;
-  margin-bottom:26px;
+  margin-bottom:24px;
 }
 
 h1{
@@ -77,11 +78,16 @@ h1{
   transform:translateY(-2px);
 }
 
-.grid{
+.grid-top{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   gap:18px;
-  align-items:stretch;
+  margin-bottom:18px;
+}
+
+.furusato-wrap{
+  display:flex;
+  justify-content:center;
 }
 
 .section{
@@ -89,10 +95,14 @@ h1{
   border-radius:18px;
   padding:15px;
   box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  height:100%;
-  min-height:360px;
+  min-height:310px;
   display:flex;
   flex-direction:column;
+}
+
+.furusato{
+  width:calc((100% - 36px) / 3);
+  min-width:320px;
 }
 
 .section h2{
@@ -179,9 +189,13 @@ h1{
     max-width:820px;
   }
 
-  .grid{
+  .grid-top{
     grid-template-columns:repeat(2, 1fr);
     gap:16px;
+  }
+
+  .furusato{
+    width:calc((100% - 16px) / 2);
   }
 }
 
@@ -202,12 +216,17 @@ h1{
     width:100%;
   }
 
-  .grid{
+  .grid-top{
     grid-template-columns:1fr;
   }
 
   .section{
     min-height:auto;
+  }
+
+  .furusato{
+    width:100%;
+    min-width:0;
   }
 
   .section h2,
@@ -248,7 +267,35 @@ h1{
 
   </header>
 
-  <div class="grid">
+  <div class="grid-top">
+
+    <div class="section">
+      <h2>✨ いとうのいいもの</h2>
+
+      <div class="image-frame">
+        <img
+          class="section-image"
+          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_itobrand.jpg"
+          alt="いとうのいいもの"
+        >
+      </div>
+
+      <p class="description">
+        伊東を代表する商品やブランド認定品を紹介します。
+      </p>
+
+      <div class="button-row">
+        <a class="mini-link" href="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing" target="_blank">
+          <i class="fa-solid fa-map-location-dot map"></i>
+          Map
+        </a>
+
+        <a class="mini-link" href="https://www.instagram.com/ito_iimono.brand/" target="_blank">
+          <i class="fa-brands fa-instagram insta"></i>
+          Instagram
+        </a>
+      </div>
+    </div>
 
     <div class="section">
       <h2>🐟 伊豆・いとう地魚王国</h2>
@@ -306,35 +353,11 @@ h1{
       </div>
     </div>
 
-    <div class="section">
-      <h2>✨ いとうのいいもの</h2>
+  </div>
 
-      <div class="image-frame">
-        <img
-          class="section-image"
-          src="https://ito-cci.or.jp/wp-content/uploads/2023/07/ban_itobrand.jpg"
-          alt="伊東ブランド いとうのいいもの"
-        >
-      </div>
+  <div class="furusato-wrap">
 
-      <p class="description">
-        伊東を代表する商品やブランド認定品を紹介します。
-      </p>
-
-      <div class="button-row">
-        <a class="mini-link" href="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing" target="_blank">
-          <i class="fa-solid fa-map-location-dot map"></i>
-          Map
-        </a>
-
-        <a class="mini-link" href="https://www.instagram.com/ito_iimono.brand/" target="_blank">
-          <i class="fa-brands fa-instagram insta"></i>
-          Instagram
-        </a>
-      </div>
-    </div>
-
-    <div class="section">
+    <div class="section furusato">
       <h2>🎁 ふるさと納税（楽天）</h2>
 
       <div class="image-frame">
@@ -372,3 +395,4 @@ h1{
 
 </body>
 </html>
+```
