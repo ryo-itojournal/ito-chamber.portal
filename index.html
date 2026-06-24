@@ -63,6 +63,7 @@ h1{
   border-radius:20px;
   padding:18px;
   box-shadow:0 4px 14px rgba(0,0,0,.08);
+  min-height:285px;
 }
 
 .section h2{
@@ -116,46 +117,45 @@ h1{
 .furusato{
   background:#fff;
   border-radius:36px;
-  padding:28px;
+  padding:30px;
   box-shadow:0 6px 18px rgba(0,0,0,.08);
   margin-top:10px;
+  min-height:570px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 
 .furusato h2{
-  margin:0 0 20px;
+  margin:0 0 24px;
   text-align:center;
-  font-size:22px;
+  font-size:24px;
 }
 
-.furusato-photo-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:22px;
-}
-
-.furusato-photo{
-  height:170px;
-  background:#f4f4f4;
-  border-radius:22px;
-  overflow:hidden;
+.furusato-image{
+  flex:1;
+  min-height:390px;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#f4f4f4;
+  border-radius:26px;
+  overflow:hidden;
+  margin-bottom:24px;
 }
 
-.furusato-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
+.furusato-image img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
   display:block;
 }
 
 .furusato-buttons{
   display:flex;
   justify-content:center;
-  gap:12px;
+  gap:14px;
 }
 
 .map{
@@ -190,8 +190,12 @@ h1{
     grid-template-columns:1fr;
   }
 
-  .furusato-photo-grid{
-    grid-template-columns:repeat(2,1fr);
+  .furusato{
+    min-height:auto;
+  }
+
+  .furusato-image{
+    min-height:300px;
   }
 }
 
@@ -204,12 +208,8 @@ h1{
     padding:18px 14px;
   }
 
-  .furusato-photo-grid{
-    grid-template-columns:1fr;
-  }
-
-  .furusato-photo{
-    height:190px;
+  .furusato-image{
+    min-height:240px;
   }
 }
 </style>
@@ -339,32 +339,10 @@ h1{
 
     <h2>🎁 ふるさと納税（楽天）</h2>
 
-    <div class="furusato-photo-grid">
-
-      <div class="furusato-photo">
-        <img
-          src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
-          alt="伊東市ふるさと納税1">
-      </div>
-
-      <div class="furusato-photo">
-        <img
-          src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
-          alt="伊東市ふるさと納税2">
-      </div>
-
-      <div class="furusato-photo">
-        <img
-          src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
-          alt="伊東市ふるさと納税3">
-      </div>
-
-      <div class="furusato-photo">
-        <img
-          src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
-          alt="伊東市ふるさと納税4">
-      </div>
-
+    <div class="furusato-image">
+      <img
+        src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880"
+        alt="伊東市ふるさと納税">
     </div>
 
     <div class="furusato-buttons">
