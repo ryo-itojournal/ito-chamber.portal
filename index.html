@@ -59,14 +59,12 @@
   }
   .brandmark{display:flex;align-items:center;gap:10px;text-decoration:none;}
   .brandmark-seal{
-    width:36px;height:36px;border-radius:50%;
-    border:1px solid var(--line);
-    background:var(--paper);
+    width:34px;height:34px;border-radius:50%;
+    border:1.5px solid var(--stamp);
     display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-size:11px;color:var(--stamp);
     flex-shrink:0;
-    padding:6px;
   }
-  .brandmark-seal img{width:100%;height:100%;object-fit:contain;display:block;}
   .brandmark-text{
     font-family:var(--font-display);font-weight:700;font-size:16px;
     letter-spacing:0.06em;color:var(--ink);
@@ -249,6 +247,7 @@
     display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;
   }
   footer .brandmark-text{color:var(--paper);}
+  footer .brandmark-seal{border-color:var(--stamp);color:var(--stamp);background:var(--paper);}
   footer p{margin:0;font-size:12.5px;color:rgba(245,239,223,0.65);font-family:var(--font-mono);}
   .back-to-top{
     font-size:12.5px;color:var(--paper);text-decoration:none;
@@ -262,7 +261,7 @@
 <header class="site-header">
   <div class="header-row">
     <a class="brandmark" href="#top">
-      <span class="brandmark-seal"><img src="ito-logo.png" alt="伊東市 ロゴマーク"></span>
+      <span class="brandmark-seal">伊東</span>
       <span class="brandmark-text">ITO CITY
         <small>事業者ポータル</small>
       </span>
@@ -409,7 +408,7 @@
 <footer>
   <div class="footer-inner">
     <a class="brandmark" href="#top" style="text-decoration:none;">
-      <span class="brandmark-seal"><img src="ito-logo.png" alt="伊東市 ロゴマーク"></span>
+      <span class="brandmark-seal">伊東</span>
       <span class="brandmark-text">ITO CITY<small>事業者ポータル</small></span>
     </a>
     <p>運営：伊東商工会議所 ／ 地域おこし協力隊</p>
