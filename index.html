@@ -59,12 +59,14 @@
   }
   .brandmark{display:flex;align-items:center;gap:10px;text-decoration:none;}
   .brandmark-seal{
-    width:34px;height:34px;border-radius:50%;
-    border:1.5px solid var(--stamp);
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--paper);
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-mono);font-size:11px;color:var(--stamp);
     flex-shrink:0;
+    padding:6px;
   }
+  .brandmark-seal img{width:100%;height:100%;object-fit:contain;display:block;}
   .brandmark-text{
     font-family:var(--font-display);font-weight:700;font-size:16px;
     letter-spacing:0.06em;color:var(--ink);
@@ -138,7 +140,7 @@
     padding:20px 0 90px;
   }
   .directory-intro{
-    max-width:1080px;margin:0 auto;padding:0 24px 40px;
+    max-width:1080px;margin:0 auto;padding:0 24px 8px;
   }
   .directory-intro h2{
     font-family:var(--font-display);font-size:26px;font-weight:700;margin:0 0 8px;
@@ -147,7 +149,7 @@
 
   .entry{
     position:relative;
-    max-width:1080px;margin:0 auto 64px;padding:0 24px;
+    max-width:1080px;margin:0 auto 64px;padding:96px 24px 0;
     opacity:0; transform:translateY(28px);
     transition:opacity .7s ease, transform .7s ease;
   }
@@ -205,10 +207,10 @@
   }
   .entry-links a.primary:hover{background:var(--citrus-deep);border-color:var(--citrus-deep);}
 
-  /* stamp badge */
+  /* stamp badge — floats in the reserved gutter above the card, never touching it */
   .stamp{
-    position:absolute;top:-22px;
-    width:96px;height:96px;border-radius:50%;
+    position:absolute;top:10px;
+    width:84px;height:84px;border-radius:50%;
     background:var(--paper);
     border:1.5px solid var(--stamp);
     display:flex;align-items:center;justify-content:center;
@@ -219,20 +221,22 @@
     content:"";position:absolute;inset:6px;border:1px dashed var(--stamp);border-radius:50%;opacity:0.55;
   }
   .stamp-kanji{
-    font-family:var(--font-display);font-weight:700;font-size:26px;
+    font-family:var(--font-display);font-weight:700;font-size:24px;
   }
   .entry:nth-child(odd) .stamp{left:36px;transform:rotate(-9deg);}
   .entry:nth-child(even) .stamp{right:36px;transform:rotate(8deg);}
 
   @media (max-width:860px){
+    .entry{padding-top:78px;}
     .entry-card{grid-template-columns:1fr !important;}
     .entry:nth-child(even) .entry-media,
     .entry:nth-child(even) .entry-body{order:initial;}
     .entry-media{min-height:200px;}
-    .entry-body{padding:52px 26px 34px;}
+    .entry-body{padding:32px 26px 34px;}
+    .stamp{width:66px;height:66px;top:6px;}
     .entry:nth-child(odd) .stamp,
-    .entry:nth-child(even) .stamp{left:auto;right:22px;top:-20px;width:78px;height:78px;}
-    .stamp-kanji{font-size:21px;}
+    .entry:nth-child(even) .stamp{left:auto;right:22px;}
+    .stamp-kanji{font-size:19px;}
   }
 
   /* ---------- Footer ---------- */
@@ -245,7 +249,6 @@
     display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;
   }
   footer .brandmark-text{color:var(--paper);}
-  footer .brandmark-seal{border-color:var(--paper);color:var(--paper);}
   footer p{margin:0;font-size:12.5px;color:rgba(245,239,223,0.65);font-family:var(--font-mono);}
   .back-to-top{
     font-size:12.5px;color:var(--paper);text-decoration:none;
@@ -259,7 +262,7 @@
 <header class="site-header">
   <div class="header-row">
     <a class="brandmark" href="#top">
-      <span class="brandmark-seal">伊東</span>
+      <span class="brandmark-seal"><img src="ito-logo.png" alt="伊東市 ロゴマーク"></span>
       <span class="brandmark-text">ITO CITY
         <small>事業者ポータル</small>
       </span>
@@ -278,8 +281,8 @@
     <div class="hero-inner">
       <p class="eyebrow">Ito Chamber of Commerce &amp; Industry</p>
       <h1>伊東市<br><span>事業者ポータル</span></h1>
-      <p class="lead">海と温泉の街・伊東の魅力を凝縮！人気の産品・お店・ふるさと納税をまとめてご紹介します。</p>
-      <p class="hero-credit">運営：伊東市 地域おこし協力隊</p>
+      <p class="lead">相模湾の海と温泉が育んだ、伊東の産品・お店・ふるさと納税をひとつにまとめてご案内します。</p>
+      <p class="hero-credit">運営：伊東商工会議所 ／ 地域おこし協力隊</p>
     </div>
     <div class="wave-band" aria-hidden="true">
       <svg viewBox="0 0 800 120" preserveAspectRatio="none">
@@ -406,10 +409,10 @@
 <footer>
   <div class="footer-inner">
     <a class="brandmark" href="#top" style="text-decoration:none;">
-      <span class="brandmark-seal">伊東</span>
+      <span class="brandmark-seal"><img src="ito-logo.png" alt="伊東市 ロゴマーク"></span>
       <span class="brandmark-text">ITO CITY<small>事業者ポータル</small></span>
     </a>
-    <p>運営：伊東市 地域おこし協力隊</p>
+    <p>運営：伊東商工会議所 ／ 地域おこし協力隊</p>
     <a class="back-to-top" href="#top">ページtop ↑</a>
   </div>
 </footer>
