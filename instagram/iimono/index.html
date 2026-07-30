@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>いとうのいいもの｜伊東ブランド認定事業者 総覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --washi:#EDEAE0;
+    --washi-2:#E4DECC;
+    --ink:#1B1B18;
+    --ink-soft:#6B665C;
+    --seal:#A6323A;
+    --seal-deep:#7D2229;
+    --gold:#9C8451;
+    --card:#F7F4EA;
+    --line: rgba(27,27,24,.16);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--washi);
+    color:var(--ink);
+    font-family:"Noto Sans JP", sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(27,27,24,.05) 1px, transparent 1px),
+      radial-gradient(1px 1px at 70% 65%, rgba(27,27,24,.04) 1px, transparent 1px);
+    background-size:180px 180px, 220px 220px;
+  }
+  h1,h2{ font-family:"Shippori Mincho B1", serif; margin:0; }
+  a{color:inherit;}
+
+  .eyebrow{
+    font-family:"Shippori Mincho B1", serif;
+    font-size:12.5px; letter-spacing:.32em;
+    color:var(--gold);
+  }
+
+  .backlink{
+    position:sticky; top:0; z-index:40;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 6vw;
+    background:rgba(237,234,224,.9);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+    font-size:12.5px; letter-spacing:.04em;
+  }
+  .backlink a{ text-decoration:none; color:var(--ink-soft); }
+  .backlink a:hover{ color:var(--seal); }
+  .backlink .tag{
+    font-family:"Shippori Mincho B1", serif;
+    color:var(--seal); border:1px solid var(--seal);
+    padding:3px 12px; border-radius:2px; font-size:12px;
+  }
+
+  /* ---------------- hero ---------------- */
+  .hero{
+    position:relative;
+    padding:16vh 6vw 10vh;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{ max-width:760px; }
+  .hero h1{
+    font-size:clamp(40px, 7vw, 84px);
+    font-weight:800;
+    line-height:1.25;
+    letter-spacing:.06em;
+    margin-top:18px;
+  }
+  .hero-sub{
+    max-width:520px; margin-top:24px; font-size:15.5px; color:var(--ink-soft);
+  }
+  .hero-rule{
+    margin-top:14px; width:64px; height:2px; background:var(--seal);
+  }
+
+  /* hand-stamped seal, signature element */
+  .stamp{
+    position:absolute;
+    top:14vh; right:7vw;
+    width:168px; height:168px;
+    transform:rotate(-9deg);
+  }
+  @media (max-width:760px){
+    .stamp{ position:static; margin:36px auto 0; transform:rotate(-9deg) scale(.85); }
+  }
+
+  /* ---------------- registry section ---------------- */
+  .registry{ padding:9vh 6vw 14vh; }
+  .registry-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:8px; padding-bottom:18px; border-bottom:2px solid var(--ink);
+  }
+  .registry-head h2{ font-size:26px; letter-spacing:.08em; }
+  .registry-count{ font-size:13px; color:var(--ink-soft); }
+  .registry-count b{ color:var(--seal); font-family:"Shippori Mincho B1",serif; font-size:16px; }
+
+  .col-labels{
+    display:grid;
+    grid-template-columns:64px 1fr 200px 140px;
+    padding:14px 4px;
+    font-size:11.5px; color:var(--ink-soft); letter-spacing:.1em;
+    border-bottom:1px solid var(--line);
+  }
+
+  .entry{
+    display:grid;
+    grid-template-columns:64px 1fr 200px 140px;
+    align-items:center;
+    padding:26px 4px;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    color:inherit;
+    position:relative;
+    transition:background .2s ease;
+  }
+  .entry.active{ cursor:pointer; }
+  .entry.active:hover{ background:var(--card); }
+  .entry.active::before{
+    content:"";
+    position:absolute; left:-6vw; top:0; bottom:0; width:4px; background:transparent;
+    transition:background .2s ease;
+  }
+  .entry.active:hover::before{ background:var(--seal); }
+
+  .entry-num{
+    font-family:"Shippori Mincho B1", serif; font-size:15px; color:var(--ink-soft);
+  }
+  .entry-name{ display:flex; align-items:baseline; gap:14px; }
+  .entry-name .icon{ font-size:22px; }
+  .entry-name .txt h3{
+    font-family:"Shippori Mincho B1", serif; font-size:19px; font-weight:600; letter-spacing:.04em;
+  }
+  .entry-name .txt p{ margin:4px 0 0; font-size:12.5px; color:var(--ink-soft); }
+
+  .entry-cat{ font-size:13px; color:var(--ink-soft); }
+
+  .stamp-badge{
+    justify-self:end;
+    display:flex; align-items:center; gap:8px;
+    font-family:"Shippori Mincho B1", serif;
+    font-size:13px;
+  }
+  .stamp-mark{
+    width:38px; height:38px; border-radius:3px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; letter-spacing:.04em;
+    flex:none;
+  }
+  .stamp-mark.done{
+    border:2px solid var(--seal); color:var(--seal);
+    transform:rotate(-6deg);
+  }
+  .stamp-mark.pending{
+    border:2px dashed var(--line); color:var(--ink-soft);
+    transform:rotate(-6deg);
+  }
+  .status-txt.done{ color:var(--seal); }
+  .status-txt.pending{ color:var(--ink-soft); }
+
+  footer{ padding:6vh 6vw 8vh; text-align:center; border-top:1px solid var(--line); }
+  footer small{ color:var(--ink-soft); font-size:11px; letter-spacing:.05em; }
+
+  @media (max-width:820px){
+    .col-labels{ display:none; }
+    .entry{
+      grid-template-columns:1fr; gap:12px; padding:24px 4px;
+    }
+    .entry-num{ order:0; }
+    .entry-cat{ order:2; }
+    .stamp-badge{ order:3; justify-self:start; }
+  }
+</style>
+  <meta name="description" content="伊東ブランド認定事業者のInstagram改善提案を、事業者ごとの台帳形式でまとめています。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+</head>
+<body>
+
+<div class="backlink">
+  <a href="../index.html">← 伊東Instagram改善提案 トップへ</a>
+  <span class="tag">認定 GROUP</span>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">伊東ブランド認定事業者　総覧</span>
+    <h1>いとうのいいもの</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">
+      伊東ブランドに認定された事業者を対象に、Instagramのプロフィール・投稿・リールの改善提案を
+      一者ずつ作成し、台帳形式でまとめています。
+    </p>
+  </div>
+
+  <svg class="stamp" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="rough">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4"/>
+      </filter>
+    </defs>
+    <g filter="url(#rough)">
+      <circle cx="100" cy="100" r="86" fill="none" stroke="#A6323A" stroke-width="6"/>
+      <circle cx="100" cy="100" r="70" fill="none" stroke="#A6323A" stroke-width="1.5"/>
+      <text x="100" y="82" text-anchor="middle" font-family="Shippori Mincho B1, serif" font-size="34" font-weight="800" fill="#A6323A">認</text>
+      <text x="100" y="132" text-anchor="middle" font-family="Shippori Mincho B1, serif" font-size="34" font-weight="800" fill="#A6323A">定</text>
+    </g>
+  </svg>
+</header>
+
+<section class="registry">
+  <div class="registry-head">
+    <h2>認定事業者台帳</h2>
+    <span class="registry-count">公開 <b>1</b> / 全6件</span>
+  </div>
+  <div class="col-labels">
+    <span>No.</span><span>事業者</span><span>分類</span><span>状況</span>
+  </div>
+
+  <a class="entry active" href="../iimono/usami.html">
+    <span class="entry-num">01</span>
+    <div class="entry-name">
+      <span class="icon">🍺</span>
+      <div class="txt">
+        <h3>宇佐美麦酒製造</h3>
+        <p>Usami Brewery</p>
+      </div>
+    </div>
+    <span class="entry-cat">クラフトビール醸造</span>
+    <span class="stamp-badge">
+      <span class="stamp-mark done">公開</span>
+      <span class="status-txt done">提案を見る →</span>
+    </span>
+  </a>
+
+  <div class="entry">
+    <span class="entry-num">02</span>
+    <div class="entry-name">
+      <span class="icon">🍵</span>
+      <div class="txt">
+        <h3>杉山製茶</h3>
+        <p>Sugiyama Seicha</p>
+      </div>
+    </div>
+    <span class="entry-cat">製茶</span>
+    <span class="stamp-badge">
+      <span class="stamp-mark pending">準備中</span>
+      <span class="status-txt pending">Coming soon</span>
+    </span>
+  </div>
+
+  <div class="entry">
+    <span class="entry-num">03</span>
+    <div class="entry-name">
+      <span class="icon">🐟</span>
+      <div class="txt">
+        <h3>丸達水産</h3>
+        <p>Marutatsu Suisan</p>
+      </div>
+    </div>
+    <span class="entry-cat">水産加工</span>
+    <span class="stamp-badge">
+      <span class="stamp-mark pending">準備中</span>
+      <span class="status-txt pending">Coming soon</span>
+    </span>
+  </div>
+
+  <div class="entry">
+    <span class="entry-num">04</span>
+    <div class="entry-name">
+      <span class="icon">🍵</span>
+      <div class="txt">
+        <h3>市川製茶</h3>
+        <p>Ichikawa Seicha</p>
+      </div>
+    </div>
+    <span class="entry-cat">製茶</span>
+    <span class="stamp-badge">
+      <span class="stamp-mark pending">準備中</span>
+      <span class="status-txt pending">Coming soon</span>
+    </span>
+  </div>
+
+  <div class="entry">
+    <span class="entry-num">05</span>
+    <div class="entry-name">
+      <span class="icon">🍊</span>
+      <div class="txt">
+        <h3>HINASAKU</h3>
+        <p>Hinasaku</p>
+      </div>
+    </div>
+    <span class="entry-cat">柑橘</span>
+    <span class="stamp-badge">
+      <span class="stamp-mark pending">準備中</span>
+      <span class="status-txt pending">Coming soon</span>
+    </span>
+  </div>
+
+  <div class="entry">
+    <span class="entry-num">06</span>
+    <div class="entry-name">
+      <span class="icon">🦐</span>
+      <div class="txt">
+        <h3>伊東白子</h3>
+        <p>Ito Shirasu</p>
+      </div>
+    </div>
+    <span class="entry-cat">海産物</span>
+    <span class="stamp-badge">
+      <span class="stamp-mark pending">準備中</span>
+      <span class="status-txt pending">Coming soon</span>
+    </span>
+  </div>
+</section>
+
+<footer><small>© Ito Instagram</small></footer>
+
+</body>
+</html>
