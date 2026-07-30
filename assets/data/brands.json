@@ -1,0 +1,95 @@
+{
+  "_comment": "4ブランドの外部リンクと基本情報を一元管理するファイル。リンク変更時はここだけを編集する。",
+  "updated": "2026-07-30",
+  "brands": [
+    {
+      "slug": "iimono",
+      "name": "いとうのいいもの",
+      "nameEn": "ITO NO IIMONO",
+      "colorVar": "--brand-iimono",
+      "summary": "伊東ブランド認定事業者。手仕事の工芸品から新しい発想の逸品まで、伊東らしさが詰まったセレクトブランド。",
+      "links": {
+        "instagram": "https://www.instagram.com/ito_iimono.brand/",
+        "map": "https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI",
+        "official": null,
+        "shop": null
+      },
+      "pages": {
+        "museum": "museum/rooms/iimono/",
+        "instagram": "instagram/iimono/"
+      }
+    },
+    {
+      "slug": "jizakana",
+      "name": "地魚王国",
+      "nameEn": "JIZAKANA KINGDOM",
+      "colorVar": "--brand-jizakana",
+      "summary": "相模湾であがった旬の地魚を市内の店で味わえる。伊東の海の恵みを知る入り口。",
+      "links": {
+        "instagram": "https://www.instagram.com/ito_jizakana.kingdom/",
+        "map": "https://www.google.com/maps/d/viewer?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws",
+        "official": "https://ito-jizakana.com/",
+        "shop": null
+      },
+      "pages": {
+        "museum": "museum/rooms/jizakana/",
+        "instagram": "instagram/jizakana/"
+      }
+    },
+    {
+      "slug": "okashi",
+      "name": "お菓子ぃ共和国",
+      "nameEn": "OKASHII REPUBLIC",
+      "colorVar": "--brand-okashi",
+      "summary": "市内の菓子店が集まる甘くて楽しいブランド。手土産にも旅の思い出にも。",
+      "links": {
+        "instagram": "https://www.instagram.com/ito_okashi.republic/",
+        "map": "https://www.google.com/maps/d/viewer?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI",
+        "official": "https://ito-okashii-kyowakoku.com/",
+        "shop": null
+      },
+      "pages": {
+        "museum": "museum/rooms/okashi/",
+        "instagram": "instagram/okashi/"
+      }
+    },
+    {
+      "slug": "furusato",
+      "name": "ふるさと納税",
+      "nameEn": "FURUSATO NOZEI",
+      "colorVar": "--brand-furusato",
+      "summary": "伊東市への寄附で地元の海産物や菓子などの返礼品が届く。寄附を伊東ファンづくりの入口に。",
+      "links": {
+        "instagram": "https://www.instagram.com/ito_furusato.donation/",
+        "map": null,
+        "official": null,
+        "shop": "https://www.rakuten.co.jp/f222089-ito/"
+      },
+      "pages": {
+        "museum": "museum/rooms/furusato/",
+        "instagram": "instagram/furusato/",
+        "feature": "furusato/"
+      }
+    }
+  ],
+  "sections": [
+    {
+      "slug": "museum",
+      "name": "ITO PEOPLE MUSEUM",
+      "path": "museum/",
+      "summary": "WebVRで伊東の4ブランドをめぐるデジタル展示室。"
+    },
+    {
+      "slug": "instagram",
+      "name": "Instagram改善提案",
+      "path": "instagram/",
+      "summary": "事業者ごとのInstagram運用改善提案を台帳形式でまとめたもの。"
+    },
+    {
+      "slug": "furusato",
+      "name": "ふるさと納税特集",
+      "path": "furusato/",
+      "summary": "返礼品・宿泊クーポン・人の物語を伝える特集ページ。"
+    }
+  ]
+}
