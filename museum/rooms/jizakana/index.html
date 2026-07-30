@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>伊豆・いとう地魚王国展示室</title>
+
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #03101a;
+      font-family: sans-serif;
+    }
+
+    #guide {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      z-index: 10;
+      transform: translateX(-50%);
+      padding: 9px 17px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.72);
+      color: #fff;
+      font-size: 13px;
+      pointer-events: none;
+    }
+  </style>
+  <meta name="description" content="地魚王国展示室。相模湾の地魚を扱う店とその魅力を紹介するデジタル展示室です。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="stylesheet" href="../../../assets/css/tokens.css">
+</head>
+
+<body>
+<!-- 展示室からミュージアム入口へ戻る導線 -->
+<a href="../../index.html" style="position:fixed;top:12px;left:12px;z-index:9999;padding:8px 14px;border-radius:999px;background:rgba(245,239,223,.92);color:#1C2B2A;font-family:sans-serif;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.2)">&larr; ミュージアム入口</a>
+
+
+<div id="guide">
+  店舗カードをクリックすると、将来の店舗詳細ページへ移動できます
+</div>
+
+<a-scene
+  cursor="rayOrigin: mouse"
+  raycaster="objects: .clickable"
+  renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true"
+  background="color: #03101a">
+
+  <a-assets>
+    <img id="department-image" src="../../../assets/img/museum/photo-jizakana.jpg">
+    <img id="instagram-icon" src="../../../assets/img/museum/icon-instagram.jpg">
+    <img id="map-icon" src="../../../assets/img/museum/icon-map.jpg">
+
+    <!--
+    <video id="room-video"
+           src="../../../assets/img/museum/assets/videos/jizakana.mp4"
+           preload="auto"
+           loop
+           muted
+           playsinline>
+    </video>
+
+    <a-asset-item
+      id="room-model"
+      src="../../../assets/img/museum/assets/models/sabakan.glb">
+    </a-asset-item>
+    -->
+  </a-assets>
+
+  <a-sky color="#03101a"></a-sky>
+
+  <a-plane
+    position="0 0 -2"
+    rotation="-90 0 0"
+    width="26"
+    height="26"
+    color="#0b2536"
+    material="metalness: 0.68; roughness: 0.16">
+  </a-plane>
+
+  <a-plane
+    position="0 0.012 -3"
+    rotation="-90 0 0"
+    width="0.035"
+    height="20"
+    color="#4fdcff"
+    material="emissive: #4fdcff; emissiveIntensity: 1">
+  </a-plane>
+
+  <a-box
+    position="0 3 -10"
+    width="17"
+    height="6"
+    depth="0.18"
+    color="#eef5f7">
+  </a-box>
+
+  <a-box
+    position="-8.5 3 -3"
+    rotation="0 90 0"
+    width="14"
+    height="6"
+    depth="0.18"
+    color="#cfdfe5">
+  </a-box>
+
+  <a-box
+    position="8.5 3 -3"
+    rotation="0 90 0"
+    width="14"
+    height="6"
+    depth="0.18"
+    color="#cfdfe5">
+  </a-box>
+
+  <a-box
+    position="-7 3 -3"
+    rotation="0 90 0"
+    width="12"
+    height="5"
+    depth="0.04"
+    color="#73dfff"
+    material="transparent: true; opacity: 0.15">
+  </a-box>
+
+  <a-box
+    position="7 3 -3"
+    rotation="0 90 0"
+    width="12"
+    height="5"
+    depth="0.04"
+    color="#73dfff"
+    material="transparent: true; opacity: 0.15">
+  </a-box>
+
+  <a-box
+    position="0 6 -3"
+    width="17"
+    height="0.18"
+    depth="14"
+    color="#07131b">
+  </a-box>
+
+  <a-box
+    position="0 4.95 -9.70"
+    width="8.4"
+    height="0.9"
+    depth="0.12"
+    color="#07334b">
+  </a-box>
+
+  <a-text
+    value="伊豆・いとう地魚王国 展示室"
+    position="0 5.10 -9.57"
+    align="center"
+    color="#ffffff"
+    width="6.8">
+  </a-text>
+
+  <a-text
+    value="伊東の海、地魚、加工品、料理人、仕事の舞台裏"
+    position="0 4.48 -9.57"
+    align="center"
+    color="#304d5c"
+    width="5.8">
+  </a-text>
+
+  <!-- 大型モニター -->
+  <a-box
+    position="-5.85 2.55 -9.65"
+    width="3.55"
+    height="2.15"
+    depth="0.12"
+    color="#03080b">
+  </a-box>
+
+  <a-image
+    src="#department-image"
+    position="-5.85 2.55 -9.51"
+    width="3.25"
+    height="1.82">
+  </a-image>
+
+  <a-text
+    value="JIZAKANA DOCUMENTARY"
+    position="-5.85 1.22 -9.49"
+    align="center"
+    color="#164f6d"
+    width="3.2">
+  </a-text>
+
+  <!-- 店舗1 -->
+  <a-box
+    position="-1.8 2.65 -9.58"
+    width="2.75"
+    height="2.15"
+    depth="0.12"
+    color="#ffffff"
+    class="clickable"
+    data-url="">
+  </a-box>
+
+  <a-text
+    value="東平商会"
+    position="-1.8 3.10 -9.42"
+    align="center"
+    color="#07334b"
+    width="3.1">
+  </a-text>
+
+  <a-text
+    value="さば缶・伊東ナゲット&#10;魚を使った商品"
+    position="-1.8 2.55 -9.42"
+    align="center"
+    color="#405866"
+    width="2.65">
+  </a-text>
+
+  <a-text
+    value="DETAIL"
+    position="-1.8 1.88 -9.42"
+    align="center"
+    color="#0085b7"
+    width="2.3">
+  </a-text>
+
+  <!-- 店舗2 -->
+  <a-box
+    position="1.45 2.65 -9.58"
+    width="2.75"
+    height="2.15"
+    depth="0.12"
+    color="#ffffff"
+    class="clickable"
+    data-url="">
+  </a-box>
+
+  <a-text
+    value="濱村屋"
+    position="1.45 3.10 -9.42"
+    align="center"
+    color="#07334b"
+    width="3.1">
+  </a-text>
+
+  <a-text
+    value="干物づくりと&#10;地魚加工の仕事"
+    position="1.45 2.55 -9.42"
+    align="center"
+    color="#405866"
+    width="2.65">
+  </a-text>
+
+  <a-text
+    value="DETAIL"
+    position="1.45 1.88 -9.42"
+    align="center"
+    color="#0085b7"
+    width="2.3">
+  </a-text>
+
+  <!-- 店舗3 -->
+  <a-box
+    position="4.7 2.65 -9.58"
+    width="2.75"
+    height="2.15"
+    depth="0.12"
+    color="#ffffff"
+    class="clickable"
+    data-url="">
+  </a-box>
+
+  <a-text
+    value="魚将"
+    position="4.7 3.10 -9.42"
+    align="center"
+    color="#07334b"
+    width="3.1">
+  </a-text>
+
+  <a-text
+    value="地魚商品と&#10;職人の魅力"
+    position="4.7 2.55 -9.42"
+    align="center"
+    color="#405866"
+    width="2.65">
+  </a-text>
+
+  <a-text
+    value="DETAIL"
+    position="4.7 1.88 -9.42"
+    align="center"
+    color="#0085b7"
+    width="2.3">
+  </a-text>
+
+  <!-- 3D展示台 -->
+  <a-cylinder
+    position="0 0.58 -4.6"
+    radius="1.15"
+    height="1.15"
+    color="#dcebf0"
+    material="metalness: 0.55; roughness: 0.18">
+  </a-cylinder>
+
+  <a-text
+    value="SABAKAN 3D MODEL"
+    position="0 1.42 -4.6"
+    rotation="-18 0 0"
+    align="center"
+    color="#85e9ff"
+    width="3.5">
+  </a-text>
+
+  <!--
+  <a-gltf-model
+    src="#room-model"
+    position="0 1.3 -4.6"
+    scale="0.8 0.8 0.8"
+    rotation="0 180 0"
+    animation="property: rotation; to: 0 540 0; loop: true; dur: 18000; easing: linear">
+  </a-gltf-model>
+  -->
+
+  <a-image
+    src="#instagram-icon"
+    position="6.75 1.15 -9.4"
+    width="0.45"
+    height="0.45"
+    class="clickable"
+    data-url="https://www.instagram.com/ito_jizakana.kingdom/?next=%2Fito_okashi.republic%2F&hl=ja"
+    data-target="_blank">
+  </a-image>
+
+  <a-image
+    src="#map-icon"
+    position="7.35 1.15 -9.4"
+    width="0.45"
+    height="0.45"
+    class="clickable"
+    data-url=""
+    data-target="_blank">
+  </a-image>
+
+  <a-box
+    position="-6.8 0.65 -9.45"
+    width="2.2"
+    height="0.48"
+    depth="0.08"
+    color="#07334b"
+    class="clickable"
+    data-url="../../index.html"
+    data-target="_self">
+  </a-box>
+
+  <a-text
+    value="ENTRANCEへ戻る"
+    position="-6.8 0.67 -9.35"
+    align="center"
+    color="#ffffff"
+    width="2.6">
+  </a-text>
+
+  <a-light
+    type="ambient"
+    color="#e5faff"
+    intensity="0.54">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="-5.85 5.2 -6.5"
+    intensity="2"
+    angle="32"
+    penumbra="0.5">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="-1.8 5.2 -6.5"
+    intensity="1.7"
+    angle="30"
+    penumbra="0.5">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="1.45 5.2 -6.5"
+    intensity="1.7"
+    angle="30"
+    penumbra="0.5">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="4.7 5.2 -6.5"
+    intensity="1.7"
+    angle="30"
+    penumbra="0.5">
+  </a-light>
+
+  <a-entity position="0 0 5.5">
+    <a-camera position="0 1.65 0">
+      <a-cursor
+        color="#4fdcff"
+        raycaster="objects: .clickable">
+      </a-cursor>
+    </a-camera>
+  </a-entity>
+
+</a-scene>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll('.clickable').forEach(function (element) {
+
+      element.addEventListener('click', function () {
+        const url = element.getAttribute('data-url');
+        const target = element.getAttribute('data-target') || '_self';
+
+        if (!url) {
+          alert('このページまたはGoogleマップは現在準備中です。');
+          return;
+        }
+
+        window.open(url, target);
+      });
+
+      element.addEventListener('mouseenter', function () {
+        element.setAttribute(
+          'animation__in',
+          'property: scale; to: 1.06 1.06 1.06; dur: 140'
+        );
+      });
+
+      element.addEventListener('mouseleave', function () {
+        element.setAttribute(
+          'animation__out',
+          'property: scale; to: 1 1 1; dur: 140'
+        );
+      });
+
+    });
+
+  });
+</script>
+
+</body>
+</html>
