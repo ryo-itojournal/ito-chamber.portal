@@ -1,0 +1,69 @@
+/* =========================================================
+   tokens.css - ITO CITY WEB 共通デザイントークン
+   色・フォント・余白・角丸・影をここに集約する。
+   各ページで色コードを直接書かず、必ずこの変数を参照すること。
+   ========================================================= */
+
+:root {
+  /* --- 色：紙・墨 --- */
+  --paper:        #F5EFDF;
+  --paper-deep:   #EDE3CB;
+  --paper-soft:   #FBF7EC;
+  --ink:          #1C2B2A;
+  --ink-soft:     #48605C;
+  --ink-mute:     #7C8F8B;
+
+  /* --- 色：海・柑橘・印 --- */
+  --sea:          #0E5057;
+  --sea-deep:     #0A3A3F;
+  --sea-light:    #1B7C86;
+  --citrus:       #D9560C;
+  --citrus-deep:  #B84508;
+  --stamp:        #B0392C;
+
+  /* --- 色：ブランド識別 --- */
+  --brand-iimono:   #B8860B;
+  --brand-jizakana: #0E5057;
+  --brand-okashi:   #C2567A;
+  --brand-furusato: #D9560C;
+
+  /* --- 線・影 --- */
+  --line:        rgba(28, 43, 42, 0.14);
+  --line-strong: rgba(28, 43, 42, 0.28);
+  --shadow-sm:   0 2px 8px rgba(28, 43, 42, 0.08);
+  --shadow-md:   0 8px 24px rgba(28, 43, 42, 0.12);
+  --shadow-lg:   0 16px 48px rgba(28, 43, 42, 0.18);
+
+  /* --- 書体 --- */
+  --font-display: "Shippori Mincho", serif;
+  --font-body:    "Zen Kaku Gothic New", sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  /* --- 余白（8pxベース） --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+
+  /* --- 角丸 --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* --- レイアウト --- */
+  --content-width: 1080px;
+  --header-height: 64px;
+
+  /* --- モーション --- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration: 0.001s; }
+}
