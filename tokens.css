@@ -30,6 +30,8 @@
 .wrap--narrow{max-width:var(--wrap-narrow)}
 .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;
   clip-path:inset(50%);white-space:nowrap}
+.eyebrow{font-size:var(--fs-small);font-weight:700;letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase}
 
 @supports (animation-timeline: view()){
   .reveal{animation:ito-rise .7s var(--ease) both;animation-timeline:view();
