@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>伊東市ふるさと納税展示室</title>
+
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #170e08;
+      font-family: sans-serif;
+    }
+
+    #guide {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      z-index: 10;
+      transform: translateX(-50%);
+      padding: 9px 17px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.72);
+      color: #fff;
+      font-size: 13px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="guide">
+  返礼品・宿泊・事業者の展示を順次追加できます
+</div>
+
+<a-scene
+  cursor="rayOrigin: mouse"
+  raycaster="objects: .clickable"
+  renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true"
+  background="color: #170e08">
+
+  <a-assets>
+    <img id="department-image"
+         src="../ChatGPT Image 2026年6月17日 13_29_35.png">
+
+    <img id="instagram-icon" src="../images.jpg">
+    <img id="map-icon" src="../ダウンロード.jpg">
+
+    <!--
+    <video id="room-video"
+           src="../assets/videos/furusato.mp4"
+           preload="auto"
+           loop
+           muted
+           playsinline>
+    </video>
+
+    <a-asset-item
+      id="room-model"
+      src="../assets/models/furusato-item.glb">
+    </a-asset-item>
+    -->
+  </a-assets>
+
+  <a-sky color="#170e08"></a-sky>
+
+  <a-plane
+    position="0 0 -2"
+    rotation="-90 0 0"
+    width="26"
+    height="26"
+    color="#2b2119"
+    material="metalness: 0.6; roughness: 0.19">
+  </a-plane>
+
+  <a-plane
+    position="0 0.012 -3"
+    rotation="-90 0 0"
+    width="0.035"
+    height="20"
+    color="#f2bd65"
+    material="emissive: #f2bd65; emissiveIntensity: 0.9">
+  </a-plane>
+
+  <a-box
+    position="0 3 -10"
+    width="17"
+    height="6"
+    depth="0.18"
+    color="#f7f2e9">
+  </a-box>
+
+  <a-box
+    position="-8.5 3 -3"
+    rotation="0 90 0"
+    width="14"
+    height="6"
+    depth="0.18"
+    color="#e5d8c7">
+  </a-box>
+
+  <a-box
+    position="8.5 3 -3"
+    rotation="0 90 0"
+    width="14"
+    height="6"
+    depth="0.18"
+    color="#e5d8c7">
+  </a-box>
+
+  <a-box
+    position="-7 3 -3"
+    rotation="0 90 0"
+    width="12"
+    height="5"
+    depth="0.04"
+    color="#ffd98f"
+    material="transparent: true; opacity: 0.14">
+  </a-box>
+
+  <a-box
+    position="7 3 -3"
+    rotation="0 90 0"
+    width="12"
+    height="5"
+    depth="0.04"
+    color="#ffd98f"
+    material="transparent: true; opacity: 0.14">
+  </a-box>
+
+  <a-box
+    position="0 6 -3"
+    width="17"
+    height="0.18"
+    depth="14"
+    color="#1b140e">
+  </a-box>
+
+  <a-box
+    position="0 4.95 -9.70"
+    width="8.4"
+    height="0.9"
+    depth="0.12"
+    color="#6a3c19">
+  </a-box>
+
+  <a-text
+    value="伊東市ふるさと納税 展示室"
+    position="0 5.10 -9.57"
+    align="center"
+    color="#ffffff"
+    width="6.8">
+  </a-text>
+
+  <a-text
+    value="返礼品、宿泊、体験、事業者の物語から伊東を知る"
+    position="0 4.48 -9.57"
+    align="center"
+    color="#674f3d"
+    width="5.8">
+  </a-text>
+
+  <!-- 大型モニター -->
+  <a-box
+    position="-5.85 2.55 -9.65"
+    width="3.55"
+    height="2.15"
+    depth="0.12"
+    color="#0b0805">
+  </a-box>
+
+  <a-image
+    src="#department-image"
+    position="-5.85 2.55 -9.51"
+    width="3.25"
+    height="1.82">
+  </a-image>
+
+  <a-text
+    value="FURUSATO DOCUMENTARY"
+    position="-5.85 1.22 -9.49"
+    align="center"
+    color="#8b552b"
+    width="3.2">
+  </a-text>
+
+  <!-- カテゴリー1 -->
+  <a-box
+    position="-1.8 2.65 -9.58"
+    width="2.75"
+    height="2.15"
+    depth="0.12"
+    color="#ffffff"
+    class="clickable"
+    data-url="">
+  </a-box>
+
+  <a-text
+    value="宿泊・旅行"
+    position="-1.8 3.10 -9.42"
+    align="center"
+    color="#6a3c19"
+    width="3.1">
+  </a-text>
+
+  <a-text
+    value="ホテル・旅館・宿泊券&#10;体験型返礼品"
+    position="-1.8 2.55 -9.42"
+    align="center"
+    color="#755f4f"
+    width="2.65">
+  </a-text>
+
+  <a-text
+    value="ENTER"
+    position="-1.8 1.88 -9.42"
+    align="center"
+    color="#c37932"
+    width="2.3">
+  </a-text>
+
+  <!-- カテゴリー2 -->
+  <a-box
+    position="1.45 2.65 -9.58"
+    width="2.75"
+    height="2.15"
+    depth="0.12"
+    color="#ffffff"
+    class="clickable"
+    data-url="">
+  </a-box>
+
+  <a-text
+    value="地魚・加工品"
+    position="1.45 3.10 -9.42"
+    align="center"
+    color="#6a3c19"
+    width="3.1">
+  </a-text>
+
+  <a-text
+    value="干物・缶詰・海産物&#10;地魚を使った商品"
+    position="1.45 2.55 -9.42"
+    align="center"
+    color="#755f4f"
+    width="2.65">
+  </a-text>
+
+  <a-text
+    value="ENTER"
+    position="1.45 1.88 -9.42"
+    align="center"
+    color="#c37932"
+    width="2.3">
+  </a-text>
+
+  <!-- カテゴリー3 -->
+  <a-box
+    position="4.7 2.65 -9.58"
+    width="2.75"
+    height="2.15"
+    depth="0.12"
+    color="#ffffff"
+    class="clickable"
+    data-url="">
+  </a-box>
+
+  <a-text
+    value="お菓子・特産品"
+    position="4.7 3.10 -9.42"
+    align="center"
+    color="#6a3c19"
+    width="3.1">
+  </a-text>
+
+  <a-text
+    value="伊東のお菓子・お茶&#10;地域ブランド商品"
+    position="4.7 2.55 -9.42"
+    align="center"
+    color="#755f4f"
+    width="2.65">
+  </a-text>
+
+  <a-text
+    value="ENTER"
+    position="4.7 1.88 -9.42"
+    align="center"
+    color="#c37932"
+    width="2.3">
+  </a-text>
+
+  <!-- 3D展示台 -->
+  <a-cylinder
+    position="0 0.58 -4.6"
+    radius="1.15"
+    height="1.15"
+    color="#eee4d6"
+    material="metalness: 0.45; roughness: 0.2">
+  </a-cylinder>
+
+  <a-text
+    value="RETURN GIFT 3D"
+    position="0 1.42 -4.6"
+    rotation="-18 0 0"
+    align="center"
+    color="#ffd18a"
+    width="3.5">
+  </a-text>
+
+  <!--
+  <a-gltf-model
+    src="#room-model"
+    position="0 1.3 -4.6"
+    scale="0.8 0.8 0.8"
+    animation="property: rotation; to: 0 540 0; loop: true; dur: 18000; easing: linear">
+  </a-gltf-model>
+  -->
+
+  <a-image
+    src="#instagram-icon"
+    position="6.75 1.15 -9.4"
+    width="0.45"
+    height="0.45"
+    class="clickable"
+    data-url="https://www.instagram.com/ito_furusato.donation/?next=%2Fito_iimono.brand%2F&hl=ja"
+    data-target="_blank">
+  </a-image>
+
+  <a-image
+    src="#map-icon"
+    position="7.35 1.15 -9.4"
+    width="0.45"
+    height="0.45"
+    class="clickable"
+    data-url=""
+    data-target="_blank">
+  </a-image>
+
+  <a-box
+    position="-6.8 0.65 -9.45"
+    width="2.2"
+    height="0.48"
+    depth="0.08"
+    color="#6a3c19"
+    class="clickable"
+    data-url="../index.html"
+    data-target="_self">
+  </a-box>
+
+  <a-text
+    value="ENTRANCEへ戻る"
+    position="-6.8 0.67 -9.35"
+    align="center"
+    color="#ffffff"
+    width="2.6">
+  </a-text>
+
+  <a-light
+    type="ambient"
+    color="#fff5e7"
+    intensity="0.56">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="-5.85 5.2 -6.5"
+    intensity="2"
+    angle="32"
+    penumbra="0.5">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="-1.8 5.2 -6.5"
+    intensity="1.7"
+    angle="30"
+    penumbra="0.5">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="1.45 5.2 -6.5"
+    intensity="1.7"
+    angle="30"
+    penumbra="0.5">
+  </a-light>
+
+  <a-light
+    type="spot"
+    position="4.7 5.2 -6.5"
+    intensity="1.7"
+    angle="30"
+    penumbra="0.5">
+  </a-light>
+
+  <a-entity position="0 0 5.5">
+    <a-camera position="0 1.65 0">
+      <a-cursor
+        color="#f2bd65"
+        raycaster="objects: .clickable">
+      </a-cursor>
+    </a-camera>
+  </a-entity>
+
+</a-scene>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll('.clickable').forEach(function (element) {
+
+      element.addEventListener('click', function () {
+        const url = element.getAttribute('data-url');
+        const target = element.getAttribute('data-target') || '_self';
+
+        if (!url) {
+          alert('このページまたはGoogleマップは現在準備中です。');
+          return;
+        }
+
+        window.open(url, target);
+      });
+
+      element.addEventListener('mouseenter', function () {
+        element.setAttribute(
+          'animation__in',
+          'property: scale; to: 1.06 1.06 1.06; dur: 140'
+        );
+      });
+
+      element.addEventListener('mouseleave', function () {
+        element.setAttribute(
+          'animation__out',
+          'property: scale; to: 1 1 1; dur: 140'
+        );
+      });
+
+    });
+
+  });
+</script>
+
+</body>
+</html>
