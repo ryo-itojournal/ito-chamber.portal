@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ITO PEOPLE MUSEUM</title>
+
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+  <!-- 和文書体：真鍮の銘板のような明朝体＋案内用のニュートラルなゴシック体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* ===== Design tokens ===== */
+      --ink-950:#070f13;
+      --ink-900:#0b1a20;
+      --ink-800:#122a32;
+      --teal-700:#16333c;
+      --foam-100:#e9efec;
+      --brass-300:#ecd48f;
+      --brass-500:#c9a227;
+      --brass-700:#8a6d22;
+      --coral-500:#e2683c;
+      --glass-200:rgba(233,239,236,0.9);
+
+      --font-display:'Shippori Mincho', serif;
+      --font-ui:'Zen Kaku Gothic New', sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html,body{
+      margin: 0;
+      overflow: hidden;
+      background: var(--ink-950);
+      font-family: var(--font-ui);
+    }
+
+    a-scene{
+      cursor: default;
+    }
+
+    /* ===== ローディング画面 ===== */
+    #loading{
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background:
+        radial-gradient(120% 90% at 50% 30%, #12262e 0%, #0b1a20 55%, #070f13 100%);
+      transition: opacity .7s ease, visibility .7s ease;
+    }
+    #loading.hide{
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #loading .mark{
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,39,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brass-300);
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: .04em;
+      position: relative;
+    }
+    #loading .mark::after{
+      content:"";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,39,.22);
+      border-top-color: var(--brass-500);
+      animation: spin 1.4s linear infinite;
+    }
+    #loading .word{
+      font-family: var(--font-ui);
+      font-size: 11px;
+      letter-spacing: .38em;
+      color: rgba(233,239,236,.55);
+      text-transform: uppercase;
+      padding-left: .38em; /* optical letter-spacing correction */
+    }
+    @keyframes spin{ to{ transform: rotate(360deg); } }
+
+    /* ===== 案内ピル ===== */
+    #guide {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      z-index: 10;
+      transform: translateX(-50%) translateY(-6px);
+      padding: 11px 22px;
+      border: 1px solid rgba(201,162,39,.32);
+      border-radius: 999px;
+      background: rgba(7,15,19,.62);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: var(--glass-200);
+      font-family: var(--font-ui);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      transition: opacity .8s ease .3s, transform .8s ease .3s;
+    }
+    #guide.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    #guide .dot{
+      display:inline-block;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--brass-500);
+      margin: 0 8px;
+      vertical-align: middle;
+    }
+
+    /* ===== 左上ブランドマーク ===== */
+    #brandmark{
+      position: fixed;
+      top: 20px;
+      left: 22px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity .8s ease .5s, transform .8s ease .5s;
+      pointer-events: none;
+    }
+    #brandmark.show{ opacity: 1; transform: translateY(0); }
+    #brandmark .ring{
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,39,.5);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--brass-300);
+      font-family: var(--font-display);
+      font-size: 13px;
+    }
+    #brandmark .label{
+      color: rgba(233,239,236,.45);
+      font-size: 10px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+    }
+
+    /* ===== 画面端の落ち着いたビネット ===== */
+    #vignette{
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      background: radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0) 55%, rgba(4,9,11,.55) 100%);
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="loading">
+  <div class="mark">伊</div>
+  <div class="word">Loading Museum</div>
+</div>
+
+<div id="brandmark">
+  <div class="ring">伊</div>
+  <div class="label">Ito People Museum</div>
+</div>
+
+<div id="guide">
+  画面をドラッグして見回し<span class="dot"></span>気になる展示をクリック
+</div>
+
+<div id="vignette"></div>
+
+<a-scene
+  cursor="rayOrigin: mouse"
+  raycaster="objects: .clickable"
+  renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true"
+  fog="type: exponential; color: #16323A; density: 0.016"
+  background="color: #16323A">
+
+  <a-assets timeout="20000">
+
+    <!-- 部門画像 -->
+    <img id="photo-iimono" src="ban_itobrand.jpg">
+    <img id="photo-jizakana" src="ban_jizakana.jpg">
+    <img id="photo-okashi" src="ban_okashi.jpg">
+    <img id="photo-furusato"
+         src="ChatGPT Image 2026年6月17日 13_29_35.png">
+
+    <!-- アイコン -->
+    <img id="instagram-icon" src="images.jpg">
+    <img id="map-icon" src="ダウンロード.jpg">
+
+  </a-assets>
+
+  <!-- 背景 -->
+  <a-sky color="#16323A"></a-sky>
+
+  <!-- 反射風の床（暖色照明を受ける深いチーク色） -->
+  <a-plane
+    position="0 0 -1"
+    rotation="-90 0 0"
+    width="26"
+    height="24"
+    color="#35555C"
+    material="metalness: 0.15; roughness: 0.8">
+  </a-plane>
+
+  <!-- 床の装飾ライン（真鍮の目地） -->
+  <a-plane
+    position="0 0.012 -2"
+    rotation="-90 0 0"
+    width="0.03"
+    height="18"
+    color="#c9a227"
+    material="emissive: #c9a227; emissiveIntensity: 0.55; metalness: 0.4; roughness: 0.3">
+  </a-plane>
+
+  <a-plane
+    position="-4 0.014 -2"
+    rotation="-90 0 0"
+    width="0.016"
+    height="18"
+    color="#3f5158">
+  </a-plane>
+
+  <a-plane
+    position="4 0.014 -2"
+    rotation="-90 0 0"
+    width="0.016"
+    height="18"
+    color="#3f5158">
+  </a-plane>
+
+  <!-- 奥壁 -->
+  <a-box
+    position="0 3 -9"
+    width="16"
+    height="6"
+    depth="0.18"
+    color="#e7ece9">
+  </a-box>
+
+  <!-- 左右の壁 -->
+  <a-box
+    position="-8 3 -2.5"
+    rotation="0 90 0"
+    width="13"
+    height="6"
+    depth="0.18"
+    color="#c6d0cd">
+  </a-box>
+
+  <a-box
+    position="8 3 -2.5"
+    rotation="0 90 0"
+    width="13"
+    height="6"
+    depth="0.18"
+    color="#c6d0cd">
+  </a-box>
+
+  <!-- ガラス壁 -->
+  <a-box
+    position="-6.7 2.8 -2.4"
+    rotation="0 90 0"
+    width="11"
+    height="5"
+    depth="0.04"
+    color="#bfe9ec"
+    material="transparent: true; opacity: 0.14; metalness: 0.2; roughness: 0.05">
+  </a-box>
+
+  <a-box
+    position="6.7 2.8 -2.4"
+    rotation="0 90 0"
+    width="11"
+    height="5"
+    depth="0.04"
+    color="#bfe9ec"
+    material="transparent: true; opacity: 0.14; metalness: 0.2; roughness: 0.05">
+  </a-box>
+
+  <!-- ガラス枠（真鍮フレーム） -->
+  <a-box position="-6.7 5.3 -2.4"
+         rotation="0 90 0"
+         width="11"
+         height="0.06"
+         depth="0.08"
+         color="#a9862c"
+         material="metalness: 0.75; roughness: 0.3">
+  </a-box>
+
+  <a-box position="6.7 5.3 -2.4"
+         rotation="0 90 0"
+         width="11"
+         height="0.06"
+         depth="0.08"
+         color="#a9862c"
+         material="metalness: 0.75; roughness: 0.3">
+  </a-box>
+
+  <!-- 天井 -->
+  <a-box
+    position="0 6 -2.5"
+    width="16"
+    height="0.18"
+    depth="13"
+    color="#DCE6E2">
+  </a-box>
+
+  <!-- タイトルパネル -->
+  <a-box
+    position="0 4.85 -8.72"
+    width="8.5"
+    height="1.05"
+    depth="0.12"
+    color="#0f232a"
+    material="metalness: 0.55; roughness: 0.22">
+  </a-box>
+
+  <!-- 真鍮の細ライン（銘板の下端を強調） -->
+  <a-plane
+    position="0 4.34 -8.65"
+    width="6.2"
+    height="0.012"
+    color="#c9a227"
+    material="emissive: #c9a227; emissiveIntensity: 0.5">
+  </a-plane>
+
+  <a-image
+    id="label-title"
+    position="0 5.06 -8.60"
+    width="6.6"
+    height="0.95">
+  </a-image>
+
+  <a-image
+    id="label-subtitle"
+    position="0 4.5 -8.60"
+    width="5.6"
+    height="0.42">
+  </a-image>
+
+  <!-- ==================================================
+       いとうのいいもの
+  =================================================== -->
+
+  <a-box
+    position="-5.65 2.75 -8.72"
+    width="2.95"
+    height="1.75"
+    depth="0.10"
+    color="#0f232a">
+  </a-box>
+
+  <!-- 真鍮フレーム -->
+  <a-plane
+    position="-5.65 2.75 -8.615"
+    width="2.78"
+    height="1.56"
+    color="#c9a227"
+    material="metalness: 0.7; roughness: 0.28">
+  </a-plane>
+
+  <a-image
+    src="#photo-iimono"
+    position="-5.65 2.75 -8.60"
+    width="2.68"
+    height="1.46"
+    class="clickable"
+    data-url="iimono/index.html"
+    data-target="_self">
+  </a-image>
+
+  <a-image
+    id="label-iimono"
+    position="-5.65 1.68 -8.58"
+    width="2.9"
+    height="0.42">
+  </a-image>
+
+  <a-entity class="clickable" data-url="https://www.instagram.com/ito_iimono.brand/?next=%2Fito_jizakana.kingdom%2F&hl=ja" data-target="_blank" position="-6.03 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#instagram-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <a-entity class="clickable" data-url="https://www.google.com/maps/d/u/0/edit?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing" data-target="_blank" position="-5.27 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#map-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <!-- ==================================================
+       地魚王国
+  =================================================== -->
+
+  <a-box
+    position="-1.9 2.75 -8.72"
+    width="2.95"
+    height="1.75"
+    depth="0.10"
+    color="#0f232a">
+  </a-box>
+
+  <a-plane
+    position="-1.9 2.75 -8.615"
+    width="2.78"
+    height="1.56"
+    color="#c9a227"
+    material="metalness: 0.7; roughness: 0.28">
+  </a-plane>
+
+  <a-image
+    src="#photo-jizakana"
+    position="-1.9 2.75 -8.60"
+    width="2.68"
+    height="1.46"
+    class="clickable"
+    data-url="jizakana/index.html"
+    data-target="_self">
+  </a-image>
+
+  <a-image
+    id="label-jizakana"
+    position="-1.9 1.68 -8.58"
+    width="2.9"
+    height="0.42">
+  </a-image>
+
+  <a-entity class="clickable" data-url="https://www.instagram.com/ito_jizakana.kingdom/?next=%2Fito_okashi.republic%2F&hl=ja" data-target="_blank" position="-2.28 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#instagram-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <a-entity class="clickable" data-url="https://www.google.com/maps/d/u/0/edit?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&usp=sharing" data-target="_blank" position="-1.52 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#map-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <!-- ==================================================
+       お菓子ぃ共和国
+  =================================================== -->
+
+  <a-box
+    position="1.9 2.75 -8.72"
+    width="2.95"
+    height="1.75"
+    depth="0.10"
+    color="#0f232a">
+  </a-box>
+
+  <a-plane
+    position="1.9 2.75 -8.615"
+    width="2.78"
+    height="1.56"
+    color="#c9a227"
+    material="metalness: 0.7; roughness: 0.28">
+  </a-plane>
+
+  <a-image
+    src="#photo-okashi"
+    position="1.9 2.75 -8.60"
+    width="2.68"
+    height="1.46"
+    class="clickable"
+    data-url="okashi/index.html"
+    data-target="_self">
+  </a-image>
+
+  <a-image
+    id="label-okashi"
+    position="1.9 1.68 -8.58"
+    width="2.9"
+    height="0.42">
+  </a-image>
+
+  <a-entity class="clickable" data-url="https://www.instagram.com/ito_okashi.republic/?hl=ja" data-target="_blank" position="1.52 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#instagram-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <a-entity class="clickable" data-url="https://www.google.com/maps/d/u/0/edit?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&usp=sharing" data-target="_blank" position="2.28 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#map-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <!-- ==================================================
+       ふるさと納税
+  =================================================== -->
+
+  <a-box
+    position="5.65 2.75 -8.72"
+    width="2.95"
+    height="1.75"
+    depth="0.10"
+    color="#0f232a">
+  </a-box>
+
+  <a-plane
+    position="5.65 2.75 -8.615"
+    width="2.78"
+    height="1.56"
+    color="#c9a227"
+    material="metalness: 0.7; roughness: 0.28">
+  </a-plane>
+
+  <a-image
+    src="#photo-furusato"
+    position="5.65 2.75 -8.60"
+    width="2.68"
+    height="1.46"
+    class="clickable"
+    data-url="furusato/index.html"
+    data-target="_self">
+  </a-image>
+
+  <a-image
+    id="label-furusato"
+    position="5.65 1.68 -8.58"
+    width="2.9"
+    height="0.42">
+  </a-image>
+
+  <a-entity class="clickable" data-url="https://www.instagram.com/ito_furusato.donation/?next=%2Fito_iimono.brand%2F&hl=ja" data-target="_blank" position="5.27 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#instagram-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <a-entity class="clickable" data-url="https://www.rakuten.co.jp/f222089-ito/" data-target="_blank" position="6.03 1.15 -8.55">
+    <a-circle radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5"></a-circle>
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+    <a-image src="#map-icon" position="0 0 0.005" width="0.3" height="0.3"></a-image>
+  </a-entity>
+
+  <!-- 照明レール -->
+  <a-box
+    position="0 5.72 -5.5"
+    width="14"
+    height="0.07"
+    depth="0.12"
+    color="#050505">
+  </a-box>
+
+  <!-- 光（夕景の港をイメージした暖色トーン） -->
+  <a-light type="ambient"
+           color="#CFE0DC"
+           intensity="0.85">
+  </a-light>
+
+  <a-light type="hemisphere"
+           color="#E6EFE9"
+           groundColor="#2B4750"
+           intensity="0.75"></a-light>
+
+  <a-light type="spot"
+           position="-5.65 5.3 -5.7"
+           target="#target1"
+           color="#ffd9a0"
+           intensity="2.1"
+           angle="32"
+           penumbra="0.55"
+           animation="property: intensity; dir: alternate; dur: 3400; easing: easeInOutSine; loop: true; to: 2.5">
+  </a-light>
+
+  <a-entity id="target1"
+            position="-5.65 2.6 -8.5">
+  </a-entity>
+
+  <a-light type="spot"
+           position="-1.9 5.3 -5.7"
+           target="#target2"
+           color="#ffd9a0"
+           intensity="2.1"
+           angle="32"
+           penumbra="0.55"
+           animation="property: intensity; dir: alternate; dur: 3800; easing: easeInOutSine; loop: true; to: 2.5">
+  </a-light>
+
+  <a-entity id="target2"
+            position="-1.9 2.6 -8.5">
+  </a-entity>
+
+  <a-light type="spot"
+           position="1.9 5.3 -5.7"
+           target="#target3"
+           color="#ffd9a0"
+           intensity="2.1"
+           angle="32"
+           penumbra="0.55"
+           animation="property: intensity; dir: alternate; dur: 3600; easing: easeInOutSine; loop: true; to: 2.5">
+  </a-light>
+
+  <a-entity id="target3"
+            position="1.9 2.6 -8.5">
+  </a-entity>
+
+  <a-light type="spot"
+           position="5.65 5.3 -5.7"
+           target="#target4"
+           color="#ffd9a0"
+           intensity="2.1"
+           angle="32"
+           penumbra="0.55"
+           animation="property: intensity; dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; to: 2.5">
+  </a-light>
+
+  <a-entity id="target4"
+            position="5.65 2.6 -8.5">
+  </a-entity>
+
+  <!-- カメラ -->
+  <a-entity position="0 0 2.4">
+    <a-camera
+      position="0 1.65 0"
+      camera="fov: 68"
+      wasd-controls="acceleration: 18">
+
+      <a-cursor
+        color="#ecd48f"
+        raycaster="objects: .clickable">
+      </a-cursor>
+
+    </a-camera>
+  </a-entity>
+
+</a-scene>
+
+<script>
+  /* =========================================================
+     和文テキストを綺麗なフォントで描画し、テクスチャとして
+     a-image に流し込むユーティリティ。
+     （A-Frame 標準フォントは和文グリフを含まないため）
+  ========================================================== */
+  function makeLabelTexture(text, {
+    width = 1024,
+    height = 220,
+    fontSize = 92,
+    fontFamily = "'Shippori Mincho', serif",
+    weight = 600,
+    color = '#e9efec',
+    letterSpacing = 0.05,
+    align = 'center'
+  } = {}) {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, width, height);
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = color;
+    ctx.font = `${weight} ${fontSize}px ${fontFamily}`;
+
+    const chars = Array.from(text);
+    const spacing = letterSpacing * fontSize;
+    let totalWidth = 0;
+    chars.forEach((c) => { totalWidth += ctx.measureText(c).width + spacing; });
+    totalWidth -= spacing;
+
+    let startX;
+    if (align === 'center') startX = width / 2 - totalWidth / 2;
+    else if (align === 'left') startX = 24;
+    else startX = width - 24 - totalWidth;
+
+    ctx.textAlign = 'left';
+    let x = startX;
+    chars.forEach((c) => {
+      ctx.fillText(c, x, height / 2 + 2);
+      x += ctx.measureText(c).width + spacing;
+    });
+
+    return canvas.toDataURL('image/png');
+  }
+
+  function applyLabel(id, text, opts) {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute('src', makeLabelTexture(text, opts));
+  }
+
+  async function buildLabels() {
+    try {
+      await Promise.all([
+        document.fonts.load("600 96px 'Shippori Mincho'"),
+        document.fonts.load("500 44px 'Zen Kaku Gothic New'")
+      ]);
+      await document.fonts.ready;
+    } catch (e) { /* フォント読み込み失敗時も既定フォントで描画を続行 */ }
+
+    applyLabel('label-title', 'ITO PEOPLE MUSEUM', {
+      fontFamily: "'Shippori Mincho', serif",
+      fontSize: 88,
+      weight: 600,
+      color: '#ecd48f',
+      letterSpacing: 0.08
+    });
+
+    applyLabel('label-subtitle', '伊東のヒト・商品・仕事の裏側を展示するデジタル博物館', {
+      fontFamily: "'Zen Kaku Gothic New', sans-serif",
+      fontSize: 40,
+      weight: 500,
+      color: 'rgba(233,239,236,0.55)',
+      letterSpacing: 0.05
+    });
+
+    applyLabel('label-iimono', 'いとうのいいもの', {
+      fontSize: 82,
+      weight: 600,
+      color: '#eef3f1'
+    });
+
+    applyLabel('label-jizakana', '伊豆・いとう地魚王国', {
+      fontSize: 70,
+      weight: 600,
+      color: '#eef3f1'
+    });
+
+    applyLabel('label-okashi', '伊東お菓子ぃ共和国', {
+      fontSize: 74,
+      weight: 600,
+      color: '#eef3f1'
+    });
+
+    applyLabel('label-furusato', 'ふるさと納税', {
+      fontSize: 88,
+      weight: 600,
+      color: '#eef3f1'
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    buildLabels();
+
+    document.querySelectorAll('.clickable').forEach(function (element) {
+
+      element.addEventListener('click', function () {
+        const url = element.getAttribute('data-url');
+        const target = element.getAttribute('data-target') || '_self';
+
+        if (!url) {
+          alert('GoogleマイマップのURLは、後から設定してください。');
+          return;
+        }
+
+        window.open(url, target);
+      });
+
+      element.addEventListener('mouseenter', function () {
+        element.setAttribute(
+          'animation__hoverin',
+          'property: scale; to: 1.08 1.08 1.08; dur: 140'
+        );
+      });
+
+      element.addEventListener('mouseleave', function () {
+        element.setAttribute(
+          'animation__hoverout',
+          'property: scale; to: 1 1 1; dur: 140'
+        );
+      });
+
+    });
+
+    const guide = document.getElementById('guide');
+    const brandmark = document.getElementById('brandmark');
+    const loading = document.getElementById('loading');
+    const scene = document.querySelector('a-scene');
+
+    function reveal() {
+      loading.classList.add('hide');
+      requestAnimationFrame(function () {
+        guide.classList.add('show');
+        brandmark.classList.add('show');
+      });
+      setTimeout(function () {
+        guide.classList.remove('show');
+      }, 6500);
+    }
+
+    if (scene.hasLoaded) {
+      reveal();
+    } else {
+      scene.addEventListener('loaded', reveal);
+    }
+
+    // 万一アセット読み込みが長引いた場合の保険
+    setTimeout(reveal, 4500);
+
+  });
+</script>
+
+
+<!-- ===== 2D HUD / オンボーディング / フォールバック ===== -->
+<style>
+  .hud{position:fixed;right:1rem;bottom:3.6rem;z-index:20;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:flex-end}
+  .hud-btn{
+    padding:.55rem 1rem;font-size:.82rem;line-height:1;color:#F6EFDF;font-family:inherit;
+    background:rgba(18,28,26,.55);backdrop-filter:blur(14px) saturate(140%);
+    border:1px solid rgba(255,255,255,.18);border-radius:999px;cursor:pointer;
+    text-decoration:none;display:inline-flex;align-items:center;
+  }
+  .hud-btn:hover{background:rgba(18,28,26,.78)}
+  .hud-btn:focus-visible{outline:2px solid #E8A33D;outline-offset:3px}
+  .onboard{
+    position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);z-index:20;
+    padding:.6rem 1.2rem;font-size:.85rem;color:#F6EFDF;
+    background:rgba(18,28,26,.62);backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.2);border-radius:999px;
+    opacity:0;pointer-events:none;transition:opacity .4s ease;
+  }
+  .onboard.is-on{opacity:1}
+  #fallback{max-width:760px;margin:0 auto;padding:3rem 1.5rem;color:#F6EFDF;line-height:1.9}
+  #fallback ul{padding-left:1.2em}
+  #fallback a{color:#E8A33D}
+  .webgl-ok #fallback{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  @media (prefers-reduced-motion:reduce){.onboard{transition:none}}
+</style>
+
+<div class="hud">
+  <a class="hud-btn" href="/ito-chamber.portal/museum/">入口へ戻る</a>
+  <button class="hud-btn" id="hud-help" type="button">操作方法</button>
+</div>
+
+<div class="onboard" id="onboard" role="status">画面をドラッグして見回し、気になる展示をクリック</div>
+
+<section id="fallback">
+  <h1>ITO PEOPLE MUSEUM</h1>
+  <p>伊東の事業者を紹介するオンライン展示室です。3D表示が重い環境では、こちらの一覧からご覧いただけます。</p>
+  <ul>
+    <li><a href="/ito-chamber.portal/museum/iimono/">いとうのいいもの 展示室</a></li>
+    <li><a href="/ito-chamber.portal/museum/jizakana/">伊豆・いとう地魚王国 展示室</a></li>
+    <li><a href="/ito-chamber.portal/museum/okashi/">伊東お菓子ぃ共和国 展示室</a></li>
+    <li><a href="/ito-chamber.portal/museum/furusato/">ふるさと納税 展示室</a></li>
+  </ul>
+</section>
+
+<script>
+  (function(){
+    var gl=false;
+    try{ gl=!!document.createElement('canvas').getContext('webgl'); }catch(e){}
+    if(gl) document.documentElement.classList.add('webgl-ok');
+
+    var ob=document.getElementById('onboard');
+    function show(){ ob.classList.add('is-on'); setTimeout(function(){ ob.classList.remove('is-on'); },6000); }
+    try{
+      if(!localStorage.getItem('ito-museum-onboarded')){ setTimeout(show,1200); localStorage.setItem('ito-museum-onboarded','1'); }
+    }catch(e){ setTimeout(show,1200); }
+    document.getElementById('hud-help').addEventListener('click',show);
+  })();
+</script>
+
+</body>
+</html>
