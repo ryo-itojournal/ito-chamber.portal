@@ -35,3 +35,8 @@
   background:rgba(247,242,231,.92);backdrop-filter:blur(4px);
   border:1px solid var(--ito-citrus);color:var(--ito-citrus);
 }
+
+/* 既存CSSの nth-child(even) 2列指定を上書き（左右ジグザグの解除） */
+.entry:nth-child(even) .entry-card{grid-template-columns:1fr}
+.entry .entry-media,
+.entry:nth-child(even) .entry-media{grid-column:1;width:100%}
