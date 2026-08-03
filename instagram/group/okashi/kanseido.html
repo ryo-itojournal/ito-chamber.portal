@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>パティスリー 甘青堂｜静岡県伊東市弥生町のフランス菓子店</title>
+<meta name="description" content="静岡県伊東市弥生町のパティスリー甘青堂。季節のケーキ28種類以上、宇佐美産ネーブルを使った伊東ネーブルパウンド、毎週金曜のパン。伊東駅から徒歩圏、水曜定休。">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="パティスリー 甘青堂｜静岡県伊東市弥生町">
+<meta property="og:description" content="看板は町の菓子屋、中身はフランス菓子。伊東・弥生町のパティスリーです。">
+<meta property="og:locale" content="ja_JP">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Marcellus&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   甘青堂 / design tokens
+   藍＝店名の「青」、ネーブル＝伊東の橙、釉薬の白＝外観タイルの地色
+   ============================================================ */
+:root{
+  --ai-deep:#08243A;
+  --ai:#123B5C;
+  --ai-mid:#2C6183;
+  --glaze:#E9EEEB;
+  --paper:#F6F7F4;
+  --ink:#0E1317;
+  --ink-soft:#4A555D;
+  --navel:#E07A1F;
+  --navel-soft:#F0A356;
+
+  --iri:linear-gradient(118deg,#2C6183 0%,#4E8FA4 26%,#8DB9AC 46%,#D8B08C 66%,#C98BA6 84%,#5C7FA8 100%);
+
+  --disp:"Shippori Mincho B1",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+  --lat:"Marcellus",serif;
+
+  --pad:clamp(20px,5vw,72px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--navel);outline-offset:3px;border-radius:2px}
+
+/* 写真枠：画像が読めなかったときは下地の虹色グラデーションが残る */
+.ph{position:relative;overflow:hidden;background:var(--iri)}
+.ph img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+
+.wrap{max-width:1120px;margin:0 auto;padding-inline:var(--pad)}
+
+.eyebrow{
+  font-family:var(--lat);font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ai-mid);display:flex;align-items:center;gap:14px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:currentColor;opacity:.3}
+
+.h2{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(26px,4.2vw,40px);line-height:1.45;letter-spacing:.04em;
+  margin:18px 0 26px;
+}
+.lead{max-width:44em;color:var(--ink-soft);font-size:clamp(15px,1.6vw,17px)}
+.lead+.lead{margin-top:1.4em}
+.band{padding-block:clamp(64px,10vw,120px)}
+
+/* ============================================================
+   ヘッダー
+   ============================================================ */
+.head{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:14px var(--pad);color:var(--glaze);
+  transition:background .4s ease,color .4s ease,box-shadow .4s ease;
+}
+.head.is-stuck{
+  background:rgba(246,247,244,.93);backdrop-filter:blur(10px);
+  color:var(--ink);box-shadow:0 1px 0 rgba(18,59,92,.14);
+}
+.head-mark{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:.28em;text-decoration:none}
+.head-nav{display:flex;gap:clamp(14px,2.4vw,30px);font-size:13.5px;letter-spacing:.12em}
+.head-nav a{text-decoration:none;opacity:.86;padding-block:4px;border-bottom:1px solid transparent}
+.head-nav a:hover{opacity:1;border-bottom-color:currentColor}
+@media(max-width:640px){.head-nav{display:none}}
+
+/* ============================================================
+   ヒーロー ─ タイル壁＋外観写真
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  overflow:hidden;background:var(--ai-deep);color:var(--glaze);
+}
+.tilewall{
+  position:absolute;inset:0;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(46px,1fr));
+  grid-auto-rows:46px;background:var(--ai-deep);
+}
+.tile{position:relative;background:var(--ai);box-shadow:inset 0 0 0 .5px rgba(8,36,58,.9)}
+.tile::after{
+  content:"";position:absolute;inset:0;background:var(--iri);
+  opacity:var(--o,.08);mix-blend-mode:screen;transition:opacity 1.6s ease;
+}
+.tile.lit::after{opacity:.62}
+.hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(178deg,rgba(8,36,58,.66) 0%,rgba(8,36,58,.32) 40%,rgba(8,36,58,.88) 90%);
+}
+
+.hero-inner{position:relative;width:100%;padding-block:clamp(96px,14vh,140px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px}}
+
+.plate{
+  display:inline-block;position:relative;
+  padding:clamp(20px,3.6vw,34px) clamp(26px,4.6vw,48px);
+  background:var(--glaze);color:var(--ai-deep);
+  box-shadow:0 22px 60px rgba(0,0,0,.4);
+}
+.plate::before{content:"";position:absolute;inset:7px;border:1px solid rgba(18,59,92,.35);pointer-events:none}
+.plate-lat{font-family:var(--lat);font-size:clamp(11px,1.5vw,14px);letter-spacing:.42em;text-transform:uppercase;color:var(--ai-mid)}
+.plate-name{font-family:var(--disp);font-weight:800;font-size:clamp(44px,9.5vw,88px);letter-spacing:.12em;line-height:1.1;margin:.18em 0 .1em}
+.plate-yomi{font-size:12px;letter-spacing:.4em;color:var(--ink-soft)}
+
+.hero-copy{
+  margin-top:clamp(24px,3.4vw,36px);max-width:28em;
+  font-family:var(--disp);font-weight:500;
+  font-size:clamp(17px,2.3vw,24px);line-height:2;letter-spacing:.03em;
+}
+.hero-copy b{color:var(--navel-soft);font-weight:500}
+
+.hero-meta{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:13.5px;letter-spacing:.08em;color:rgba(233,238,235,.82)}
+.hero-meta span{display:flex;align-items:center;gap:9px}
+.hero-meta span::before{content:"";width:5px;height:5px;background:var(--navel);border-radius:50%}
+
+.hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;padding:14px 30px;font-size:14px;letter-spacing:.14em;border:1px solid var(--navel);background:var(--navel);color:#fff;transition:background .25s,color .25s}
+.btn:hover{background:transparent;color:var(--navel-soft)}
+.btn-ghost{background:transparent;border-color:rgba(233,238,235,.45);color:var(--glaze)}
+.btn-ghost:hover{background:var(--glaze);color:var(--ai-deep);border-color:var(--glaze)}
+
+.hero-shot{aspect-ratio:3/4;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+@media(max-width:900px){.hero-shot{aspect-ratio:16/10}}
+
+/* ============================================================
+   はじめに
+   ============================================================ */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,72px);align-items:start}
+@media(max-width:820px){.intro-grid{grid-template-columns:1fr}}
+.intro-text p+p{margin-top:1.4em}
+.intro-quote{
+  font-family:var(--disp);font-weight:700;
+  font-size:clamp(21px,3.2vw,30px);line-height:1.85;letter-spacing:.03em;
+  border-left:3px solid var(--navel);padding-left:24px;margin-top:22px;
+}
+
+/* ============================================================
+   お菓子
+   ============================================================ */
+.sweets{background:var(--glaze)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,30px)}
+@media(max-width:860px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+
+.card{background:var(--paper);display:flex;flex-direction:column}
+.card .ph{aspect-ratio:4/3}
+.card .ph img{transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+.card:hover .ph img{transform:scale(1.05)}
+.card-body{padding:24px 24px 30px;flex:1;display:flex;flex-direction:column}
+.card-tag{align-self:flex-start;font-family:var(--lat);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ai-mid);border:1px solid rgba(44,97,131,.35);padding:3px 10px;margin-bottom:14px}
+.card h3{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.04em;line-height:1.6}
+.card p{margin-top:10px;font-size:14.5px;line-height:1.95;color:var(--ink-soft)}
+.card-note{margin-top:auto;padding-top:16px;font-size:12.5px;letter-spacing:.06em;color:var(--navel)}
+
+/* ============================================================
+   ショーケース（写真）
+   ============================================================ */
+.case{background:var(--glaze);padding-bottom:clamp(64px,10vw,120px)}
+.case-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,16px)}
+.case-grid .ph{aspect-ratio:1}
+.case-grid .ph:first-child{grid-column:span 2;grid-row:span 2}
+@media(max-width:640px){
+  .case-grid{grid-template-columns:repeat(2,1fr)}
+  .case-grid .ph:first-child{grid-column:span 2;grid-row:auto}
+}
+
+/* ============================================================
+   金曜日のパン
+   ============================================================ */
+.friday{background:var(--ai-deep);color:var(--glaze)}
+.friday-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,6vw,64px);align-items:center}
+@media(max-width:760px){.friday-grid{grid-template-columns:1fr}}
+.week{display:flex;gap:6px}
+.day{width:clamp(34px,5.4vw,44px);aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(233,238,235,.24);font-family:var(--lat);font-size:12px;letter-spacing:.06em;color:rgba(233,238,235,.55)}
+.day.off{color:rgba(233,238,235,.2);border-style:dashed}
+.day.on{background:var(--navel);border-color:var(--navel);color:#fff}
+.friday h2{font-family:var(--disp);font-weight:800;font-size:clamp(24px,3.8vw,36px);letter-spacing:.05em;line-height:1.5;margin-bottom:16px}
+.friday p{color:rgba(233,238,235,.78);max-width:40em;font-size:15.5px}
+
+/* ============================================================
+   お店のこと
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,6vw,70px);align-items:center}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+.about-shot{aspect-ratio:3/4}
+@media(max-width:820px){.about-shot{aspect-ratio:16/10}}
+
+/* ============================================================
+   ご案内
+   ============================================================ */
+.info{background:var(--glaze)}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,56px)}
+@media(max-width:860px){.info-grid{grid-template-columns:1fr}}
+.dl{border-top:1px solid rgba(18,59,92,.18)}
+.dl div{display:grid;grid-template-columns:6.5em 1fr;gap:16px;padding:16px 2px;border-bottom:1px solid rgba(18,59,92,.14)}
+.dl dt{font-size:13px;letter-spacing:.14em;color:var(--ai-mid);padding-top:3px}
+.dl dd{font-size:15px}
+.dl dd small{display:block;font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em;margin-top:4px}
+.dl a{color:var(--ai);text-underline-offset:4px}
+.map{width:100%;flex:1;min-height:380px;border:0;filter:grayscale(.22) contrast(1.03)}
+.map-frame{background:var(--paper);box-shadow:0 10px 34px rgba(18,59,92,.12);display:flex;flex-direction:column}
+.map-link{display:inline-block;margin-top:14px;font-size:13.5px;letter-spacing:.08em;color:var(--ai)}
+
+/* ============================================================
+   フッター
+   ============================================================ */
+.foot{background:var(--ai-deep);color:rgba(233,238,235,.7);padding:clamp(46px,7vw,72px) 0 34px}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:flex-end}
+.foot-mark{font-family:var(--disp);font-weight:700;color:var(--glaze);font-size:26px;letter-spacing:.24em}
+.foot-lat{font-family:var(--lat);font-size:11.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--ai-mid);margin-top:8px}
+.foot-tel{font-family:var(--lat);font-size:clamp(22px,3.6vw,30px);letter-spacing:.06em;color:var(--glaze);text-decoration:none}
+.foot-tel span{display:block;font-family:var(--body);font-size:12px;letter-spacing:.2em;color:var(--ai-mid);margin-bottom:4px}
+.foot-bottom{margin-top:40px;padding-top:20px;border-top:1px solid rgba(233,238,235,.14);font-size:12px;letter-spacing:.06em;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* ---- スクロールで写真がすっと立ち上がる ---- */
+.rise{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1)}
+.rise.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::after,*::before{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="head" id="head">
+  <a class="head-mark" href="#top">甘青堂</a>
+  <nav class="head-nav">
+    <a href="#sweets">お菓子</a>
+    <a href="#friday">金曜のパン</a>
+    <a href="#about">お店のこと</a>
+    <a href="#info">ご案内</a>
+  </nav>
+</header>
+
+<!-- ============ ヒーロー ============ -->
+<section class="hero" id="top">
+  <div class="tilewall" id="tilewall" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="plate">
+          <div class="plate-lat">Pâtisserie</div>
+          <h1 class="plate-name">甘青堂</h1>
+          <div class="plate-yomi">かんせいどう</div>
+        </div>
+
+        <p class="hero-copy">看板は、町の菓子屋。<br>中は、<b>フランス菓子</b>。</p>
+
+        <div class="hero-meta">
+          <span>静岡県伊東市弥生町</span>
+          <span>9:00 – 20:00</span>
+          <span>水曜定休</span>
+        </div>
+
+        <div class="hero-cta">
+          <a class="btn" href="#sweets">お菓子を見る</a>
+          <a class="btn btn-ghost" href="#info">場所と営業時間</a>
+        </div>
+      </div>
+
+      <div class="ph hero-shot">
+        <img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_7_l.jpg" alt="甘青堂の外観">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ はじめに ============ -->
+<section class="band">
+  <div class="wrap intro-grid">
+    <div>
+      <p class="eyebrow">Kanseido</p>
+      <p class="intro-quote">扉を開けるまで、<br>だれも気づかない店です。</p>
+    </div>
+    <div class="intro-text lead">
+      <p>伊東の商店街に、虹色にきらめくタイルの外観。屋号は甘青堂。どう見ても昔ながらの菓子屋の構えですが、中に並んでいるのはフランス菓子です。</p>
+      <p>フランス菓子の職人として修業したつくり手が、覚えたレシピを自分の手に合わせて組みなおしました。素材を選び、仕上げまで手を抜かず、季節ごとに二十八種類以上のケーキを毎日ならべています。</p>
+      <p>観光のとちゅうでも、仕事帰りでも。ショーケースをのぞくところから、どうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ お菓子 ============ -->
+<section class="band sweets" id="sweets">
+  <div class="wrap">
+    <p class="eyebrow">Our Sweets</p>
+    <h2 class="h2">お菓子</h2>
+    <p class="lead" style="margin-bottom:clamp(28px,4vw,46px)">ならぶ顔ぶれは季節でかわります。お目当てがあるときは、お電話でおたずねください。</p>
+
+    <div class="cards">
+      <article class="card rise">
+        <div class="ph"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_1_l.jpg" alt="伊東ネーブルパウンド" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-tag">Signature</span>
+          <h3>伊東ネーブルパウンド</h3>
+          <p>となりの宇佐美でとれたネーブルオレンジを生地にのせて焼いたパウンドケーキ。柑橘の香りがそのまま残るように焼き上げています。</p>
+          <p class="card-note">「伊東のいいもの」認定品／おみやげに</p>
+        </div>
+      </article>
+
+      <article class="card rise">
+        <div class="ph"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_2_l.jpg" alt="季節の生ケーキ" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-tag">Gâteaux</span>
+          <h3>季節の生ケーキ</h3>
+          <p>いちごのショート、チーズケーキ、抹茶やほうじ茶を使ったものまで。季節ごとに二十八種類以上を、その日のぶんだけ仕上げています。</p>
+          <p class="card-note">ホールケーキはお電話でご予約いただけます</p>
+        </div>
+      </article>
+
+      <article class="card rise">
+        <div class="ph"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_5_l.jpg" alt="焼き菓子" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-tag">Petits Fours</span>
+          <h3>焼き菓子・ラスク</h3>
+          <p>クッキーやラスクなど、日もちのするお菓子もそろえています。詰め合わせにもできますので、贈りものにもどうぞ。</p>
+          <p class="card-note">箱入りのご用意あり</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ショーケース ============ -->
+<section class="case">
+  <div class="wrap">
+    <p class="eyebrow" style="margin-bottom:26px">Showcase</p>
+    <div class="case-grid">
+      <div class="ph rise"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_3_l.jpg" alt="ショーケースのケーキ" loading="lazy"></div>
+      <div class="ph rise"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_4_l.jpg" alt="季節のケーキ" loading="lazy"></div>
+      <div class="ph rise"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_6_l.jpg" alt="焼き菓子の詰め合わせ" loading="lazy"></div>
+      <div class="ph rise"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_9_l.jpg" alt="甘青堂の店構え" loading="lazy"></div>
+      <div class="ph rise"><img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_8_l.jpg" alt="甘青堂の店先" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 金曜日のパン ============ -->
+<section class="band friday" id="friday">
+  <div class="wrap friday-grid">
+    <div class="week" aria-hidden="true">
+      <div class="day">Mon</div>
+      <div class="day">Tue</div>
+      <div class="day off">Wed</div>
+      <div class="day">Thu</div>
+      <div class="day on">Fri</div>
+      <div class="day">Sat</div>
+      <div class="day">Sun</div>
+    </div>
+    <div>
+      <h2>金曜日は、パンを焼いています。</h2>
+      <p>週に一日だけ、パティシエがパンを焼く日です。生地はシンプルに、菓子屋のやり方でつくっています。数にかぎりがあるので、なくなり次第おしまいです。<br><span style="color:var(--navel-soft)">※水曜日は定休日です。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ お店のこと ============ -->
+<section class="band" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">About</p>
+      <h2 class="h2">つくり手のこと</h2>
+      <p class="lead">フランス菓子の職人として修業を積んだのち、伊東で店に立っています。習ったレシピをそのままなぞるのではなく、この土地の素材と、毎日買いに来てくださる方の口に合うように組みかえてきました。</p>
+      <p class="lead">宇佐美のネーブル、地元の柑橘。近くで採れるものは、できるだけ近くから。仕上げのひと手間まで、毎日おなじようにやっています。</p>
+      <p class="lead">伊東駅から歩いて来られる距離です。温泉のかえりに、ひと箱どうぞ。</p>
+    </div>
+    <div class="ph about-shot rise">
+      <img src="https://itospa.com/lsc/upfile/spot/0005/4286/54286_8_l.jpg" alt="甘青堂の外観" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ ご案内 ============ -->
+<section class="band info" id="info">
+  <div class="wrap">
+    <p class="eyebrow">Information</p>
+    <h2 class="h2">ご案内</h2>
+
+    <div class="info-grid">
+      <div>
+        <dl class="dl">
+          <div><dt>店名</dt><dd>パティスリー 甘青堂<small>かんせいどう</small></dd></div>
+          <div><dt>住所</dt><dd>〒414-0014<br>静岡県伊東市弥生町4-1</dd></div>
+          <div><dt>電話</dt><dd><a href="tel:0557373946">0557-37-3946</a><small>FAX も同番号です</small></dd></div>
+          <div><dt>営業時間</dt><dd>9:00 – 20:00</dd></div>
+          <div><dt>定休日</dt><dd>水曜日</dd></div>
+          <div><dt>アクセス</dt><dd>JR伊東駅から徒歩約13分<br>JR南伊東駅から約900m<small>お車の場合、伊東駅から約5分</small></dd></div>
+          <div><dt>駐車場</dt><dd>なし<small>近くのコインパーキングをご利用ください</small></dd></div>
+          <div><dt>お支払い</dt><dd>現金<small>カードのお取り扱いはございません</small></dd></div>
+          <div><dt>ご予約</dt><dd>お電話で承ります<small>ホールケーキ・詰め合わせなど</small></dd></div>
+        </dl>
+      </div>
+
+      <div class="map-frame">
+        <iframe class="map"
+          src="https://maps.google.com/maps?q=34.9652934,139.0918268&hl=ja&z=17&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="甘青堂の地図"></iframe>
+        <div style="padding:0 18px 18px">
+          <a class="map-link" href="https://maps.app.goo.gl/zPvRsNYVQDYFbKC57" target="_blank" rel="noopener">Google マップでひらく →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ フッター ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-mark">甘青堂</div>
+        <div class="foot-lat">Pâtisserie Kanseido — Ito, Shizuoka</div>
+      </div>
+      <a class="foot-tel" href="tel:0557373946"><span>ご注文・お問い合わせ</span>0557-37-3946</a>
+    </div>
+    <div class="foot-bottom">
+      <span>静岡県伊東市弥生町4-1 ／ 9:00–20:00 ／ 水曜定休</span>
+      <a href="index.html" style="color:rgba(233,238,235,.72);text-decoration:none;border-bottom:1px solid rgba(233,238,235,.32)">← お菓子ぃ共和国 一覧へ</a>
+      <span>© 甘青堂</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---- ヘッダーの背景切り替え ---- */
+const head = document.getElementById('head');
+const onScroll = () => head.classList.toggle('is-stuck', window.scrollY > window.innerHeight * 0.72);
+onScroll();
+window.addEventListener('scroll', onScroll, {passive:true});
+
+/* ---- タイル壁：釉薬のてかりをゆっくり走らせる ---- */
+const wall = document.getElementById('tilewall');
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function buildWall(){
+  wall.innerHTML = '';
+  const cols = getComputedStyle(wall).gridTemplateColumns.split(' ').length;
+  const rows = Math.ceil(wall.offsetHeight / 46) + 1;
+  const total = Math.min(cols * rows, 1600);
+  const frag = document.createDocumentFragment();
+  for(let i = 0; i < total; i++){
+    const t = document.createElement('div');
+    t.className = 'tile';
+    t.style.setProperty('--o', (0.04 + Math.random() * 0.16).toFixed(3));
+    frag.appendChild(t);
+  }
+  wall.appendChild(frag);
+  return {cols, rows};
+}
+let grid = buildWall();
+
+if(!reduce){
+  let pass = -6;
+  setInterval(() => {
+    const tiles = wall.children;
+    for(let i = 0; i < tiles.length; i++){
+      const r = Math.floor(i / grid.cols), c = i % grid.cols;
+      tiles[i].classList.toggle('lit', Math.abs((r + c) / 1.7 - pass) < 1.4);
+    }
+    pass += 1.1;
+    if(pass > grid.cols + grid.rows) pass = -6;
+  }, 260);
+}
+
+let rt;
+window.addEventListener('resize', () => {
+  clearTimeout(rt);
+  rt = setTimeout(() => { grid = buildWall(); }, 250);
+});
+
+/* ---- 写真のスクロール表示 ---- */
+const io = new IntersectionObserver((es) => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.12});
+document.querySelectorAll('.rise').forEach(el => io.observe(el));
+
+/* ---- 画像が読めなかった場合は虹色の下地を残す ---- */
+document.querySelectorAll('.ph img').forEach(img => {
+  img.addEventListener('error', () => img.remove());
+});
+</script>
+
+</body>
+</html>
