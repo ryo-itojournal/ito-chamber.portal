@@ -1,0 +1,37 @@
+/* portal-upgrade.css — 既存の <style> の後に読み込む */
+.directory{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
+.directory-intro{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+
+/* 縦一列 → 大画面では2列に */
+.entries-grid{display:grid;gap:clamp(1.5rem,3vw,2.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(440px,1fr))}
+@media (max-width:920px){ .entries-grid{grid-template-columns:1fr} }
+
+.entry{max-width:none;margin:0;padding:0}
+.entry-card{
+  grid-template-columns:1fr;height:100%;
+  border-radius:var(--r-md);overflow:hidden;
+  border:1px solid var(--ito-line);
+  box-shadow:var(--shadow-1);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.entry-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-2)}
+.entry-media{order:0;min-height:0;aspect-ratio:16/10;position:relative}
+.entry:nth-child(even) .entry-media{order:0}
+.entry:nth-child(even) .entry-body{order:1}
+.entry-body{order:1;padding:clamp(1.5rem,2.5vw,2rem)}
+
+/* ボタンに主副の階層をつける */
+.entry-links{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.entry-links a{border-radius:var(--r-pill)}
+.entry-links a:not(.primary){
+  background:transparent;border:1px solid var(--ito-line-strong);color:var(--ito-ink-2)}
+.entry-links a:not(.primary):hover{border-color:var(--ito-sea);color:var(--ito-sea)}
+
+/* 印章バッジはカード外で浮いていたので画像左上に重ねる */
+.stamp{
+  display:grid;place-items:center;position:absolute;top:.9rem;left:.9rem;z-index:2;
+  width:3rem;height:3rem;border-radius:50%;
+  background:rgba(247,242,231,.92);backdrop-filter:blur(4px);
+  border:1px solid var(--ito-citrus);color:var(--ito-citrus);
+}
