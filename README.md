@@ -16,7 +16,7 @@ Instagram 改善提案は独立リポジトリで運用しています。
 
 - ito_instagram — https://ryo-itojournal.github.io/ito_instagram/
 
-ポータル内の Instagram セクションのリンクは上記の独立サイトを参照しています。
+ポータル本体（index.html / all-in-one.html）に Instagram 提案のセクションは含めていません。Instagram 提案は上記の独立サイトのみで公開しています。
 
 ## 公開URL
 
