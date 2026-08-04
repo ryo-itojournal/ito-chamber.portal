@@ -6,6 +6,12 @@
 
   <meta name="description" content="伊東市のふるさと納税の返礼品・宿泊・体験と、地域の事業者を紹介する3Dオンライン展示室です。">
 
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ITO PEOPLE MUSEUM">
+  <meta property="og:title" content="伊東市ふるさと納税展示室｜ITO PEOPLE MUSEUM">
+  <meta property="og:description" content="伊東市のふるさと納税の返礼品・宿泊・体験と、地域の事業者を紹介する3Dオンライン展示室です。">
+  <meta name="twitter:card" content="summary">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -38,6 +44,26 @@
       font-size: 13px;
       pointer-events: none;
     }
+
+    #fallback {
+      display: none;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+      color: #f7ecdd;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    #fallback h1 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #f6efdf;
+    }
+
+    #fallback a {
+      color: #ffd18a;
+    }
   </style>
 </head>
 
@@ -45,6 +71,20 @@
 
 <div id="guide">
   カードをクリックすると詳細ページへ移動できます（準備中のカードもあります）
+</div>
+
+<div id="fallback">
+  <h1>伊東市ふるさと納税 展示室</h1>
+  <p>3D表示に対応していない環境では、以下のリンクからご覧いただけます。</p>
+  <ul>
+    <li><a href="../index.html">ITO PEOPLE MUSEUM エントランス</a></li>
+    <li><a href="../../furusato/index.html">伊東市ふるさと納税 特設ページ</a></li>
+    <li><a href="../../instagram/group/furusato/index.html">返礼品事業者一覧（Instagram改善提案）</a></li>
+    <li><a href="../jizakana/index.html">伊豆・いとう地魚王国 展示室</a></li>
+    <li><a href="../okashi/index.html">伊東お菓子ぃ共和国 展示室</a></li>
+    <li><a href="https://www.rakuten.co.jp/f222089-ito/" target="_blank" rel="noopener">楽天ふるさと納税（伊東市）</a></li>
+    <li><a href="https://www.instagram.com/ito_furusato.donation/?hl=ja" target="_blank" rel="noopener">伊東市ふるさと納税 Instagram</a></li>
+  </ul>
 </div>
 
 <a-scene
@@ -68,6 +108,12 @@
       src="../assets/models/furusato-item.glb">
     </a-asset-item>
     -->
+    <!-- 部門ポスター・アイコン -->
+    <img id="poster" src="../ChatGPT Image 2026年6月17日 13_29_35.png">
+    <img id="instagram-icon" src="../images.jpg">
+    <img id="map-icon" src="../ダウンロード.jpg">
+    <img id="search-icon" src="../icon-search.svg">
+
   </a-assets>
 
   <a-sky color="#170e08"></a-sky>
@@ -168,7 +214,7 @@
     width="5.8">
   </a-text>
 
-  <!-- 大型モニター -->
+  <!-- 大型パネル（事業者一覧へ） -->
   <a-box
     position="-5.85 2.55 -9.65"
     width="3.55"
@@ -177,12 +223,23 @@
     color="#0b0805">
   </a-box>
 
+  <a-image
+    src="#poster"
+    position="-5.85 2.55 -9.5"
+    width="3.3"
+    height="1.8"
+    material="shader: flat; repeat: 0.878 0.4785; offset: 0.061 0.26075"
+    class="clickable"
+    data-url="../../instagram/group/furusato/index.html"
+    data-target="_self">
+  </a-image>
+
   <a-text
-    value="FURUSATO DOCUMENTARY"
+    value="返礼品事業者一覧・Instagram改善提案"
     position="-5.85 1.22 -9.49"
     align="center"
-    color="#8b552b"
-    width="3.2">
+    color="#6a3c19"
+    width="3.4">
   </a-text>
 
   <!-- カテゴリー1 -->
@@ -213,7 +270,7 @@
   </a-text>
 
   <a-text
-    value="ENTER"
+    value="特設ページへ"
     position="-1.8 1.88 -9.42"
     align="center"
     color="#96591b"
@@ -228,7 +285,8 @@
     depth="0.12"
     color="#ffffff"
     class="clickable"
-    data-url="">
+    data-url="../jizakana/index.html"
+    data-target="_self">
   </a-box>
 
   <a-text
@@ -248,7 +306,7 @@
   </a-text>
 
   <a-text
-    value="ENTER"
+    value="地魚の展示室へ"
     position="1.45 1.88 -9.42"
     align="center"
     color="#96591b"
@@ -263,7 +321,8 @@
     depth="0.12"
     color="#ffffff"
     class="clickable"
-    data-url="">
+    data-url="../okashi/index.html"
+    data-target="_self">
   </a-box>
 
   <a-text
@@ -283,14 +342,14 @@
   </a-text>
 
   <a-text
-    value="ENTER"
+    value="お菓子の展示室へ"
     position="4.7 1.88 -9.42"
     align="center"
     color="#96591b"
     width="2.3">
   </a-text>
 
-  <!-- 3D展示台 -->
+  <!-- 展示台（公式リンク） -->
   <a-cylinder
     position="0 0.58 -4.6"
     radius="1.15"
@@ -300,12 +359,50 @@
   </a-cylinder>
 
   <a-text
-    value="RETURN GIFT 3D"
-    position="0 1.42 -4.6"
+    value="公式リンク"
+    position="0 2.05 -4.72"
     rotation="-18 0 0"
     align="center"
-    color="#8a5a12"
-    width="3.5">
+    color="#6a3c19"
+    width="2.0">
+  </a-text>
+
+  <a-circle
+    radius="0.26"
+    position="-0.7 1.60 -4.6"
+    rotation="-18 0 0"
+    material="shader: flat; src: #instagram-icon"
+    class="clickable"
+    data-url="https://www.instagram.com/ito_furusato.donation/?hl=ja"
+    data-target="_blank">
+  </a-circle>
+
+  <a-text
+    value="Instagram"
+    position="-0.7 1.25 -4.5"
+    rotation="-18 0 0"
+    align="center"
+    color="#6a3c19"
+    width="1.2">
+  </a-text>
+
+  <a-circle
+    radius="0.26"
+    position="0.7 1.60 -4.6"
+    rotation="-18 0 0"
+    material="shader: flat; src: #search-icon"
+    class="clickable"
+    data-url="https://www.rakuten.co.jp/f222089-ito/"
+    data-target="_blank">
+  </a-circle>
+
+  <a-text
+    value="楽天ふるさと納税"
+    position="0.7 1.25 -4.5"
+    rotation="-18 0 0"
+    align="center"
+    color="#6a3c19"
+    width="1.2">
   </a-text>
 
   <!--
