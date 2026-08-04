@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>公式サイトを見る（検索アイコン）</title>
+  <rect width="256" height="256" fill="#0f232a"/>
+  <circle cx="112" cy="110" r="44" fill="#c9a227" opacity="0.16"/>
+  <g fill="none" stroke="#F6EFDF" stroke-width="16" stroke-linecap="round">
+    <circle cx="112" cy="110" r="50"/>
+    <path d="M149 147 L194 192"/>
+  </g>
+</svg>
