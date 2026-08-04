@@ -6,6 +6,13 @@
 
   <meta name="description" content="伊豆・いとう地魚王国の地魚・加工品と事業者の仕事を紹介する3Dオンライン展示室です。">
 
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ITO PEOPLE MUSEUM">
+  <meta property="og:title" content="伊豆・いとう地魚王国展示室｜ITO PEOPLE MUSEUM">
+  <meta property="og:description" content="伊豆・いとう地魚王国の地魚・加工品と事業者の仕事を紹介する3Dオンライン展示室です。">
+  <meta property="og:image" content="https://ryo-itojournal.github.io/ito-chamber.portal/museum/ban_jizakana.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -38,6 +45,26 @@
       font-size: 13px;
       pointer-events: none;
     }
+
+    #fallback {
+      display: none;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+      color: #e6f4fa;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    #fallback h1 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #f6efdf;
+    }
+
+    #fallback a {
+      color: #85e9ff;
+    }
   </style>
 </head>
 
@@ -45,6 +72,19 @@
 
 <div id="guide">
   カードをクリックすると詳細ページへ移動できます（準備中のカードもあります）
+</div>
+
+<div id="fallback">
+  <h1>伊豆・いとう地魚王国 展示室</h1>
+  <p>3D表示に対応していない環境では、以下のリンクからご覧いただけます。</p>
+  <ul>
+    <li><a href="../index.html">ITO PEOPLE MUSEUM エントランス</a></li>
+    <li><a href="../../instagram/group/jizakana/index.html">地魚王国 事業者一覧（Instagram改善提案）</a></li>
+    <li><a href="../../instagram/group/jizakana/toheisyokai.html">東平商会</a></li>
+    <li><a href="https://ito-jizakana.com/" target="_blank" rel="noopener">伊豆・いとう地魚王国 公式サイト</a></li>
+    <li><a href="https://www.instagram.com/ito_jizakana.kingdom/?hl=ja" target="_blank" rel="noopener">地魚王国 Instagram</a></li>
+    <li><a href="https://www.google.com/maps/d/viewer?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&ll=35.51749624690791%2C138.185059&z=7" target="_blank" rel="noopener">地魚王国 Googleマイマップ</a></li>
+  </ul>
 </div>
 
 <a-scene
@@ -68,6 +108,12 @@
       src="../assets/models/sabakan.glb">
     </a-asset-item>
     -->
+    <!-- 部門ポスター・アイコン -->
+    <img id="poster" src="../ban_jizakana.jpg">
+    <img id="instagram-icon" src="../images.jpg">
+    <img id="map-icon" src="../ダウンロード.jpg">
+    <img id="search-icon" src="../icon-search.svg">
+
   </a-assets>
 
   <a-sky color="#03101a"></a-sky>
@@ -168,7 +214,7 @@
     width="5.8">
   </a-text>
 
-  <!-- 大型モニター -->
+  <!-- 大型パネル（事業者一覧へ） -->
   <a-box
     position="-5.85 2.55 -9.65"
     width="3.55"
@@ -177,12 +223,23 @@
     color="#03080b">
   </a-box>
 
+  <a-image
+    src="#poster"
+    position="-5.85 2.55 -9.5"
+    width="3.3"
+    height="1.8"
+    material="shader: flat"
+    class="clickable"
+    data-url="../../instagram/group/jizakana/index.html"
+    data-target="_self">
+  </a-image>
+
   <a-text
-    value="JIZAKANA DOCUMENTARY"
+    value="事業者一覧・Instagram改善提案"
     position="-5.85 1.22 -9.49"
     align="center"
-    color="#164f6d"
-    width="3.2">
+    color="#07334b"
+    width="3.4">
   </a-text>
 
   <!-- 店舗1 -->
@@ -248,11 +305,11 @@
   </a-text>
 
   <a-text
-    value="DETAIL"
+    value="準備中"
     position="1.45 1.88 -9.42"
     align="center"
-    color="#00648b"
-    width="2.3">
+    color="#5f7480"
+    width="2.0">
   </a-text>
 
   <!-- 店舗3 -->
@@ -283,14 +340,14 @@
   </a-text>
 
   <a-text
-    value="DETAIL"
+    value="準備中"
     position="4.7 1.88 -9.42"
     align="center"
-    color="#00648b"
-    width="2.3">
+    color="#5f7480"
+    width="2.0">
   </a-text>
 
-  <!-- 3D展示台 -->
+  <!-- 展示台（公式リンク） -->
   <a-cylinder
     position="0 0.58 -4.6"
     radius="1.15"
@@ -300,12 +357,69 @@
   </a-cylinder>
 
   <a-text
-    value="SABAKAN 3D MODEL"
-    position="0 1.42 -4.6"
+    value="公式リンク"
+    position="0 2.05 -4.72"
     rotation="-18 0 0"
     align="center"
-    color="#14607f"
-    width="3.5">
+    color="#07334b"
+    width="2.0">
+  </a-text>
+
+  <a-circle
+    radius="0.26"
+    position="-1.0 1.60 -4.6"
+    rotation="-18 0 0"
+    material="shader: flat; src: #instagram-icon"
+    class="clickable"
+    data-url="https://www.instagram.com/ito_jizakana.kingdom/?hl=ja"
+    data-target="_blank">
+  </a-circle>
+
+  <a-text
+    value="Instagram"
+    position="-1.0 1.25 -4.5"
+    rotation="-18 0 0"
+    align="center"
+    color="#07334b"
+    width="1.15">
+  </a-text>
+
+  <a-circle
+    radius="0.26"
+    position="0 1.60 -4.6"
+    rotation="-18 0 0"
+    material="shader: flat; src: #search-icon"
+    class="clickable"
+    data-url="https://ito-jizakana.com/"
+    data-target="_blank">
+  </a-circle>
+
+  <a-text
+    value="公式サイト"
+    position="0 1.25 -4.5"
+    rotation="-18 0 0"
+    align="center"
+    color="#07334b"
+    width="1.15">
+  </a-text>
+
+  <a-circle
+    radius="0.26"
+    position="1.0 1.60 -4.6"
+    rotation="-18 0 0"
+    material="shader: flat; src: #map-icon"
+    class="clickable"
+    data-url="https://www.google.com/maps/d/viewer?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&ll=35.51749624690791%2C138.185059&z=7"
+    data-target="_blank">
+  </a-circle>
+
+  <a-text
+    value="マイマップ"
+    position="1.0 1.25 -4.5"
+    rotation="-18 0 0"
+    align="center"
+    color="#07334b"
+    width="1.15">
   </a-text>
 
   <!--
