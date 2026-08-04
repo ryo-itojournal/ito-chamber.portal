@@ -270,7 +270,7 @@
     width="16"
     height="6"
     depth="0.18"
-    color="#f0fafd">
+    color="#e8f6fb">
   </a-box>
 
   <!-- 左右の壁 -->
@@ -280,7 +280,7 @@
     width="13"
     height="6"
     depth="0.18"
-    color="#ddf2f8">
+    color="#d8eff6">
   </a-box>
 
   <a-box
@@ -289,7 +289,7 @@
     width="13"
     height="6"
     depth="0.18"
-    color="#ddf2f8">
+    color="#d8eff6">
   </a-box>
 
   <!-- ガラス壁 -->
@@ -338,7 +338,7 @@
     width="16"
     height="0.18"
     depth="13"
-    color="#f2fbfe">
+    color="#eefafd">
   </a-box>
 
   <!-- タイトルパネル -->
@@ -576,78 +576,88 @@
 
   <!-- 照明レール -->
   <a-box
-    position="0 5.72 -5.5"
+    position="0 5.72 -6.6"
     width="14"
     height="0.07"
     depth="0.12"
     color="#4e8ba0">
   </a-box>
 
+  <!-- 各部門を照らすスポットライトの器具（レール吊り下げ） -->
+  <a-cylinder position="-5.65 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="-5.65 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
+  <a-cylinder position="-1.9 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="-1.9 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
+  <a-cylinder position="1.9 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="1.9 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
+  <a-cylinder position="5.65 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="5.65 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
+
   <!-- 光（夕景の港をイメージした暖色トーン） -->
   <a-light type="ambient"
            color="#e0f3fa"
-           intensity="1.05">
+           intensity="0.76">
   </a-light>
 
   <a-light type="hemisphere"
            color="#f2fdff"
            groundColor="#a9cfdc"
-           intensity="1"></a-light>
+           intensity="0.66"></a-light>
 
   <a-light type="spot"
-           position="-5.65 5.3 -5.7"
+           position="-5.65 5.3 -6.6"
            target="#target1"
-           color="#d3f0ff"
-           intensity="1.7"
-           angle="32"
-           penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 3400; easing: easeInOutSine; loop: true; to: 2">
+           color="#ffc46f"
+           intensity="11"
+           angle="19"
+           penumbra="0.28"
+           animation="property: intensity; dir: alternate; dur: 3400; easing: easeInOutSine; loop: true; to: 13">
   </a-light>
 
   <a-entity id="target1"
-            position="-5.65 2.6 -8.5">
+            position="-5.65 2.9 -8.6">
   </a-entity>
 
   <a-light type="spot"
-           position="-1.9 5.3 -5.7"
+           position="-1.9 5.3 -6.6"
            target="#target2"
-           color="#d3f0ff"
-           intensity="1.7"
-           angle="32"
-           penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 3800; easing: easeInOutSine; loop: true; to: 2">
+           color="#ffc46f"
+           intensity="11"
+           angle="19"
+           penumbra="0.28"
+           animation="property: intensity; dir: alternate; dur: 3800; easing: easeInOutSine; loop: true; to: 13">
   </a-light>
 
   <a-entity id="target2"
-            position="-1.9 2.6 -8.5">
+            position="-1.9 2.9 -8.6">
   </a-entity>
 
   <a-light type="spot"
-           position="1.9 5.3 -5.7"
+           position="1.9 5.3 -6.6"
            target="#target3"
-           color="#d3f0ff"
-           intensity="1.7"
-           angle="32"
-           penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 3600; easing: easeInOutSine; loop: true; to: 2">
+           color="#ffc46f"
+           intensity="11"
+           angle="19"
+           penumbra="0.28"
+           animation="property: intensity; dir: alternate; dur: 3600; easing: easeInOutSine; loop: true; to: 13">
   </a-light>
 
   <a-entity id="target3"
-            position="1.9 2.6 -8.5">
+            position="1.9 2.9 -8.6">
   </a-entity>
 
   <a-light type="spot"
-           position="5.65 5.3 -5.7"
+           position="5.65 5.3 -6.6"
            target="#target4"
-           color="#d3f0ff"
-           intensity="1.7"
-           angle="32"
-           penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; to: 2">
+           color="#ffc46f"
+           intensity="11"
+           angle="19"
+           penumbra="0.28"
+           animation="property: intensity; dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; to: 13">
   </a-light>
 
   <a-entity id="target4"
-            position="5.65 2.6 -8.5">
+            position="5.65 2.9 -8.6">
   </a-entity>
 
   <!-- カメラ -->
