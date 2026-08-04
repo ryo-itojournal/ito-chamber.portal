@@ -14,7 +14,7 @@
   <meta property="og:description" content="伊東市の4つの部門（いとうのいいもの・地魚王国・お菓子ぃ共和国・ふるさと納税）を3Dで巡るオンライン展示施設「ITO PEOPLE MUSEUM」のエントランスです。">
   <meta property="og:image" content="https://ryo-itojournal.github.io/ito-chamber.portal/museum/ban_itobrand.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0f232a">
+  <meta name="theme-color" content="#d9eff7">
 
   <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
 
@@ -26,16 +26,16 @@
   <style>
     :root{
       /* ===== Design tokens ===== */
-      --ink-950:#070f13;
-      --ink-900:#0b1a20;
-      --ink-800:#122a32;
-      --teal-700:#16333c;
-      --foam-100:#e9efec;
-      --brass-300:#ecd48f;
-      --brass-500:#c9a227;
-      --brass-700:#8a6d22;
-      --coral-500:#e2683c;
-      --glass-200:rgba(233,239,236,0.9);
+      --ink-950:#e7f4f9;
+      --ink-900:#d9eef6;
+      --ink-800:#c2e2ee;
+      --teal-700:#1d5d72;
+      --foam-100:#eef8fb;
+      --brass-300:#2b7d94;
+      --brass-500:#2f93b3;
+      --brass-700:#235f74;
+      --coral-500:#2f95b2;
+      --glass-200:rgba(240,251,255,0.94);
 
       --font-display:'Shippori Mincho', serif;
       --font-ui:'Zen Kaku Gothic New', sans-serif;
@@ -65,7 +65,7 @@
       justify-content: center;
       gap: 18px;
       background:
-        radial-gradient(120% 90% at 50% 30%, #12262e 0%, #0b1a20 55%, #070f13 100%);
+        radial-gradient(120% 90% at 50% 30%, #f6fdff 0%, #ddf2f9 55%, #c4e6f1 100%);
       transition: opacity .7s ease, visibility .7s ease;
     }
     #loading.hide{
@@ -77,7 +77,7 @@
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      border: 1px solid rgba(201,162,39,.45);
+      border: 1px solid rgba(47,147,179,.45);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,7 +92,7 @@
       position: absolute;
       inset: -8px;
       border-radius: 50%;
-      border: 1px solid rgba(201,162,39,.22);
+      border: 1px solid rgba(47,147,179,.28);
       border-top-color: var(--brass-500);
       animation: spin 1.4s linear infinite;
     }
@@ -100,7 +100,7 @@
       font-family: var(--font-ui);
       font-size: 11px;
       letter-spacing: .38em;
-      color: rgba(233,239,236,.55);
+      color: rgba(20,74,92,.7);
       text-transform: uppercase;
       padding-left: .38em; /* optical letter-spacing correction */
     }
@@ -114,9 +114,9 @@
       z-index: 10;
       transform: translateX(-50%) translateY(-6px);
       padding: 11px 22px;
-      border: 1px solid rgba(201,162,39,.32);
+      border: 1px solid rgba(163,222,236,.48);
       border-radius: 999px;
-      background: rgba(7,15,19,.62);
+      background: rgba(11,56,72,.58);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       color: var(--glass-200);
@@ -126,7 +126,7 @@
       letter-spacing: .06em;
       pointer-events: none;
       opacity: 0;
-      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      box-shadow: 0 8px 30px rgba(24,78,96,.22);
       transition: opacity .8s ease .3s, transform .8s ease .3s;
     }
     #guide.show{
@@ -160,14 +160,14 @@
     #brandmark .ring{
       width: 30px; height: 30px;
       border-radius: 50%;
-      border: 1px solid rgba(201,162,39,.5);
+      border: 1px solid rgba(47,147,179,.5);
       display: flex; align-items: center; justify-content: center;
       color: var(--brass-300);
       font-family: var(--font-display);
       font-size: 13px;
     }
     #brandmark .label{
-      color: rgba(233,239,236,.45);
+      color: rgba(20,74,92,.62);
       font-size: 10px;
       letter-spacing: .3em;
       text-transform: uppercase;
@@ -179,7 +179,7 @@
       inset: 0;
       z-index: 5;
       pointer-events: none;
-      background: radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0) 55%, rgba(4,9,11,.55) 100%);
+      background: radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,0) 52%, rgba(146,203,221,.42) 100%);
     }
   </style>
 </head>
@@ -206,8 +206,8 @@
   cursor="rayOrigin: mouse"
   raycaster="objects: .clickable"
   renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true"
-  fog="type: exponential; color: #16323A; density: 0.016"
-  background="color: #16323A">
+  fog="type: exponential; color: #cfe9f2; density: 0.012"
+  background="color: #d9eff7">
 
   <a-assets timeout="20000">
 
@@ -226,7 +226,7 @@
   </a-assets>
 
   <!-- 背景 -->
-  <a-sky color="#16323A"></a-sky>
+  <a-sky color="#d9eff7"></a-sky>
 
   <!-- 反射風の床（暖色照明を受ける深いチーク色） -->
   <a-plane
@@ -234,7 +234,7 @@
     rotation="-90 0 0"
     width="26"
     height="24"
-    color="#35555C"
+    color="#b9d9e5"
     material="metalness: 0.15; roughness: 0.8">
   </a-plane>
 
@@ -244,8 +244,8 @@
     rotation="-90 0 0"
     width="0.03"
     height="18"
-    color="#c9a227"
-    material="emissive: #c9a227; emissiveIntensity: 0.55; metalness: 0.4; roughness: 0.3">
+    color="#6fc3da"
+    material="emissive: #6fc3da; emissiveIntensity: 0.32; metalness: 0.4; roughness: 0.3">
   </a-plane>
 
   <a-plane
@@ -253,7 +253,7 @@
     rotation="-90 0 0"
     width="0.016"
     height="18"
-    color="#3f5158">
+    color="#9dc6d4">
   </a-plane>
 
   <a-plane
@@ -261,7 +261,7 @@
     rotation="-90 0 0"
     width="0.016"
     height="18"
-    color="#3f5158">
+    color="#9dc6d4">
   </a-plane>
 
   <!-- 奥壁 -->
@@ -270,7 +270,7 @@
     width="16"
     height="6"
     depth="0.18"
-    color="#e7ece9">
+    color="#ecf7fb">
   </a-box>
 
   <!-- 左右の壁 -->
@@ -280,7 +280,7 @@
     width="13"
     height="6"
     depth="0.18"
-    color="#c6d0cd">
+    color="#d5ecf3">
   </a-box>
 
   <a-box
@@ -289,7 +289,7 @@
     width="13"
     height="6"
     depth="0.18"
-    color="#c6d0cd">
+    color="#d5ecf3">
   </a-box>
 
   <!-- ガラス壁 -->
@@ -299,7 +299,7 @@
     width="11"
     height="5"
     depth="0.04"
-    color="#bfe9ec"
+    color="#cdf1f8"
     material="transparent: true; depthWrite: false; opacity: 0.14; metalness: 0.2; roughness: 0.05">
   </a-box>
 
@@ -309,7 +309,7 @@
     width="11"
     height="5"
     depth="0.04"
-    color="#bfe9ec"
+    color="#cdf1f8"
     material="transparent: true; depthWrite: false; opacity: 0.14; metalness: 0.2; roughness: 0.05">
   </a-box>
 
@@ -319,7 +319,7 @@
          width="11"
          height="0.06"
          depth="0.08"
-         color="#a9862c"
+         color="#79b6c9"
          material="metalness: 0.75; roughness: 0.3">
   </a-box>
 
@@ -328,7 +328,7 @@
          width="11"
          height="0.06"
          depth="0.08"
-         color="#a9862c"
+         color="#79b6c9"
          material="metalness: 0.75; roughness: 0.3">
   </a-box>
 
@@ -338,7 +338,7 @@
     width="16"
     height="0.18"
     depth="13"
-    color="#DCE6E2">
+    color="#e8f6fa">
   </a-box>
 
   <!-- タイトルパネル -->
@@ -347,7 +347,7 @@
     width="8.5"
     height="1.05"
     depth="0.12"
-    color="#0f232a"
+    color="#123f4e"
     material="metalness: 0.55; roughness: 0.22">
   </a-box>
 
@@ -356,8 +356,8 @@
     position="0 4.34 -8.65"
     width="6.2"
     height="0.012"
-    color="#c9a227"
-    material="emissive: #c9a227; emissiveIntensity: 0.5">
+    color="#6fc3da"
+    material="emissive: #6fc3da; emissiveIntensity: 0.34">
   </a-plane>
 
   <a-image
@@ -383,7 +383,7 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#0f232a">
+    color="#123f4e">
   </a-box>
 
   <!-- 真鍮フレーム -->
@@ -391,7 +391,7 @@
     position="-5.65 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#c9a227"
+    color="#6fc3da"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -412,13 +412,13 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_iimono.brand/?hl=ja" data-target="_blank" position="-6.03 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_iimono.brand/?hl=ja" data-target="_blank" position="-6.03 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&ll=34.946285826717514%2C139.093087&z=12" data-target="_blank" position="-5.27 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&ll=34.946285826717514%2C139.093087&z=12" data-target="_blank" position="-5.27 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #map-icon"></a-circle>
   </a-circle>
 
@@ -431,14 +431,14 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#0f232a">
+    color="#123f4e">
   </a-box>
 
   <a-plane
     position="-1.9 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#c9a227"
+    color="#6fc3da"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -459,18 +459,18 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_jizakana.kingdom/?hl=ja" data-target="_blank" position="-2.66 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_jizakana.kingdom/?hl=ja" data-target="_blank" position="-2.66 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&ll=35.51749624690791%2C138.185059&z=7" data-target="_blank" position="-1.90 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&ll=35.51749624690791%2C138.185059&z=7" data-target="_blank" position="-1.90 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #map-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://ito-jizakana.com/" data-target="_blank" position="-1.14 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://ito-jizakana.com/" data-target="_blank" position="-1.14 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #search-icon"></a-circle>
   </a-circle>
 
@@ -483,14 +483,14 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#0f232a">
+    color="#123f4e">
   </a-box>
 
   <a-plane
     position="1.9 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#c9a227"
+    color="#6fc3da"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -511,18 +511,18 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_okashi.republic/?hl=ja" data-target="_blank" position="1.14 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_okashi.republic/?hl=ja" data-target="_blank" position="1.14 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&ll=34.99164376519173%2C139.10416955&z=11" data-target="_blank" position="1.90 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&ll=34.99164376519173%2C139.10416955&z=11" data-target="_blank" position="1.90 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #map-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://ito-okashii-kyowakoku.com/" data-target="_blank" position="2.66 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://ito-okashii-kyowakoku.com/" data-target="_blank" position="2.66 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #search-icon"></a-circle>
   </a-circle>
 
@@ -535,14 +535,14 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#0f232a">
+    color="#123f4e">
   </a-box>
 
   <a-plane
     position="5.65 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#c9a227"
+    color="#6fc3da"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -564,13 +564,13 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_furusato.donation/?hl=ja" data-target="_blank" position="5.27 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_furusato.donation/?hl=ja" data-target="_blank" position="5.27 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.rakuten.co.jp/f222089-ito/" data-target="_blank" position="6.03 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#c9a227" material="emissive:#c9a227; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.rakuten.co.jp/f222089-ito/" data-target="_blank" position="6.03 1.15 -8.55" radius="0.24" color="#123f4e" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #search-icon"></a-circle>
   </a-circle>
 
@@ -580,28 +580,28 @@
     width="14"
     height="0.07"
     depth="0.12"
-    color="#050505">
+    color="#2c5a6b">
   </a-box>
 
   <!-- 光（夕景の港をイメージした暖色トーン） -->
   <a-light type="ambient"
-           color="#CFE0DC"
-           intensity="0.85">
+           color="#e0f3fa"
+           intensity="0.95">
   </a-light>
 
   <a-light type="hemisphere"
-           color="#E6EFE9"
-           groundColor="#2B4750"
-           intensity="0.75"></a-light>
+           color="#f2fdff"
+           groundColor="#a9cfdc"
+           intensity="0.9"></a-light>
 
   <a-light type="spot"
            position="-5.65 5.3 -5.7"
            target="#target1"
-           color="#ffd9a0"
-           intensity="2.1"
+           color="#d3f0ff"
+           intensity="1.5"
            angle="32"
            penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 3400; easing: easeInOutSine; loop: true; to: 2.5">
+           animation="property: intensity; dir: alternate; dur: 3400; easing: easeInOutSine; loop: true; to: 1.8">
   </a-light>
 
   <a-entity id="target1"
@@ -611,11 +611,11 @@
   <a-light type="spot"
            position="-1.9 5.3 -5.7"
            target="#target2"
-           color="#ffd9a0"
-           intensity="2.1"
+           color="#d3f0ff"
+           intensity="1.5"
            angle="32"
            penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 3800; easing: easeInOutSine; loop: true; to: 2.5">
+           animation="property: intensity; dir: alternate; dur: 3800; easing: easeInOutSine; loop: true; to: 1.8">
   </a-light>
 
   <a-entity id="target2"
@@ -625,11 +625,11 @@
   <a-light type="spot"
            position="1.9 5.3 -5.7"
            target="#target3"
-           color="#ffd9a0"
-           intensity="2.1"
+           color="#d3f0ff"
+           intensity="1.5"
            angle="32"
            penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 3600; easing: easeInOutSine; loop: true; to: 2.5">
+           animation="property: intensity; dir: alternate; dur: 3600; easing: easeInOutSine; loop: true; to: 1.8">
   </a-light>
 
   <a-entity id="target3"
@@ -639,11 +639,11 @@
   <a-light type="spot"
            position="5.65 5.3 -5.7"
            target="#target4"
-           color="#ffd9a0"
-           intensity="2.1"
+           color="#d3f0ff"
+           intensity="1.5"
            angle="32"
            penumbra="0.55"
-           animation="property: intensity; dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; to: 2.5">
+           animation="property: intensity; dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; to: 1.8">
   </a-light>
 
   <a-entity id="target4"
@@ -658,7 +658,7 @@
       wasd-controls="acceleration: 18">
 
       <a-cursor
-        color="#ecd48f"
+        color="#2f93b3"
         raycaster="objects: .clickable">
       </a-cursor>
 
@@ -678,7 +678,7 @@
     height = 200,
     fontFamily = "'Shippori Mincho', serif",
     weight = 600,
-    color = '#f6efdf',
+    color = '#f2fbff',
     letterSpacing = 0.05,
     fontRatio = 0.5,
     padX = 0.05,
@@ -770,7 +770,7 @@
       height: 240,
       fontFamily: "'Shippori Mincho', serif",
       weight: 700,
-      color: '#f9e7ae',
+      color: '#eaf9ff',
       letterSpacing: 0.1,
       fontRatio: 0.44,
       shadow: 'rgba(0, 0, 0, 0.85)'
@@ -781,7 +781,7 @@
       height: 132,
       fontFamily: "'Zen Kaku Gothic New', sans-serif",
       weight: 600,
-      color: '#e9efec',
+      color: '#eaf9ff',
       letterSpacing: 0.04,
       fontRatio: 0.62,
       shadow: 'rgba(0, 0, 0, 0.8)'
@@ -793,12 +793,12 @@
       height: 176,
       fontFamily: "'Shippori Mincho', serif",
       weight: 700,
-      color: '#f6efdf',
+      color: '#f2fbff',
       letterSpacing: 0.06,
       fontRatio: 0.52,
       padX: 0.07,
-      plate: 'rgba(13, 30, 36, 0.95)',
-      plateBorder: '#c9a227',
+      plate: 'rgba(14, 58, 74, 0.95)',
+      plateBorder: '#6fc3da',
       shadow: 'rgba(0, 0, 0, 0.6)'
     };
 
@@ -875,24 +875,24 @@
 <style>
   .hud{position:fixed;right:1rem;bottom:3.6rem;z-index:20;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:flex-end}
   .hud-btn{
-    padding:.55rem 1rem;font-size:.82rem;line-height:1;color:#F6EFDF;font-family:inherit;
-    background:rgba(18,28,26,.55);backdrop-filter:blur(14px) saturate(140%);
+    padding:.55rem 1rem;font-size:.82rem;line-height:1;color:#F2FBFF;font-family:inherit;
+    background:rgba(11,56,72,.55);backdrop-filter:blur(14px) saturate(140%);
     border:1px solid rgba(255,255,255,.18);border-radius:999px;cursor:pointer;
     text-decoration:none;display:inline-flex;align-items:center;
   }
-  .hud-btn:hover{background:rgba(18,28,26,.78)}
-  .hud-btn:focus-visible{outline:2px solid #E8A33D;outline-offset:3px}
+  .hud-btn:hover{background:rgba(11,56,72,.78)}
+  .hud-btn:focus-visible{outline:2px solid #2f95b2;outline-offset:3px}
   .onboard{
     position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);z-index:20;
-    padding:.6rem 1.2rem;font-size:.85rem;color:#F6EFDF;
-    background:rgba(18,28,26,.62);backdrop-filter:blur(14px);
+    padding:.6rem 1.2rem;font-size:.85rem;color:#F2FBFF;
+    background:rgba(11,56,72,.62);backdrop-filter:blur(14px);
     border:1px solid rgba(255,255,255,.2);border-radius:999px;
     opacity:0;pointer-events:none;transition:opacity .4s ease;
   }
   .onboard.is-on{opacity:1}
-  #fallback{max-width:760px;margin:0 auto;padding:3rem 1.5rem;color:#F6EFDF;line-height:1.9}
+  #fallback{max-width:760px;margin:0 auto;padding:3rem 1.5rem;color:#0f3c4a;line-height:1.9}
   #fallback ul{padding-left:1.2em}
-  #fallback a{color:#E8A33D}
+  #fallback a{color:#1a7692}
   .webgl-ok #fallback{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
   @media (prefers-reduced-motion:reduce){.onboard{transition:none}}
 </style>
