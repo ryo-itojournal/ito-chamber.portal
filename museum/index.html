@@ -100,7 +100,7 @@
       font-family: var(--font-ui);
       font-size: 11px;
       letter-spacing: .38em;
-      color: rgba(232,205,140,.75);
+      color: #f0d9a0;
       text-transform: uppercase;
       padding-left: .38em; /* optical letter-spacing correction */
     }
@@ -119,7 +119,7 @@
       background: rgba(10,10,10,.62);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      color: var(--glass-200);
+      color: #f0d9a0;
       font-family: var(--font-ui);
       font-size: 12.5px;
       font-weight: 500;
@@ -167,7 +167,7 @@
       font-size: 13px;
     }
     #brandmark .label{
-      color: rgba(232,205,140,.6);
+      color: #f0d9a0;
       font-size: 10px;
       letter-spacing: .3em;
       text-transform: uppercase;
@@ -651,22 +651,22 @@
   <!-- 光（夕景の港をイメージした暖色トーン） -->
   <a-light type="ambient"
            color="#ffeec9"
-           intensity="0.62">
+           intensity="0.72">
   </a-light>
 
   <a-light type="hemisphere"
            color="#fff3dd"
            groundColor="#2a2116"
-           intensity="0.5"></a-light>
+           intensity="0.58"></a-light>
 
   <a-light type="spot"
            position="-5.65 5.3 -6.6"
            target="#target1"
            color="#ffd07a"
-           intensity="11"
+           intensity="12"
            angle="19"
            penumbra="0.28"
-           animation="property: intensity; dir: alternate; dur: 3400; easing: easeInOutSine; loop: true; to: 13">
+           animation="property: intensity; dir: alternate; dur: 3400; easing: easeInOutSine; loop: true; to: 14">
   </a-light>
 
   <a-entity id="target1"
@@ -677,10 +677,10 @@
            position="-1.9 5.3 -6.6"
            target="#target2"
            color="#ffd07a"
-           intensity="11"
+           intensity="12"
            angle="19"
            penumbra="0.28"
-           animation="property: intensity; dir: alternate; dur: 3800; easing: easeInOutSine; loop: true; to: 13">
+           animation="property: intensity; dir: alternate; dur: 3800; easing: easeInOutSine; loop: true; to: 14">
   </a-light>
 
   <a-entity id="target2"
@@ -691,10 +691,10 @@
            position="1.9 5.3 -6.6"
            target="#target3"
            color="#ffd07a"
-           intensity="11"
+           intensity="12"
            angle="19"
            penumbra="0.28"
-           animation="property: intensity; dir: alternate; dur: 3600; easing: easeInOutSine; loop: true; to: 13">
+           animation="property: intensity; dir: alternate; dur: 3600; easing: easeInOutSine; loop: true; to: 14">
   </a-light>
 
   <a-entity id="target3"
@@ -705,10 +705,10 @@
            position="5.65 5.3 -6.6"
            target="#target4"
            color="#ffd07a"
-           intensity="11"
+           intensity="12"
            angle="19"
            penumbra="0.28"
-           animation="property: intensity; dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; to: 13">
+           animation="property: intensity; dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; to: 14">
   </a-light>
 
   <a-entity id="target4"
