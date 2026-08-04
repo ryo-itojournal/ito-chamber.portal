@@ -10,12 +10,12 @@
 
   var BASE_FONT = 96; /* canvas 上の基準フォントサイズ（px） */
   var DEFAULT_FAMILY = "'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif";
-  var DEFAULT_CHARS = 15; /* width 内に収める想定文字数（小さいほど文字が大きい） */
+  var DEFAULT_CHARS = 12; /* width 内に収める想定文字数（小さいほど文字が大きい） */
 
   function makeLabelTexture(lines, options) {
     var opts = options || {};
     var family = opts.fontFamily || DEFAULT_FAMILY;
-    var weight = opts.weight || 600;
+    var weight = opts.weight || 700;
     var color = opts.color || '#ffffff';
     var letterSpacing = (opts.letterSpacing == null) ? 0.04 : opts.letterSpacing;
     var lineHeight = opts.lineHeight || 1.42;
@@ -85,7 +85,7 @@
 
       var texture = makeLabelTexture(lines, {
         color: rawAttribute(el, 'color') || '#ffffff',
-        weight: parseFloat(rawAttribute(el, 'data-weight') || 600),
+        weight: parseFloat(rawAttribute(el, 'data-weight') || 700),
         fontFamily: rawAttribute(el, 'data-font') || DEFAULT_FAMILY
       });
 
@@ -148,7 +148,7 @@
     if (document.fonts && document.fonts.ready) {
       var loading = [];
       try {
-        loading.push(document.fonts.load("600 96px 'Zen Kaku Gothic New'"));
+        loading.push(document.fonts.load("700 96px 'Zen Kaku Gothic New'"));
         loading.push(document.fonts.load("700 96px 'Shippori Mincho'"));
       } catch (e) { /* フォント指定が無い場合は既定フォントで描画 */ }
       Promise.all(loading).catch(function () {}).then(function () {
