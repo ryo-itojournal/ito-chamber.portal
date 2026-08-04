@@ -715,6 +715,59 @@
             position="5.65 2.9 -8.6">
   </a-entity>
 
+  <!-- 下方向の光（床を照らすダウンライト） -->
+  <a-light type="spot"
+           position="-5.65 5.3 -6.6"
+           target="#downTarget1"
+           color="#ffdca8"
+           intensity="14"
+           angle="70"
+           penumbra="0.9">
+  </a-light>
+
+  <a-entity id="downTarget1"
+            position="-5.65 0 -5.4">
+  </a-entity>
+
+  <a-light type="spot"
+           position="-1.9 5.3 -6.6"
+           target="#downTarget2"
+           color="#ffdca8"
+           intensity="14"
+           angle="70"
+           penumbra="0.9">
+  </a-light>
+
+  <a-entity id="downTarget2"
+            position="-1.9 0 -5.4">
+  </a-entity>
+
+  <a-light type="spot"
+           position="1.9 5.3 -6.6"
+           target="#downTarget3"
+           color="#ffdca8"
+           intensity="14"
+           angle="70"
+           penumbra="0.9">
+  </a-light>
+
+  <a-entity id="downTarget3"
+            position="1.9 0 -5.4">
+  </a-entity>
+
+  <a-light type="spot"
+           position="5.65 5.3 -6.6"
+           target="#downTarget4"
+           color="#ffdca8"
+           intensity="14"
+           angle="70"
+           penumbra="0.9">
+  </a-light>
+
+  <a-entity id="downTarget4"
+            position="5.65 0 -5.4">
+  </a-entity>
+
   <!-- カメラ -->
   <a-entity position="0 0 2.4">
     <a-camera
