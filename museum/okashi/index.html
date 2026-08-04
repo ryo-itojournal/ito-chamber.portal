@@ -28,7 +28,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #1a0d13;
+      background: #fff5ec;
       font-family: sans-serif;
     }
 
@@ -51,7 +51,7 @@
       max-width: 760px;
       margin: 0 auto;
       padding: 28px 20px 64px;
-      color: #fbe9ef;
+      color: #4a2b20;
       line-height: 1.9;
       font-size: 15px;
     }
@@ -59,11 +59,11 @@
     #fallback h1 {
       font-size: 20px;
       margin: 0 0 8px;
-      color: #f6efdf;
+      color: #5b3324;
     }
 
     #fallback a {
-      color: #ffc2d8;
+      color: #c2185b;
     }
   </style>
 </head>
@@ -92,7 +92,7 @@
   cursor="rayOrigin: mouse"
   raycaster="objects: .clickable"
   renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true"
-  background="color: #1a0d13">
+  background="color: #fff5ec">
 
   <a-assets>
     <!--
@@ -117,14 +117,80 @@
 
   </a-assets>
 
-  <a-sky color="#1a0d13"></a-sky>
+  <a-sky color="#fff5ec"></a-sky>
+
+  <!-- 床の目地（奥行き方向） -->
+  <a-plane position="-6 0.014 -3" rotation="-90 0 0" width="0.016" height="20" color="#f3ded0"></a-plane>
+  <a-plane position="-4 0.014 -3" rotation="-90 0 0" width="0.016" height="20" color="#f3ded0"></a-plane>
+  <a-plane position="-2 0.014 -3" rotation="-90 0 0" width="0.016" height="20" color="#f3ded0"></a-plane>
+  <a-plane position="2 0.014 -3" rotation="-90 0 0" width="0.016" height="20" color="#f3ded0"></a-plane>
+  <a-plane position="4 0.014 -3" rotation="-90 0 0" width="0.016" height="20" color="#f3ded0"></a-plane>
+  <a-plane position="6 0.014 -3" rotation="-90 0 0" width="0.016" height="20" color="#f3ded0"></a-plane>
+
+  <!-- 床の目地（横方向） -->
+  <a-plane position="0 0.013 -9" rotation="-90 0 0" width="16.7" height="0.02" color="#f3ded0"></a-plane>
+  <a-plane position="0 0.013 -7" rotation="-90 0 0" width="16.7" height="0.02" color="#f3ded0"></a-plane>
+  <a-plane position="0 0.013 -5" rotation="-90 0 0" width="16.7" height="0.02" color="#f3ded0"></a-plane>
+  <a-plane position="0 0.013 -3" rotation="-90 0 0" width="16.7" height="0.02" color="#f3ded0"></a-plane>
+  <a-plane position="0 0.013 -1" rotation="-90 0 0" width="16.7" height="0.02" color="#f3ded0"></a-plane>
+  <a-plane position="0 0.013 1" rotation="-90 0 0" width="16.7" height="0.02" color="#f3ded0"></a-plane>
+  <a-plane position="0 0.013 3" rotation="-90 0 0" width="16.7" height="0.02" color="#f3ded0"></a-plane>
+
+  <!-- 幅木 -->
+  <a-box position="-8.38 0.09 -3" rotation="0 90 0" width="14" height="0.18" depth="0.06" color="#f7e3d4"></a-box>
+  <a-box position="8.38 0.09 -3" rotation="0 90 0" width="14" height="0.18" depth="0.06" color="#f7e3d4"></a-box>
+  <a-box position="0 0.09 -9.88" width="17" height="0.18" depth="0.06" color="#f7e3d4"></a-box>
+
+  <!-- ピクチャーレール -->
+  <a-box position="-8.38 3.9 -3" rotation="0 90 0" width="14" height="0.05" depth="0.05" color="#f28fb1"></a-box>
+  <a-box position="8.38 3.9 -3" rotation="0 90 0" width="14" height="0.05" depth="0.05" color="#f28fb1"></a-box>
+
+  <!-- 左右の壁の縦目地 -->
+  <a-box position="-8.38 3.03 -9" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="8.38 3.03 -9" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="-8.38 3.03 -6.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="8.38 3.03 -6.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="-8.38 3.03 -4" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="8.38 3.03 -4" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="-8.38 3.03 -1.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="8.38 3.03 -1.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="-8.38 3.03 1" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="8.38 3.03 1" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="-8.38 3.03 3.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="8.38 3.03 3.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+
+  <!-- 奥壁のライン -->
+  <a-box position="0 0.7 -9.88" width="17" height="0.04" depth="0.05" color="#c2185b"></a-box>
+  <a-box position="-3.62 3.03 -9.88" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="-0.18 3.03 -9.88" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="3.07 3.03 -9.88" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+  <a-box position="7.2 3.03 -9.88" width="0.03" height="5.7" depth="0.04" color="#f6e4d8"></a-box>
+
+  <!-- 角柱 -->
+  <a-box position="-8.2 3 -9.7" width="0.35" height="6" depth="0.35" color="#fffdfa" material="metalness: 0.1; roughness: 0.7"></a-box>
+  <a-box position="8.2 3 -9.7" width="0.35" height="6" depth="0.35" color="#fffdfa" material="metalness: 0.1; roughness: 0.7"></a-box>
+
+  <!-- 天井の見切り -->
+  <a-box position="0 5.83 -9.7" width="16.9" height="0.12" depth="0.12" color="#fff6ee"></a-box>
+  <a-box position="-8.32 5.83 -3" rotation="0 90 0" width="13.8" height="0.12" depth="0.12" color="#fff6ee"></a-box>
+  <a-box position="8.32 5.83 -3" rotation="0 90 0" width="13.8" height="0.12" depth="0.12" color="#fff6ee"></a-box>
+
+  <!-- 接地影 -->
+  <a-plane position="0 0.006 -9.6" rotation="-90 0 0" width="16.8" height="0.55" color="#d0ab93" material="transparent: true; opacity: 0.2; depthWrite: false"></a-plane>
+  <a-plane position="-8.1 0.006 -3" rotation="-90 0 90" width="13.8" height="0.55" color="#d0ab93" material="transparent: true; opacity: 0.2; depthWrite: false"></a-plane>
+  <a-plane position="8.1 0.006 -3" rotation="-90 0 90" width="13.8" height="0.55" color="#d0ab93" material="transparent: true; opacity: 0.2; depthWrite: false"></a-plane>
+
+  <!-- カードの縁取り -->
+  <a-plane position="-1.8 2.65 -9.72" width="2.99" height="2.39" color="#f06292"></a-plane>
+  <a-plane position="1.45 2.65 -9.72" width="2.99" height="2.39" color="#e2a44e"></a-plane>
+  <a-plane position="4.7 2.65 -9.72" width="2.99" height="2.39" color="#7fd1b9"></a-plane>
 
   <a-plane
     position="0 0 -2"
     rotation="-90 0 0"
     width="26"
     height="26"
-    color="#291b22"
+    color="#fdf2e8"
     material="metalness: 0.55; roughness: 0.2">
   </a-plane>
 
@@ -133,8 +199,8 @@
     rotation="-90 0 0"
     width="0.035"
     height="20"
-    color="#a15f7c"
-    material="emissive: #a15f7c; emissiveIntensity: 0.35">
+    color="#f28fb1"
+    material="emissive: #f28fb1; emissiveIntensity: 0.35">
   </a-plane>
 
   <a-box
@@ -142,7 +208,7 @@
     width="17"
     height="6"
     depth="0.18"
-    color="#fff9f5">
+    color="#fffdfa">
   </a-box>
 
   <a-box
@@ -151,7 +217,7 @@
     width="14"
     height="6"
     depth="0.18"
-    color="#eee0e4">
+    color="#fdf1e6">
   </a-box>
 
   <a-box
@@ -160,7 +226,7 @@
     width="14"
     height="6"
     depth="0.18"
-    color="#eee0e4">
+    color="#fdf1e6">
   </a-box>
 
   <a-box
@@ -169,7 +235,7 @@
     width="12"
     height="5"
     depth="0.04"
-    color="#ffd1df"
+    color="#ffe3ec"
     material="transparent: true; depthWrite: false; opacity: 0.14">
   </a-box>
 
@@ -179,7 +245,7 @@
     width="12"
     height="5"
     depth="0.04"
-    color="#ffd1df"
+    color="#ffe3ec"
     material="transparent: true; depthWrite: false; opacity: 0.14">
   </a-box>
 
@@ -188,7 +254,7 @@
     width="17"
     height="0.18"
     depth="14"
-    color="#1c1116">
+    color="#fffaf4">
   </a-box>
 
   <a-box
@@ -196,7 +262,7 @@
     width="8.4"
     height="0.9"
     depth="0.12"
-    color="#5f233c">
+    color="#5b3324">
   </a-box>
 
   <a-text
@@ -211,7 +277,7 @@
     value="伊東のお菓子、職人、店、商品が生まれるまでの物語"
     position="0 4.15 -9.57"
     align="center"
-    color="#664250"
+    color="#7a5647"
     width="5.8">
   </a-text>
 
@@ -221,7 +287,7 @@
     width="3.55"
     height="2.15"
     depth="0.12"
-    color="#090507">
+    color="#f06292">
   </a-box>
 
   <a-image
@@ -239,7 +305,7 @@
     value="事業者一覧・Instagram改善提案"
     position="-5.85 1.22 -9.49"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="3.4">
   </a-text>
 
@@ -258,7 +324,7 @@
     value="レマンの森"
     position="-1.8 3.10 -9.42"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="3.1">
   </a-text>
 
@@ -266,7 +332,7 @@
     value="ケーキづくりと&#10;パティシエの仕事"
     position="-1.8 2.55 -9.42"
     align="center"
-    color="#735362"
+    color="#7a5647"
     width="2.65">
   </a-text>
 
@@ -274,7 +340,7 @@
     value="DETAIL"
     position="-1.8 1.88 -9.42"
     align="center"
-    color="#a32a5e"
+    color="#c2185b"
     width="2.3">
   </a-text>
 
@@ -293,7 +359,7 @@
     value="紅谷"
     position="1.45 3.10 -9.42"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="3.1">
   </a-text>
 
@@ -301,7 +367,7 @@
     value="地域に根づく&#10;お菓子と店の歴史"
     position="1.45 2.55 -9.42"
     align="center"
-    color="#735362"
+    color="#7a5647"
     width="2.65">
   </a-text>
 
@@ -309,7 +375,7 @@
     value="準備中"
     position="1.45 1.88 -9.42"
     align="center"
-    color="#7d6672"
+    color="#a58a7c"
     width="2.0">
   </a-text>
 
@@ -329,7 +395,7 @@
     value="共和国加盟店"
     position="4.7 3.10 -9.42"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="3.1">
   </a-text>
 
@@ -337,7 +403,7 @@
     value="加盟店の情報は&#10;公式サイトで公開中"
     position="4.7 2.55 -9.42"
     align="center"
-    color="#735362"
+    color="#7a5647"
     width="2.65">
   </a-text>
 
@@ -345,7 +411,7 @@
     value="公式サイトへ"
     position="4.7 1.88 -9.42"
     align="center"
-    color="#a32a5e"
+    color="#c2185b"
     width="2.1">
   </a-text>
 
@@ -354,7 +420,7 @@
     position="0 0.58 -4.6"
     radius="1.15"
     height="1.15"
-    color="#f7e8ed"
+    color="#fff3ea"
     material="metalness: 0.4; roughness: 0.2">
   </a-cylinder>
 
@@ -363,7 +429,7 @@
     value="公式リンク"
     position="2.6 0.88 -9.49"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="1.7">
   </a-text>
 
@@ -380,7 +446,7 @@
     value="Instagram"
     position="3.8 0.42 -9.49"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="1.3">
   </a-text>
 
@@ -397,7 +463,7 @@
     value="公式サイト"
     position="5.2 0.42 -9.49"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="1.3">
   </a-text>
 
@@ -414,7 +480,7 @@
     value="マイマップ"
     position="6.6 0.42 -9.49"
     align="center"
-    color="#5f233c"
+    color="#5b3324"
     width="1.3">
   </a-text>
 
@@ -432,7 +498,7 @@
     width="2.2"
     height="0.48"
     depth="0.08"
-    color="#5f233c"
+    color="#5b3324"
     class="clickable"
     data-url="../index.html"
     data-target="_self">
@@ -448,53 +514,77 @@
 
   <a-light
     type="ambient"
-    color="#fff5f8"
-    intensity="0.9">
+    color="#ffffff"
+    intensity="0.95">
   </a-light>
 
   <a-light
     type="hemisphere"
-    color="#EAF4F7"
-    groundColor="#24404b"
-    intensity="0.7">
+    color="#ffffff"
+    groundColor="#f0dccb"
+    intensity="0.75">
   </a-light>
+
+  <!-- 照明レールと器具 -->
+  <a-box position="0 5.72 -7.4" width="15" height="0.07" depth="0.12" color="#5b3324"></a-box>
+  <a-cylinder position="-5.85 5.5 -7.4" radius="0.1" height="0.28" color="#5b3324" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="-5.85 5.345 -7.4" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffe6c0; side: double"></a-circle>
+  <a-cylinder position="-1.8 5.5 -7.4" radius="0.1" height="0.28" color="#5b3324" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="-1.8 5.345 -7.4" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffe6c0; side: double"></a-circle>
+  <a-cylinder position="1.45 5.5 -7.4" radius="0.1" height="0.28" color="#5b3324" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="1.45 5.345 -7.4" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffe6c0; side: double"></a-circle>
+  <a-cylinder position="4.7 5.5 -7.4" radius="0.1" height="0.28" color="#5b3324" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="4.7 5.345 -7.4" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffe6c0; side: double"></a-circle>
+
+  <!-- 展示物を照らすスポット -->
+  <a-light
+    type="spot"
+    position="-5.85 5.2 -7.4"
+    target="#spot-t1"
+    color="#ffe8cc"
+    intensity="7"
+    angle="20"
+    penumbra="0.3">
+  </a-light>
+  <a-entity id="spot-t1" position="-5.85 2.7 -9.6"></a-entity>
 
   <a-light
     type="spot"
-    position="-5.85 5.2 -6.5"
-    intensity="2"
-    angle="32"
-    penumbra="0.5">
+    position="-1.8 5.2 -7.4"
+    target="#spot-t2"
+    color="#ffe8cc"
+    intensity="7"
+    angle="20"
+    penumbra="0.3">
   </a-light>
+  <a-entity id="spot-t2" position="-1.8 2.7 -9.6"></a-entity>
 
   <a-light
     type="spot"
-    position="-1.8 5.2 -6.5"
-    intensity="1.7"
-    angle="30"
-    penumbra="0.5">
+    position="1.45 5.2 -7.4"
+    target="#spot-t3"
+    color="#ffe8cc"
+    intensity="7"
+    angle="20"
+    penumbra="0.3">
   </a-light>
+  <a-entity id="spot-t3" position="1.45 2.7 -9.6"></a-entity>
 
   <a-light
     type="spot"
-    position="1.45 5.2 -6.5"
-    intensity="1.7"
-    angle="30"
-    penumbra="0.5">
+    position="4.7 5.2 -7.4"
+    target="#spot-t4"
+    color="#ffe8cc"
+    intensity="7"
+    angle="20"
+    penumbra="0.3">
   </a-light>
-
-  <a-light
-    type="spot"
-    position="4.7 5.2 -6.5"
-    intensity="1.7"
-    angle="30"
-    penumbra="0.5">
-  </a-light>
+  <a-entity id="spot-t4" position="4.7 2.7 -9.6"></a-entity>
 
   <a-entity position="0 0 5.5">
     <a-camera position="0 1.65 0">
       <a-cursor
-        color="#ff9ac0"
+        color="#f28fb1"
         raycaster="objects: .clickable">
       </a-cursor>
     </a-camera>
