@@ -398,8 +398,8 @@
   <a-image
     id="label-iimono"
     position="-5.65 1.68 -8.58"
-    width="2.9"
-    height="0.42">
+    width="2.68"
+    height="0.40">
   </a-image>
 
   <a-circle class="clickable" data-url="https://www.instagram.com/ito_iimono.brand/?hl=ja" data-target="_blank" position="-6.03 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
@@ -445,8 +445,8 @@
   <a-image
     id="label-jizakana"
     position="-1.9 1.68 -8.58"
-    width="2.9"
-    height="0.42">
+    width="2.68"
+    height="0.40">
   </a-image>
 
   <a-circle class="clickable" data-url="https://www.instagram.com/ito_jizakana.kingdom/?hl=ja" data-target="_blank" position="-2.66 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
@@ -497,8 +497,8 @@
   <a-image
     id="label-okashi"
     position="1.9 1.68 -8.58"
-    width="2.9"
-    height="0.42">
+    width="2.68"
+    height="0.40">
   </a-image>
 
   <a-circle class="clickable" data-url="https://www.instagram.com/ito_okashi.republic/?hl=ja" data-target="_blank" position="1.14 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
@@ -550,8 +550,8 @@
   <a-image
     id="label-furusato"
     position="5.65 1.68 -8.58"
-    width="2.9"
-    height="0.42">
+    width="2.68"
+    height="0.40">
   </a-image>
 
   <a-circle class="clickable" data-url="https://www.instagram.com/ito_furusato.donation/?hl=ja" data-target="_blank" position="5.27 1.15 -8.55" radius="0.24" color="#0f232a" material="metalness:0.3; roughness:0.5">
@@ -664,39 +664,77 @@
      （A-Frame 標準フォントは和文グリフを含まないため）
   ========================================================== */
   function makeLabelTexture(text, {
-    width = 1024,
-    height = 220,
-    fontSize = 92,
+    aspect = 6.7,
+    height = 200,
     fontFamily = "'Shippori Mincho', serif",
     weight = 600,
-    color = '#e9efec',
+    color = '#f6efdf',
     letterSpacing = 0.05,
-    align = 'center'
+    fontRatio = 0.5,
+    padX = 0.05,
+    plate = null,
+    plateBorder = null,
+    shadow = 'rgba(0, 0, 0, 0.7)'
   } = {}) {
+    const H = Math.round(height * 2);
+    const W = Math.round(H * aspect);
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = W;
+    canvas.height = H;
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, width, height);
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = color;
-    ctx.font = `${weight} ${fontSize}px ${fontFamily}`;
+    ctx.clearRect(0, 0, W, H);
+
+    /* 銘板（プレート）の下地。背景と文字のコントラストを確保する */
+    if (plate) {
+      const r = H * 0.22;
+      ctx.beginPath();
+      ctx.moveTo(r, 1);
+      ctx.lineTo(W - r, 1);
+      ctx.quadraticCurveTo(W - 1, 1, W - 1, r);
+      ctx.lineTo(W - 1, H - r);
+      ctx.quadraticCurveTo(W - 1, H - 1, W - r, H - 1);
+      ctx.lineTo(r, H - 1);
+      ctx.quadraticCurveTo(1, H - 1, 1, H - r);
+      ctx.lineTo(1, r);
+      ctx.quadraticCurveTo(1, 1, r, 1);
+      ctx.closePath();
+      ctx.fillStyle = plate;
+      ctx.fill();
+      if (plateBorder) {
+        ctx.lineWidth = Math.max(2, H * 0.03);
+        ctx.strokeStyle = plateBorder;
+        ctx.stroke();
+      }
+    }
 
     const chars = Array.from(text);
+    function measure(size) {
+      ctx.font = weight + ' ' + size + 'px ' + fontFamily;
+      const sp = letterSpacing * size;
+      let total = 0;
+      chars.forEach(function (c) { total += ctx.measureText(c).width + sp; });
+      return total - sp;
+    }
+
+    /* はみ出して文字が切れないよう、収まる大きさまで自動縮小する */
+    let fontSize = H * fontRatio;
+    let totalWidth = measure(fontSize);
+    const maxWidth = W * (1 - padX * 2);
+    if (totalWidth > maxWidth) {
+      fontSize = fontSize * (maxWidth / totalWidth);
+      totalWidth = measure(fontSize);
+    }
+
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = color;
+    ctx.shadowColor = shadow;
+    ctx.shadowBlur = fontSize * 0.22;
+    ctx.shadowOffsetY = fontSize * 0.05;
+
     const spacing = letterSpacing * fontSize;
-    let totalWidth = 0;
-    chars.forEach((c) => { totalWidth += ctx.measureText(c).width + spacing; });
-    totalWidth -= spacing;
-
-    let startX;
-    if (align === 'center') startX = width / 2 - totalWidth / 2;
-    else if (align === 'left') startX = 24;
-    else startX = width - 24 - totalWidth;
-
-    ctx.textAlign = 'left';
-    let x = startX;
-    chars.forEach((c) => {
-      ctx.fillText(c, x, height / 2 + 2);
+    let x = (W - totalWidth) / 2;
+    chars.forEach(function (c) {
+      ctx.fillText(c, x, H / 2 + fontSize * 0.02);
       x += ctx.measureText(c).width + spacing;
     });
 
@@ -711,51 +749,53 @@
   async function buildLabels() {
     try {
       await Promise.all([
-        document.fonts.load("600 96px 'Shippori Mincho'"),
-        document.fonts.load("500 44px 'Zen Kaku Gothic New'")
+        document.fonts.load("700 96px 'Shippori Mincho'"),
+        document.fonts.load("600 48px 'Zen Kaku Gothic New'")
       ]);
       await document.fonts.ready;
     } catch (e) { /* フォント読み込み失敗時も既定フォントで描画を続行 */ }
 
     applyLabel('label-title', 'ITO PEOPLE MUSEUM', {
+      aspect: 6.6 / 0.95,
+      height: 240,
       fontFamily: "'Shippori Mincho', serif",
-      fontSize: 88,
-      weight: 600,
-      color: '#ecd48f',
-      letterSpacing: 0.08
+      weight: 700,
+      color: '#f9e7ae',
+      letterSpacing: 0.1,
+      fontRatio: 0.44,
+      shadow: 'rgba(0, 0, 0, 0.85)'
     });
 
     applyLabel('label-subtitle', '伊東のヒト・商品・仕事の裏側を展示するデジタル博物館', {
+      aspect: 5.6 / 0.42,
+      height: 132,
       fontFamily: "'Zen Kaku Gothic New', sans-serif",
-      fontSize: 40,
-      weight: 500,
-      color: 'rgba(233,239,236,0.55)',
-      letterSpacing: 0.05
+      weight: 600,
+      color: '#e9efec',
+      letterSpacing: 0.04,
+      fontRatio: 0.62,
+      shadow: 'rgba(0, 0, 0, 0.8)'
     });
 
-    applyLabel('label-iimono', 'いとうのいいもの', {
-      fontSize: 82,
-      weight: 600,
-      color: '#eef3f1'
-    });
+    /* 部門名は明るい壁の上に置くため、濃色の銘板を敷いて可読性を上げる */
+    const platePreset = {
+      aspect: 2.68 / 0.4,
+      height: 176,
+      fontFamily: "'Shippori Mincho', serif",
+      weight: 700,
+      color: '#f6efdf',
+      letterSpacing: 0.06,
+      fontRatio: 0.52,
+      padX: 0.07,
+      plate: 'rgba(13, 30, 36, 0.95)',
+      plateBorder: '#c9a227',
+      shadow: 'rgba(0, 0, 0, 0.6)'
+    };
 
-    applyLabel('label-jizakana', '伊豆・いとう地魚王国', {
-      fontSize: 70,
-      weight: 600,
-      color: '#eef3f1'
-    });
-
-    applyLabel('label-okashi', '伊東お菓子ぃ共和国', {
-      fontSize: 74,
-      weight: 600,
-      color: '#eef3f1'
-    });
-
-    applyLabel('label-furusato', 'ふるさと納税', {
-      fontSize: 88,
-      weight: 600,
-      color: '#eef3f1'
-    });
+    applyLabel('label-iimono', 'いとうのいいもの', platePreset);
+    applyLabel('label-jizakana', '伊豆・いとう地魚王国', platePreset);
+    applyLabel('label-okashi', '伊東お菓子ぃ共和国', platePreset);
+    applyLabel('label-furusato', 'ふるさと納税', platePreset);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
