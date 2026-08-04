@@ -14,7 +14,7 @@
   <meta property="og:description" content="伊東市の4つの部門（いとうのいいもの・地魚王国・お菓子ぃ共和国・ふるさと納税）を3Dで巡るオンライン展示施設「ITO PEOPLE MUSEUM」のエントランスです。">
   <meta property="og:image" content="https://ryo-itojournal.github.io/ito-chamber.portal/museum/ban_itobrand.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#d9eff7">
+  <meta name="theme-color" content="#08080a">
 
   <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
 
@@ -26,16 +26,16 @@
   <style>
     :root{
       /* ===== Design tokens ===== */
-      --ink-950:#e7f4f9;
-      --ink-900:#d9eef6;
-      --ink-800:#c2e2ee;
-      --teal-700:#1d5d72;
-      --foam-100:#eef8fb;
-      --brass-300:#2b7d94;
-      --brass-500:#2f93b3;
-      --brass-700:#235f74;
-      --coral-500:#2f95b2;
-      --glass-200:rgba(240,251,255,0.94);
+      --ink-950:#0a0a0a;
+      --ink-900:#111111;
+      --ink-800:#1c1c1c;
+      --teal-700:#6d5320;
+      --foam-100:#f6e6bf;
+      --brass-300:#d9b45a;
+      --brass-500:#e6c778;
+      --brass-700:#a8802c;
+      --coral-500:#d4af37;
+      --glass-200:rgba(246,228,178,0.95);
 
       --font-display:'Shippori Mincho', serif;
       --font-ui:'Zen Kaku Gothic New', sans-serif;
@@ -65,7 +65,7 @@
       justify-content: center;
       gap: 18px;
       background:
-        radial-gradient(120% 90% at 50% 30%, #f6fdff 0%, #ddf2f9 55%, #c4e6f1 100%);
+        radial-gradient(120% 90% at 50% 30%, #0b0b0c 0%, #08080a 55%, #000000 100%);
       transition: opacity .7s ease, visibility .7s ease;
     }
     #loading.hide{
@@ -77,7 +77,7 @@
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      border: 1px solid rgba(47,147,179,.45);
+      border: 1px solid rgba(212,175,55,.5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,7 +92,7 @@
       position: absolute;
       inset: -8px;
       border-radius: 50%;
-      border: 1px solid rgba(47,147,179,.28);
+      border: 1px solid rgba(212,175,55,.3);
       border-top-color: var(--brass-500);
       animation: spin 1.4s linear infinite;
     }
@@ -100,7 +100,7 @@
       font-family: var(--font-ui);
       font-size: 11px;
       letter-spacing: .38em;
-      color: rgba(20,74,92,.7);
+      color: rgba(232,205,140,.75);
       text-transform: uppercase;
       padding-left: .38em; /* optical letter-spacing correction */
     }
@@ -114,9 +114,9 @@
       z-index: 10;
       transform: translateX(-50%) translateY(-6px);
       padding: 11px 22px;
-      border: 1px solid rgba(163,222,236,.48);
+      border: 1px solid rgba(212,175,55,.45);
       border-radius: 999px;
-      background: rgba(11,56,72,.58);
+      background: rgba(10,10,10,.62);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       color: var(--glass-200);
@@ -126,7 +126,7 @@
       letter-spacing: .06em;
       pointer-events: none;
       opacity: 0;
-      box-shadow: 0 8px 30px rgba(24,78,96,.22);
+      box-shadow: 0 8px 30px rgba(0,0,0,.5);
       transition: opacity .8s ease .3s, transform .8s ease .3s;
     }
     #guide.show{
@@ -160,14 +160,14 @@
     #brandmark .ring{
       width: 30px; height: 30px;
       border-radius: 50%;
-      border: 1px solid rgba(47,147,179,.5);
+      border: 1px solid rgba(212,175,55,.5);
       display: flex; align-items: center; justify-content: center;
       color: var(--brass-300);
       font-family: var(--font-display);
       font-size: 13px;
     }
     #brandmark .label{
-      color: rgba(20,74,92,.62);
+      color: rgba(232,205,140,.6);
       font-size: 10px;
       letter-spacing: .3em;
       text-transform: uppercase;
@@ -179,7 +179,7 @@
       inset: 0;
       z-index: 5;
       pointer-events: none;
-      background: radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,0) 52%, rgba(146,203,221,.42) 100%);
+      background: radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,0) 52%, rgba(0,0,0,.55) 100%);
     }
   </style>
 </head>
@@ -206,8 +206,8 @@
   cursor="rayOrigin: mouse"
   raycaster="objects: .clickable"
   renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true"
-  fog="type: exponential; color: #cfe9f2; density: 0.012"
-  background="color: #d9eff7">
+  fog="type: exponential; color: #050506; density: 0.012"
+  background="color: #08080a">
 
   <a-assets timeout="20000">
 
@@ -226,7 +226,7 @@
   </a-assets>
 
   <!-- 背景 -->
-  <a-sky color="#d9eff7"></a-sky>
+  <a-sky color="#08080a"></a-sky>
 
   <!-- 反射風の床（暖色照明を受ける深いチーク色） -->
   <a-plane
@@ -234,7 +234,7 @@
     rotation="-90 0 0"
     width="26"
     height="24"
-    color="#cfe9f1"
+    color="#0f0f10"
     material="metalness: 0.12; roughness: 0.72">
   </a-plane>
 
@@ -244,8 +244,8 @@
     rotation="-90 0 0"
     width="0.03"
     height="18"
-    color="#6fc3da"
-    material="emissive: #6fc3da; emissiveIntensity: 0.32; metalness: 0.4; roughness: 0.3">
+    color="#8a6a24"
+    material="emissive: #8a6a24; emissiveIntensity: 0.32; metalness: 0.4; roughness: 0.3">
   </a-plane>
 
   <a-plane
@@ -253,7 +253,7 @@
     rotation="-90 0 0"
     width="0.016"
     height="18"
-    color="#a8d2df">
+    color="#4a3a18">
   </a-plane>
 
   <a-plane
@@ -261,7 +261,7 @@
     rotation="-90 0 0"
     width="0.016"
     height="18"
-    color="#a8d2df">
+    color="#4a3a18">
   </a-plane>
 
   <!-- 奥壁 -->
@@ -270,7 +270,7 @@
     width="16"
     height="6"
     depth="0.18"
-    color="#e8f6fb">
+    color="#131313">
   </a-box>
 
   <!-- 左右の壁 -->
@@ -280,7 +280,7 @@
     width="13"
     height="6"
     depth="0.18"
-    color="#d8eff6">
+    color="#101011">
   </a-box>
 
   <a-box
@@ -289,63 +289,63 @@
     width="13"
     height="6"
     depth="0.18"
-    color="#d8eff6">
+    color="#101011">
   </a-box>
 
   <!-- 床の目地（奥行き方向） -->
-  <a-plane position="-6 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#a8d2df"></a-plane>
-  <a-plane position="-2 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#a8d2df"></a-plane>
-  <a-plane position="2 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#a8d2df"></a-plane>
-  <a-plane position="6 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#a8d2df"></a-plane>
+  <a-plane position="-6 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#4a3a18"></a-plane>
+  <a-plane position="-2 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#4a3a18"></a-plane>
+  <a-plane position="2 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#4a3a18"></a-plane>
+  <a-plane position="6 0.014 -2" rotation="-90 0 0" width="0.016" height="18" color="#4a3a18"></a-plane>
 
   <!-- 床の目地（横方向） -->
-  <a-plane position="0 0.013 -8" rotation="-90 0 0" width="15.6" height="0.016" color="#a8d2df"></a-plane>
-  <a-plane position="0 0.013 -6" rotation="-90 0 0" width="15.6" height="0.016" color="#a8d2df"></a-plane>
-  <a-plane position="0 0.013 -4" rotation="-90 0 0" width="15.6" height="0.016" color="#a8d2df"></a-plane>
-  <a-plane position="0 0.013 -2" rotation="-90 0 0" width="15.6" height="0.016" color="#a8d2df"></a-plane>
-  <a-plane position="0 0.013 0" rotation="-90 0 0" width="15.6" height="0.016" color="#a8d2df"></a-plane>
-  <a-plane position="0 0.013 2" rotation="-90 0 0" width="15.6" height="0.016" color="#a8d2df"></a-plane>
+  <a-plane position="0 0.013 -8" rotation="-90 0 0" width="15.6" height="0.016" color="#4a3a18"></a-plane>
+  <a-plane position="0 0.013 -6" rotation="-90 0 0" width="15.6" height="0.016" color="#4a3a18"></a-plane>
+  <a-plane position="0 0.013 -4" rotation="-90 0 0" width="15.6" height="0.016" color="#4a3a18"></a-plane>
+  <a-plane position="0 0.013 -2" rotation="-90 0 0" width="15.6" height="0.016" color="#4a3a18"></a-plane>
+  <a-plane position="0 0.013 0" rotation="-90 0 0" width="15.6" height="0.016" color="#4a3a18"></a-plane>
+  <a-plane position="0 0.013 2" rotation="-90 0 0" width="15.6" height="0.016" color="#4a3a18"></a-plane>
 
   <!-- 幅木（壁の足元） -->
-  <a-box position="-7.88 0.09 -2.5" rotation="0 90 0" width="13" height="0.18" depth="0.06" color="#bcdae6"></a-box>
-  <a-box position="7.88 0.09 -2.5" rotation="0 90 0" width="13" height="0.18" depth="0.06" color="#bcdae6"></a-box>
-  <a-box position="0 0.09 -8.88" width="16" height="0.18" depth="0.06" color="#bcdae6"></a-box>
+  <a-box position="-7.88 0.09 -2.5" rotation="0 90 0" width="13" height="0.18" depth="0.06" color="#8f7128"></a-box>
+  <a-box position="7.88 0.09 -2.5" rotation="0 90 0" width="13" height="0.18" depth="0.06" color="#8f7128"></a-box>
+  <a-box position="0 0.09 -8.88" width="16" height="0.18" depth="0.06" color="#8f7128"></a-box>
 
   <!-- 左右の壁のピクチャーレール -->
-  <a-box position="-7.88 3.9 -2.5" rotation="0 90 0" width="13" height="0.05" depth="0.05" color="#8fc9d8"></a-box>
-  <a-box position="7.88 3.9 -2.5" rotation="0 90 0" width="13" height="0.05" depth="0.05" color="#8fc9d8"></a-box>
+  <a-box position="-7.88 3.9 -2.5" rotation="0 90 0" width="13" height="0.05" depth="0.05" color="#c9a227"></a-box>
+  <a-box position="7.88 3.9 -2.5" rotation="0 90 0" width="13" height="0.05" depth="0.05" color="#c9a227"></a-box>
 
   <!-- 左右の壁の縦目地 -->
-  <a-box position="-7.88 3.03 -8" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="7.88 3.03 -8" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="-7.88 3.03 -5.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="7.88 3.03 -5.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="-7.88 3.03 -3" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="7.88 3.03 -3" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="-7.88 3.03 -0.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="7.88 3.03 -0.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="-7.88 3.03 2" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
-  <a-box position="7.88 3.03 2" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#a8d2df"></a-box>
+  <a-box position="-7.88 3.03 -8" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="7.88 3.03 -8" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="-7.88 3.03 -5.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="7.88 3.03 -5.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="-7.88 3.03 -3" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="7.88 3.03 -3" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="-7.88 3.03 -0.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="7.88 3.03 -0.5" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="-7.88 3.03 2" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
+  <a-box position="7.88 3.03 2" rotation="0 90 0" width="0.03" height="5.7" depth="0.04" color="#4a3a18"></a-box>
 
   <!-- 奥壁の水平ラインと縦目地 -->
-  <a-box position="0 0.7 -8.88" width="16" height="0.04" depth="0.05" color="#a8d2df"></a-box>
-  <a-box position="-3.775 3.03 -8.88" width="0.03" height="5.7" depth="0.04" color="#c3e2ec"></a-box>
-  <a-box position="0 3.03 -8.88" width="0.03" height="5.7" depth="0.04" color="#c3e2ec"></a-box>
-  <a-box position="3.775 3.03 -8.88" width="0.03" height="5.7" depth="0.04" color="#c3e2ec"></a-box>
+  <a-box position="0 0.7 -8.88" width="16" height="0.04" depth="0.05" color="#4a3a18"></a-box>
+  <a-box position="-3.775 3.03 -8.88" width="0.03" height="5.7" depth="0.04" color="#232324"></a-box>
+  <a-box position="0 3.03 -8.88" width="0.03" height="5.7" depth="0.04" color="#232324"></a-box>
+  <a-box position="3.775 3.03 -8.88" width="0.03" height="5.7" depth="0.04" color="#232324"></a-box>
 
   <!-- 奥の角柱 -->
-  <a-box position="-7.7 3 -8.7" width="0.35" height="6" depth="0.35" color="#e2f3f9" material="metalness: 0.1; roughness: 0.7"></a-box>
-  <a-box position="7.7 3 -8.7" width="0.35" height="6" depth="0.35" color="#e2f3f9" material="metalness: 0.1; roughness: 0.7"></a-box>
+  <a-box position="-7.7 3 -8.7" width="0.35" height="6" depth="0.35" color="#17171a" material="metalness: 0.1; roughness: 0.7"></a-box>
+  <a-box position="7.7 3 -8.7" width="0.35" height="6" depth="0.35" color="#17171a" material="metalness: 0.1; roughness: 0.7"></a-box>
 
   <!-- 天井の見切り（コーブ） -->
-  <a-box position="0 5.83 -8.7" width="15.8" height="0.12" depth="0.12" color="#cfe6ee"></a-box>
-  <a-box position="-7.85 5.83 -2.5" rotation="0 90 0" width="12.6" height="0.12" depth="0.12" color="#cfe6ee"></a-box>
-  <a-box position="7.85 5.83 -2.5" rotation="0 90 0" width="12.6" height="0.12" depth="0.12" color="#cfe6ee"></a-box>
+  <a-box position="0 5.83 -8.7" width="15.8" height="0.12" depth="0.12" color="#b8902f"></a-box>
+  <a-box position="-7.85 5.83 -2.5" rotation="0 90 0" width="12.6" height="0.12" depth="0.12" color="#b8902f"></a-box>
+  <a-box position="7.85 5.83 -2.5" rotation="0 90 0" width="12.6" height="0.12" depth="0.12" color="#b8902f"></a-box>
 
   <!-- 壁際の接地影 -->
-  <a-plane position="0 0.006 -8.6" rotation="-90 0 0" width="15.7" height="0.55" color="#78a6b8" material="transparent: true; opacity: 0.22; depthWrite: false"></a-plane>
-  <a-plane position="-7.6 0.006 -2.5" rotation="-90 0 90" width="12.8" height="0.55" color="#78a6b8" material="transparent: true; opacity: 0.22; depthWrite: false"></a-plane>
-  <a-plane position="7.6 0.006 -2.5" rotation="-90 0 90" width="12.8" height="0.55" color="#78a6b8" material="transparent: true; opacity: 0.22; depthWrite: false"></a-plane>
+  <a-plane position="0 0.006 -8.6" rotation="-90 0 0" width="15.7" height="0.55" color="#000000" material="transparent: true; opacity: 0.22; depthWrite: false"></a-plane>
+  <a-plane position="-7.6 0.006 -2.5" rotation="-90 0 90" width="12.8" height="0.55" color="#000000" material="transparent: true; opacity: 0.22; depthWrite: false"></a-plane>
+  <a-plane position="7.6 0.006 -2.5" rotation="-90 0 90" width="12.8" height="0.55" color="#000000" material="transparent: true; opacity: 0.22; depthWrite: false"></a-plane>
 
   <!-- ガラス壁 -->
   <a-box
@@ -354,7 +354,7 @@
     width="11"
     height="5"
     depth="0.04"
-    color="#cdf1f8"
+    color="#1a1a1c"
     material="transparent: true; depthWrite: false; opacity: 0.14; metalness: 0.2; roughness: 0.05">
   </a-box>
 
@@ -364,7 +364,7 @@
     width="11"
     height="5"
     depth="0.04"
-    color="#cdf1f8"
+    color="#1a1a1c"
     material="transparent: true; depthWrite: false; opacity: 0.14; metalness: 0.2; roughness: 0.05">
   </a-box>
 
@@ -374,7 +374,7 @@
          width="11"
          height="0.06"
          depth="0.08"
-         color="#79b6c9"
+         color="#a8842c"
          material="metalness: 0.75; roughness: 0.3">
   </a-box>
 
@@ -383,7 +383,7 @@
          width="11"
          height="0.06"
          depth="0.08"
-         color="#79b6c9"
+         color="#a8842c"
          material="metalness: 0.75; roughness: 0.3">
   </a-box>
 
@@ -393,7 +393,7 @@
     width="16"
     height="0.18"
     depth="13"
-    color="#eefafd">
+    color="#0c0c0d">
   </a-box>
 
   <!-- タイトルパネル -->
@@ -402,7 +402,7 @@
     width="8.5"
     height="1.05"
     depth="0.12"
-    color="#16505f"
+    color="#0a0a0b"
     material="metalness: 0.55; roughness: 0.22">
   </a-box>
 
@@ -411,8 +411,8 @@
     position="0 4.34 -8.65"
     width="6.2"
     height="0.012"
-    color="#6fc3da"
-    material="emissive: #6fc3da; emissiveIntensity: 0.34">
+    color="#8a6a24"
+    material="emissive: #8a6a24; emissiveIntensity: 0.34">
   </a-plane>
 
   <a-image
@@ -438,7 +438,7 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#16505f">
+    color="#0a0a0b">
   </a-box>
 
   <!-- 真鍮フレーム -->
@@ -446,7 +446,7 @@
     position="-5.65 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#6fc3da"
+    color="#8a6a24"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -467,13 +467,13 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_iimono.brand/?hl=ja" data-target="_blank" position="-6.03 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_iimono.brand/?hl=ja" data-target="_blank" position="-6.03 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&ll=34.946285826717514%2C139.093087&z=12" data-target="_blank" position="-5.27 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&ll=34.946285826717514%2C139.093087&z=12" data-target="_blank" position="-5.27 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #map-icon"></a-circle>
   </a-circle>
 
@@ -486,14 +486,14 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#16505f">
+    color="#0a0a0b">
   </a-box>
 
   <a-plane
     position="-1.9 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#6fc3da"
+    color="#8a6a24"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -514,18 +514,18 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_jizakana.kingdom/?hl=ja" data-target="_blank" position="-2.66 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_jizakana.kingdom/?hl=ja" data-target="_blank" position="-2.66 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&ll=35.51749624690791%2C138.185059&z=7" data-target="_blank" position="-1.90 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1TerwHKM5mOjRn1C6v_EZSL6bHoVmjws&ll=35.51749624690791%2C138.185059&z=7" data-target="_blank" position="-1.90 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #map-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://ito-jizakana.com/" data-target="_blank" position="-1.14 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://ito-jizakana.com/" data-target="_blank" position="-1.14 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #search-icon"></a-circle>
   </a-circle>
 
@@ -538,14 +538,14 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#16505f">
+    color="#0a0a0b">
   </a-box>
 
   <a-plane
     position="1.9 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#6fc3da"
+    color="#8a6a24"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -566,18 +566,18 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_okashi.republic/?hl=ja" data-target="_blank" position="1.14 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_okashi.republic/?hl=ja" data-target="_blank" position="1.14 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&ll=34.99164376519173%2C139.10416955&z=11" data-target="_blank" position="1.90 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.google.com/maps/d/viewer?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&ll=34.99164376519173%2C139.10416955&z=11" data-target="_blank" position="1.90 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #map-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://ito-okashii-kyowakoku.com/" data-target="_blank" position="2.66 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://ito-okashii-kyowakoku.com/" data-target="_blank" position="2.66 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #search-icon"></a-circle>
   </a-circle>
 
@@ -590,14 +590,14 @@
     width="2.95"
     height="1.75"
     depth="0.10"
-    color="#16505f">
+    color="#0a0a0b">
   </a-box>
 
   <a-plane
     position="5.65 2.75 -8.615"
     width="2.78"
     height="1.56"
-    color="#6fc3da"
+    color="#8a6a24"
     material="metalness: 0.7; roughness: 0.28">
   </a-plane>
 
@@ -619,13 +619,13 @@
     height="0.40">
   </a-image>
 
-  <a-circle class="clickable" data-url="https://www.instagram.com/ito_furusato.donation/?hl=ja" data-target="_blank" position="5.27 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.instagram.com/ito_furusato.donation/?hl=ja" data-target="_blank" position="5.27 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #instagram-icon"></a-circle>
   </a-circle>
 
-  <a-circle class="clickable" data-url="https://www.rakuten.co.jp/f222089-ito/" data-target="_blank" position="6.03 1.15 -8.55" radius="0.24" color="#16505f" material="metalness:0.3; roughness:0.5">
-    <a-ring radius-inner="0.238" radius-outer="0.25" color="#6fc3da" material="emissive:#6fc3da; emissiveIntensity:0.4"></a-ring>
+  <a-circle class="clickable" data-url="https://www.rakuten.co.jp/f222089-ito/" data-target="_blank" position="6.03 1.15 -8.55" radius="0.24" color="#0a0a0b" material="metalness:0.3; roughness:0.5">
+    <a-ring radius-inner="0.238" radius-outer="0.25" color="#8a6a24" material="emissive:#8a6a24; emissiveIntensity:0.4"></a-ring>
     <a-circle radius="0.2" position="0 0 0.006" material="shader: flat; src: #search-icon"></a-circle>
   </a-circle>
 
@@ -635,34 +635,34 @@
     width="14"
     height="0.07"
     depth="0.12"
-    color="#4e8ba0">
+    color="#b8902f">
   </a-box>
 
   <!-- 各部門を照らすスポットライトの器具（レール吊り下げ） -->
-  <a-cylinder position="-5.65 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
-  <a-circle position="-5.65 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
-  <a-cylinder position="-1.9 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
-  <a-circle position="-1.9 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
-  <a-cylinder position="1.9 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
-  <a-circle position="1.9 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
-  <a-cylinder position="5.65 5.5 -6.6" radius="0.1" height="0.28" color="#2c5a6b" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
-  <a-circle position="5.65 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffdca8; side: double"></a-circle>
+  <a-cylinder position="-5.65 5.5 -6.6" radius="0.1" height="0.28" color="#6f5620" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="-5.65 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffd98a; side: double"></a-circle>
+  <a-cylinder position="-1.9 5.5 -6.6" radius="0.1" height="0.28" color="#6f5620" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="-1.9 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffd98a; side: double"></a-circle>
+  <a-cylinder position="1.9 5.5 -6.6" radius="0.1" height="0.28" color="#6f5620" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="1.9 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffd98a; side: double"></a-circle>
+  <a-cylinder position="5.65 5.5 -6.6" radius="0.1" height="0.28" color="#6f5620" material="metalness: 0.6; roughness: 0.35"></a-cylinder>
+  <a-circle position="5.65 5.345 -6.6" rotation="90 0 0" radius="0.095" material="shader: flat; color: #ffd98a; side: double"></a-circle>
 
   <!-- 光（夕景の港をイメージした暖色トーン） -->
   <a-light type="ambient"
-           color="#e0f3fa"
-           intensity="0.76">
+           color="#ffeec9"
+           intensity="0.62">
   </a-light>
 
   <a-light type="hemisphere"
-           color="#f2fdff"
-           groundColor="#a9cfdc"
-           intensity="0.66"></a-light>
+           color="#fff3dd"
+           groundColor="#2a2116"
+           intensity="0.5"></a-light>
 
   <a-light type="spot"
            position="-5.65 5.3 -6.6"
            target="#target1"
-           color="#ffc46f"
+           color="#ffd07a"
            intensity="11"
            angle="19"
            penumbra="0.28"
@@ -676,7 +676,7 @@
   <a-light type="spot"
            position="-1.9 5.3 -6.6"
            target="#target2"
-           color="#ffc46f"
+           color="#ffd07a"
            intensity="11"
            angle="19"
            penumbra="0.28"
@@ -690,7 +690,7 @@
   <a-light type="spot"
            position="1.9 5.3 -6.6"
            target="#target3"
-           color="#ffc46f"
+           color="#ffd07a"
            intensity="11"
            angle="19"
            penumbra="0.28"
@@ -704,7 +704,7 @@
   <a-light type="spot"
            position="5.65 5.3 -6.6"
            target="#target4"
-           color="#ffc46f"
+           color="#ffd07a"
            intensity="11"
            angle="19"
            penumbra="0.28"
@@ -723,7 +723,7 @@
       wasd-controls="acceleration: 18">
 
       <a-cursor
-        color="#2f93b3"
+        color="#e6c778"
         raycaster="objects: .clickable">
       </a-cursor>
 
@@ -743,7 +743,7 @@
     height = 200,
     fontFamily = "'Shippori Mincho', serif",
     weight = 600,
-    color = '#f2fbff',
+    color = '#f4dda2',
     letterSpacing = 0.05,
     fontRatio = 0.5,
     padX = 0.05,
@@ -835,7 +835,7 @@
       height: 240,
       fontFamily: "'Shippori Mincho', serif",
       weight: 700,
-      color: '#eaf9ff',
+      color: '#f0d999',
       letterSpacing: 0.1,
       fontRatio: 0.44,
       shadow: 'rgba(0, 0, 0, 0.85)'
@@ -846,7 +846,7 @@
       height: 132,
       fontFamily: "'Zen Kaku Gothic New', sans-serif",
       weight: 600,
-      color: '#eaf9ff',
+      color: '#f0d999',
       letterSpacing: 0.04,
       fontRatio: 0.62,
       shadow: 'rgba(0, 0, 0, 0.8)'
@@ -858,12 +858,12 @@
       height: 176,
       fontFamily: "'Shippori Mincho', serif",
       weight: 700,
-      color: '#f2fbff',
+      color: '#f4dda2',
       letterSpacing: 0.06,
       fontRatio: 0.52,
       padX: 0.07,
-      plate: 'rgba(14, 58, 74, 0.95)',
-      plateBorder: '#6fc3da',
+      plate: 'rgba(6, 6, 6, 0.95)',
+      plateBorder: '#c9a227',
       shadow: 'rgba(0, 0, 0, 0.6)'
     };
 
@@ -940,24 +940,24 @@
 <style>
   .hud{position:fixed;right:1rem;bottom:3.6rem;z-index:20;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:flex-end}
   .hud-btn{
-    padding:.55rem 1rem;font-size:.82rem;line-height:1;color:#F2FBFF;font-family:inherit;
-    background:rgba(11,56,72,.55);backdrop-filter:blur(14px) saturate(140%);
-    border:1px solid rgba(255,255,255,.18);border-radius:999px;cursor:pointer;
+    padding:.55rem 1rem;font-size:.82rem;line-height:1;color:#f0d9a0;font-family:inherit;
+    background:rgba(12,12,12,.6);backdrop-filter:blur(14px) saturate(140%);
+    border:1px solid rgba(212,175,55,.35);border-radius:999px;cursor:pointer;
     text-decoration:none;display:inline-flex;align-items:center;
   }
-  .hud-btn:hover{background:rgba(11,56,72,.78)}
-  .hud-btn:focus-visible{outline:2px solid #2f95b2;outline-offset:3px}
+  .hud-btn:hover{background:rgba(24,20,10,.85)}
+  .hud-btn:focus-visible{outline:2px solid #d4af37;outline-offset:3px}
   .onboard{
     position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);z-index:20;
-    padding:.6rem 1.2rem;font-size:.85rem;color:#F2FBFF;
-    background:rgba(11,56,72,.62);backdrop-filter:blur(14px);
-    border:1px solid rgba(255,255,255,.2);border-radius:999px;
+    padding:.6rem 1.2rem;font-size:.85rem;color:#f0d9a0;
+    background:rgba(12,12,12,.66);backdrop-filter:blur(14px);
+    border:1px solid rgba(212,175,55,.38);border-radius:999px;
     opacity:0;pointer-events:none;transition:opacity .4s ease;
   }
   .onboard.is-on{opacity:1}
-  #fallback{max-width:760px;margin:0 auto;padding:3rem 1.5rem;color:#0f3c4a;line-height:1.9}
+  #fallback{max-width:760px;margin:0 auto;padding:3rem 1.5rem;color:#e8d9a8;line-height:1.9}
   #fallback ul{padding-left:1.2em}
-  #fallback a{color:#1a7692}
+  #fallback a{color:#d4af37}
   .webgl-ok #fallback{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
   @media (prefers-reduced-motion:reduce){.onboard{transition:none}}
 </style>
