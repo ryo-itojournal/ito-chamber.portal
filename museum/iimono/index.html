@@ -6,6 +6,13 @@
 
   <meta name="description" content="伊東ブランド「いとうのいいもの」の認定事業者と商品を紹介する3Dオンライン展示室です。">
 
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ITO PEOPLE MUSEUM">
+  <meta property="og:title" content="いとうのいいもの展示室｜ITO PEOPLE MUSEUM">
+  <meta property="og:description" content="伊東ブランド「いとうのいいもの」の認定事業者と商品を紹介する3Dオンライン展示室です。">
+  <meta property="og:image" content="https://ryo-itojournal.github.io/ito-chamber.portal/museum/ban_itobrand.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -38,6 +45,26 @@
       font-size: 13px;
       pointer-events: none;
     }
+
+    #fallback {
+      display: none;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+      color: #e8f5ee;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    #fallback h1 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #f6efdf;
+    }
+
+    #fallback a {
+      color: #6affb3;
+    }
   </style>
 </head>
 
@@ -45,6 +72,18 @@
 
 <div id="guide">
   カードをクリックすると詳細ページへ移動できます（準備中のカードもあります）
+</div>
+
+<div id="fallback">
+  <h1>いとうのいいもの 展示室</h1>
+  <p>3D表示に対応していない環境では、以下のリンクからご覧いただけます。</p>
+  <ul>
+    <li><a href="../index.html">ITO PEOPLE MUSEUM エントランス</a></li>
+    <li><a href="../../instagram/group/iimono/index.html">伊東ブランド認定事業者 総覧（Instagram改善提案）</a></li>
+    <li><a href="../../instagram/group/iimono/usami.html">宇佐美麦酒</a></li>
+    <li><a href="https://www.instagram.com/ito_iimono.brand/?hl=ja" target="_blank" rel="noopener">いとうのいいもの Instagram</a></li>
+    <li><a href="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&ll=34.946285826717514%2C139.093087&z=12" target="_blank" rel="noopener">いとうのいいもの Googleマイマップ</a></li>
+  </ul>
 </div>
 
 <a-scene
@@ -72,6 +111,12 @@
       src="../assets/models/iimono.glb">
     </a-asset-item>
     -->
+    <!-- 部門ポスター・アイコン -->
+    <img id="poster" src="../ban_itobrand.jpg">
+    <img id="instagram-icon" src="../images.jpg">
+    <img id="map-icon" src="../ダウンロード.jpg">
+    <img id="search-icon" src="../icon-search.svg">
+
   </a-assets>
 
   <a-sky color="#07100d"></a-sky>
@@ -168,7 +213,7 @@
     width="5.8">
   </a-text>
 
-  <!-- 大型モニター -->
+  <!-- 大型パネル（事業者一覧へ） -->
   <a-box
     position="-5.85 2.55 -9.65"
     width="3.55"
@@ -177,12 +222,23 @@
     color="#080b09">
   </a-box>
 
+  <a-image
+    src="#poster"
+    position="-5.85 2.55 -9.5"
+    width="3.3"
+    height="1.8"
+    material="shader: flat"
+    class="clickable"
+    data-url="../../instagram/group/iimono/index.html"
+    data-target="_self">
+  </a-image>
+
   <a-text
-    value="BRAND MOVIE"
+    value="事業者一覧・Instagram改善提案"
     position="-5.85 1.22 -9.49"
     align="center"
-    color="#264438"
-    width="3.2">
+    color="#14291e"
+    width="3.4">
   </a-text>
 
   <!-- 動画を使う時は上のa-imageの代わりに使用 -->
@@ -258,11 +314,11 @@
   </a-text>
 
   <a-text
-    value="DETAIL"
+    value="準備中"
     position="1.45 1.88 -9.42"
     align="center"
-    color="#148054"
-    width="2.3">
+    color="#6b7b73"
+    width="2.0">
   </a-text>
 
   <!-- 店舗3 -->
@@ -273,7 +329,8 @@
     depth="0.12"
     color="#ffffff"
     class="clickable"
-    data-url="">
+    data-url="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&ll=34.946285826717514%2C139.093087&z=12"
+    data-target="_blank">
   </a-box>
 
   <a-text
@@ -285,7 +342,7 @@
   </a-text>
 
   <a-text
-    value="商品・技術・人を&#10;順次追加予定"
+    value="認定事業者の所在地を&#10;マイマップで確認"
     position="4.7 2.55 -9.42"
     align="center"
     color="#405048"
@@ -293,14 +350,14 @@
   </a-text>
 
   <a-text
-    value="COMING SOON"
+    value="マップで見る"
     position="4.7 1.88 -9.42"
     align="center"
     color="#148054"
-    width="2.3">
+    width="2.1">
   </a-text>
 
-  <!-- 3D展示台 -->
+  <!-- 展示台（公式リンク） -->
   <a-cylinder
     position="0 0.58 -4.6"
     radius="1.15"
@@ -310,12 +367,50 @@
   </a-cylinder>
 
   <a-text
-    value="3D MODEL DISPLAY"
-    position="0 1.42 -4.6"
+    value="公式リンク"
+    position="0 2.05 -4.72"
     rotation="-18 0 0"
     align="center"
-    color="#1d6b4a"
-    width="3.5">
+    color="#14291e"
+    width="2.0">
+  </a-text>
+
+  <a-circle
+    radius="0.26"
+    position="-0.62 1.60 -4.6"
+    rotation="-18 0 0"
+    material="shader: flat; src: #instagram-icon"
+    class="clickable"
+    data-url="https://www.instagram.com/ito_iimono.brand/?hl=ja"
+    data-target="_blank">
+  </a-circle>
+
+  <a-text
+    value="Instagram"
+    position="-0.62 1.25 -4.5"
+    rotation="-18 0 0"
+    align="center"
+    color="#14291e"
+    width="1.5">
+  </a-text>
+
+  <a-circle
+    radius="0.26"
+    position="0.62 1.60 -4.6"
+    rotation="-18 0 0"
+    material="shader: flat; src: #map-icon"
+    class="clickable"
+    data-url="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&ll=34.946285826717514%2C139.093087&z=12"
+    data-target="_blank">
+  </a-circle>
+
+  <a-text
+    value="マイマップ"
+    position="0.62 1.25 -4.5"
+    rotation="-18 0 0"
+    align="center"
+    color="#14291e"
+    width="1.5">
   </a-text>
 
   <!-- 3Dモデルを追加する場合 -->
