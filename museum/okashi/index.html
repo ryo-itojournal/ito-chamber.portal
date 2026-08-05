@@ -258,19 +258,19 @@
   </a-box>
 
   <a-box
-    position="0 4.95 -9.70"
+    position="0 4.95 -9.78"
     width="8.4"
     height="0.9"
-    depth="0.12"
+    depth="0.24"
     color="#5b3324">
   </a-box>
 
   <a-text data-font="'Shippori Mincho', serif" data-weight="700"
     value="伊東お菓子ぃ共和国 展示室"
-    position="0 5.10 -9.57"
+    position="0 4.95 -9.54"
     align="center"
     color="#ffffff"
-    width="6.8">
+    width="6.70">
   </a-text>
 
   <a-text
@@ -494,10 +494,10 @@
   -->
 
   <a-box
-    position="-5.315 0.65 -9.45"
+    position="-5.315 0.65 -9.47"
     width="2.2"
     height="0.48"
-    depth="0.08"
+    depth="0.12"
     color="#5b3324"
     class="clickable"
     data-url="../index.html"
@@ -506,7 +506,7 @@
 
   <a-text data-font="'Shippori Mincho', serif" data-weight="700"
     value="ENTRANCEへ戻る"
-    position="-5.315 0.67 -9.35"
+    position="-5.315 0.65 -9.35"
     align="center"
     color="#ffffff"
     width="2.6">
@@ -649,7 +649,19 @@
     <a-box position="4.92 0.12 -9.62" width="2.99" height="0.24" depth="0.55" color="#f7e3d4"></a-box>
     <a-box position="4.92 0.255 -9.62" width="2.99" height="0.03" depth="0.55" color="#d0ab93"></a-box>
     <a-plane position="4.92 0.008 -9.2" rotation="-90 0 0" width="2.99" height="0.3" color="#d0ab93" material="transparent: true; opacity: 0.22; depthWrite: false"></a-plane>
-</a-scene>
+      <!-- 展示室名サインの立体化 -->
+      <a-plane position="0 4.87 -9.955" width="8.8" height="1.18" color="#000000" opacity="0.18"></a-plane>
+      <a-box position="0 5.45 -9.73" width="8.7" height="0.08" depth="0.34" color="#fff6ee"></a-box>
+      <a-box position="0 4.45 -9.73" width="8.7" height="0.08" depth="0.34" color="#fff6ee"></a-box>
+      <a-box position="-4.29 4.95 -9.74" width="0.12" height="1.08" depth="0.32" color="#fff6ee"></a-box>
+      <a-box position="4.29 4.95 -9.74" width="0.12" height="1.08" depth="0.32" color="#fff6ee"></a-box>
+      <a-plane position="0 5.37 -9.655" width="8.4" height="0.06" color="#000000" opacity="0.16"></a-plane>
+      <a-plane position="0 4.53 -9.655" width="8.4" height="0.05" color="#000000" opacity="0.10"></a-plane>
+      <!-- ENTRANCEプレートの立体化 -->
+      <a-plane position="-5.315 0.60 -9.955" width="2.44" height="0.60" color="#000000" opacity="0.16"></a-plane>
+      <a-box position="-5.315 0.92 -9.45" width="2.36" height="0.06" depth="0.18" color="#fff6ee"></a-box>
+      <a-box position="-5.315 0.38 -9.45" width="2.36" height="0.06" depth="0.18" color="#fff6ee"></a-box>
+    </a-scene>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
