@@ -725,7 +725,14 @@
 
   <a-entity position="0 0 1.4">
     <a-camera position="0 1.65 0" camera="fov: 68">
-      <!-- 中央固定の照準リング（a-cursor）は展示画像と重なるため無効化。クリック判定はシーンの cursor="rayOrigin: mouse" が担当 -->
+      <!-- 中央レティクル：装飾のみ（クリック判定はシーンの cursor="rayOrigin: mouse" が担当）
+           展示画像に重ならないよう、furusato展示室と同様に何も無い位置へ配置 -->
+      <a-ring
+        position="0 -0.07 -1"
+        radius-inner="0.010"
+        radius-outer="0.016"
+        material="color: #c2185b; shader: flat; opacity: 0.95">
+      </a-ring>
     </a-camera>
   </a-entity>
 
