@@ -725,11 +725,7 @@
 
   <a-entity position="0 0 1.4">
     <a-camera position="0 1.65 0" camera="fov: 68">
-      <a-cursor
-        color="#f28fb1"
-        visible="false"
-        raycaster="objects: .clickable">
-      </a-cursor>
+      <!-- 中央固定の照準リング（a-cursor）は展示画像と重なるため無効化。クリック判定はシーンの cursor="rayOrigin: mouse" が担当 -->
     </a-camera>
   </a-entity>
 
