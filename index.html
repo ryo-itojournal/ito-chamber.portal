@@ -27,10 +27,10 @@
   --night:#0B1A20; --night-950:#070F13; --foam:#E9EFEC;
   --brass:#C9A227; --brass-300:#ECD48F;
   --line:rgba(28,43,42,.14); --line-dark:rgba(233,239,236,.18);
-  --font-display:"Shippori Mincho",serif;
-  --font-body:"Zen Kaku Gothic New",sans-serif;
-  --font-mono:"JetBrains Mono",monospace;
-  --fs-display:clamp(2.05rem,1.5rem + 2vw,3.05rem);
+  --font-display:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --font-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  --font-mono:"JetBrains Mono","Zen Kaku Gothic New",monospace;
+  --fs-display:clamp(1.9rem,1.5rem + 2vw,3.05rem);
   --fs-h2:clamp(1.55rem,1.3rem + 1.1vw,2.4rem);
   --fs-h3:clamp(1.05rem,.98rem + .35vw,1.35rem);
   --fs-body:clamp(.95rem,.9rem + .2vw,1.0625rem);
@@ -44,23 +44,26 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:var(--fs-body);line-height:1.85;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:var(--fs-body);line-height:1.85;line-break:strict;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
+:focus-visible{outline:2px solid var(--sea-soft);outline-offset:3px}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
-.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--citrus);margin:0 0 .9rem}
+.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--citrus-deep);margin:0 0 .9rem}
 .eyebrow::before{content:"";display:inline-block;width:26px;height:1px;background:currentColor;vertical-align:middle;margin-right:.6rem}
-h1,h2,h3{font-family:var(--font-display);line-height:1.35;margin:0}
+h1,h2,h3{font-family:var(--font-display);line-height:1.35;margin:0;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}
 h2{font-size:var(--fs-h2);letter-spacing:.02em}
 h3{font-size:var(--fs-h3)}
-p{margin:.7rem 0 0}
-.lead{color:var(--ink-soft);max-width:46ch}
+p{margin:.7rem 0 0;text-wrap:pretty}
+.lead{color:var(--ink-soft);max-width:31em;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}
 .section{padding-block:var(--sp-section)}
 .section + .section{border-top:1px solid var(--line)}
 .dark,.night,.museum,.cta,.dark + .section,.night + .section,.museum + .section,.cta + .section{border-top:0}
-.section__head{max-width:60ch;margin-bottom:clamp(1.8rem,4vw,3rem)}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.35rem;border-radius:var(--r-pill);font-size:var(--fs-small);font-weight:700;text-decoration:none;border:1px solid transparent;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease)}
+.section__head{max-width:52rem;margin-bottom:clamp(1.8rem,4vw,3rem)}
+.section__head .lead{max-width:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem 1.35rem;border-radius:var(--r-pill);font-size:var(--fs-small);font-weight:700;text-decoration:none;white-space:nowrap;border:1px solid transparent;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
 .btn:hover{transform:translateY(-2px)}
+.btn:active{transform:none}
 .btn--primary{background:var(--sea);color:#fff;box-shadow:var(--shadow-1)}
 .btn--primary:hover{background:var(--sea-deep)}
 .btn--citrus{background:var(--citrus);color:#fff}
@@ -75,44 +78,66 @@ p{margin:.7rem 0 0}
 .grid{display:grid;gap:clamp(1rem,2.2vw,1.6rem)}
 .grid--4{grid-template-columns:repeat(4,1fr)}
 .grid--3{grid-template-columns:repeat(3,1fr)}
-@media (max-width:960px){.grid--4{grid-template-columns:repeat(2,1fr)}.grid--3{grid-template-columns:1fr}}
-@media (max-width:560px){.grid--4{grid-template-columns:1fr}}
+@media (max-width:999px){.grid--4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:960px){.grid--3{grid-template-columns:1fr}}
+@media (max-width:519px){.grid--4{grid-template-columns:1fr}}
 
-.site-header{position:sticky;top:0;z-index:50;background:rgba(247,242,231,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(247,242,231,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .site-header__inner{display:flex;align-items:center;gap:1.25rem;min-height:66px}
 .brandmark{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:0 0 auto}
 .brandmark__seal{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--citrus);color:#fff;font-family:var(--font-display);font-size:.95rem;box-shadow:var(--shadow-1)}
 .brandmark__text{display:flex;flex-direction:column;line-height:1.25}
 .brandmark__en{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;color:var(--sea)}
 .brandmark__ja{font-family:var(--font-display);font-size:.8rem;color:var(--ink-soft)}
-.mainnav{margin-left:auto;display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}
+.mainnav{margin-left:auto;min-width:0;display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}
 .mainnav::-webkit-scrollbar{display:none}
 .mainnav a{white-space:nowrap;text-decoration:none;font-size:.82rem;font-weight:500;padding:.45rem .7rem;border-radius:var(--r-pill);color:var(--ink-soft)}
 .mainnav a:hover{background:var(--paper-deep);color:var(--sea)}
-.mainnav .btn{margin-left:.4rem}
+.mainnav .btn{margin-left:.4rem;font-weight:700}
 .mainnav .btn--citrus{color:#fff}
 .mainnav .btn--citrus:hover{background:var(--citrus-deep);color:#fff}
+.mainnav a:focus-visible{outline-offset:-2px}
+.mainnav .btn:focus-visible{outline-color:#fff;outline-offset:-4px}
 @media (max-width:720px){.brandmark__ja{display:none}.mainnav a{padding:.4rem .5rem;font-size:.78rem}}
-.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#FBF8F0 0%,var(--paper) 42%,#E7EFEC 100%);padding-block:clamp(3rem,8vw,6rem)}
-.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
-@media (max-width:900px){.hero__grid{grid-template-columns:1fr}}
-.hero h1{font-size:var(--fs-display);letter-spacing:.01em}
+@media (max-width:480px){
+  .site-header__inner{gap:.5rem;min-height:58px}
+  .brandmark__text,.mainnav .u-wide{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .mainnav .btn{margin-left:.25rem;padding:.45rem .8rem}
+}
+@media (max-width:359px){.site-header__inner{gap:.35rem}.mainnav{gap:.1rem}.mainnav a{padding:.4rem .3rem;font-size:.74rem}.mainnav .btn{padding:.4rem .55rem;font-size:.74rem}}
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#FBF8F0 0%,var(--paper) 42%,#E7EFEC 100%);padding-block:clamp(2.75rem,7vw,5.5rem);border-bottom:1px solid var(--line)}
+.hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.75rem,4vw,3.5rem);align-items:center}
+@media (max-width:960px){.hero__grid{grid-template-columns:1fr}}
+.hero h1{font-size:var(--fs-display);letter-spacing:.02em}
+.hero .lead{margin-top:1.1rem}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.7rem}
-.hero__meta{margin-top:1.8rem;font-size:var(--fs-small);color:var(--ink-soft);font-family:var(--font-mono);letter-spacing:.04em}
-.hero__card{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:300px;background:linear-gradient(135deg,var(--sea-soft),var(--sea) 55%,var(--amber));box-shadow:var(--shadow-3);display:flex;align-items:flex-end;padding:1.4rem}
-.hero__card > span{color:#fff;font-family:var(--font-display);font-size:1.15rem;text-shadow:0 2px 12px rgba(8,47,52,.45)}
-.hero__chip{position:absolute;left:1.2rem;bottom:4.4rem;background:#fff;border-radius:var(--r-sm);padding:.6rem .9rem;box-shadow:var(--shadow-2);max-width:230px}
-.hero__chip small{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;color:var(--citrus)}
-.hero__chip strong{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--sea)}
-.hero__chip em{display:block;font-style:normal;font-size:.7rem;color:var(--ink-soft)}
+.hero__meta{margin-top:1.6rem;font-size:var(--fs-small);color:var(--ink-soft);letter-spacing:.04em}
+.hero__card{position:relative;isolation:isolate;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;background:var(--sea);box-shadow:var(--shadow-3)}
+@supports not (aspect-ratio:1/1){.hero__card{min-height:300px}}
+.hero__scene{position:absolute;inset:-1px;z-index:-1;width:calc(100% + 2px);height:calc(100% + 2px);display:block}
+.hero__label{position:absolute;left:1.2rem;right:1.2rem;bottom:1rem;display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
+.hero__chip{max-width:100%;background:rgba(255,255,255,.97);border-radius:var(--r-sm);padding:.65rem .95rem .75rem;box-shadow:var(--shadow-2)}
+.hero__chip small{display:block;font-size:.66rem;font-weight:700;letter-spacing:.16em;line-height:1.6;color:var(--citrus-deep)}
+.hero__chip strong{display:block;font-family:var(--font-display);font-size:1rem;line-height:1.5;color:var(--sea)}
+.hero__chip em{display:block;font-style:normal;font-size:.72rem;line-height:1.6;color:var(--ink-soft)}
+.hero__caption{margin:0 0 0 .1rem;color:#fff;font-family:var(--font-display);font-size:1.1rem;font-weight:500;letter-spacing:.06em;line-height:1.5;text-shadow:0 1px 10px rgba(8,47,52,.55)}
+@media (max-width:960px){.hero__card{aspect-ratio:2/1}}
+@media (max-width:600px){.hero__card{aspect-ratio:3/2}}
+@media (max-width:480px){.hero__actions .btn{flex:1 1 auto}.hero__card{aspect-ratio:4/3}.hero__label{left:1rem;right:1rem;bottom:.85rem;gap:.6rem}.hero__caption{font-size:1.02rem}.hero__chip{padding:.55rem .8rem .65rem}.hero__chip strong{font-size:.95rem}.hero__chip em{font-size:.68rem}}
+@media (max-width:359px){.hero__scene{transform:translateX(4%) scale(1.1)}.hero__caption{font-size:.95rem}.hero__chip em{font-size:.64rem}}
 .entry{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-1);display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .entry:hover{transform:translateY(-4px);box-shadow:var(--shadow-2)}
-.entry__banner{aspect-ratio:16/10;background:var(--paper-deep);overflow:hidden}
-.entry__banner img{width:100%;height:100%;object-fit:cover}
-.entry__body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;flex:1}
-.entry__tag{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--citrus)}
+.entry__banner{aspect-ratio:7/5;background:var(--paper-deep);overflow:hidden;border-bottom:1px solid var(--line)}
+.entry__banner img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .6s var(--ease)}
+@media (hover:hover){.entry:hover .entry__banner img{transform:scale(1.06)}}
+.entry__body{padding:1.15rem 1.2rem 1.25rem;display:flex;flex-direction:column;flex:1}
+.entry__body .entry__tag{margin:0;font-family:var(--font-mono);font-size:.68rem;line-height:1.5;letter-spacing:.2em;text-transform:uppercase;color:var(--citrus-deep)}
+.entry__body h3{margin-top:.25rem}
 .entry__body p{font-size:.86rem;color:var(--ink-soft);line-height:1.8}
-.entry__links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:1rem}
+.entry__links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:1.15rem}
+.entry__links .btn{flex:1 1 calc(50% - .225rem);padding-inline:.35rem}
+.entry__links .btn:first-child:nth-last-child(odd){flex-basis:100%}
+@media (min-width:1000px) and (max-width:1199px),(min-width:520px) and (max-width:659px){.grid--4{gap:.9rem}.entry__body{padding-inline:.95rem}.entry__links .btn{font-size:.74rem;padding-inline:.25rem}}
 .rank{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1.2rem;box-shadow:var(--shadow-1)}
 .rank__no{width:30px;height:30px;border-radius:50%;background:var(--sea);color:#fff;display:grid;place-items:center;font-family:var(--font-mono);font-size:.85rem;margin-bottom:.7rem}
 .rank p{font-size:.85rem;color:var(--ink-soft)}
@@ -146,11 +171,14 @@ p{margin:.7rem 0 0}
 .museum .eyebrow{color:var(--brass-300)}
 .museum h2{color:var(--brass-300)}
 .museum p{color:rgba(233,239,236,.72)}
-.museum--panel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2.5rem;margin-top:clamp(1.6rem,3.5vw,2.6rem);padding:clamp(1.5rem,3.4vw,2.4rem) clamp(1.3rem,3.4vw,2.6rem);border-radius:var(--r-lg);box-shadow:var(--shadow-3)}
-.museum--panel > div{flex:1 1 320px;min-width:0}
-.museum--panel h3{font-size:clamp(1.3rem,1.1rem + .9vw,1.9rem);letter-spacing:.02em;color:var(--brass-300)}
-.museum--panel p{max-width:56ch;font-size:.92rem}
-.museum--panel .btn{flex:0 0 auto}
+.museum :focus-visible,.cta :focus-visible{outline-color:var(--brass-300)}
+.museum--panel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.4rem 2.5rem;margin-top:clamp(2rem,4vw,3rem);padding:clamp(1.8rem,3.6vw,2.6rem) clamp(1.5rem,3.6vw,2.8rem);border-radius:var(--r-lg);box-shadow:var(--shadow-3)}
+.museum--panel::before{content:"";position:absolute;inset:7px;border:1px solid rgba(236,212,143,.28);border-radius:calc(var(--r-lg) - 7px);pointer-events:none}
+.museum__text{flex:1 1 26rem;min-width:0}
+.museum--panel .eyebrow{margin-bottom:.5rem;font-size:.68rem}
+.museum--panel h3{font-size:clamp(1.3rem,1.1rem + .9vw,1.9rem);letter-spacing:.08em;color:var(--brass-300)}
+.museum--panel p:not(.eyebrow){max-width:40em;font-size:.92rem;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}
+.museum--panel .btn{flex:0 0 auto;position:relative}
 .museum__frames{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.8rem,2vw,1.4rem);margin-top:2.2rem}
 @media (max-width:860px){.museum__frames{grid-template-columns:repeat(2,1fr)}}
 .frame{text-decoration:none;color:var(--foam);border:1px solid rgba(201,162,39,.45);border-radius:6px;padding:.6rem;background:linear-gradient(180deg,rgba(233,239,236,.08),rgba(7,15,19,.4));box-shadow:0 10px 30px rgba(0,0,0,.45);transition:transform .3s var(--ease),border-color .3s var(--ease)}
@@ -161,13 +189,18 @@ p{margin:.7rem 0 0}
 .frame__sub{display:block;text-align:center;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;color:rgba(233,239,236,.55);padding-bottom:.4rem}
 .museum__actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
 .cta{background:linear-gradient(135deg,var(--sea) 0%,var(--sea-deep) 100%);color:#fff;text-align:center}
-.cta h2{color:#fff}
+.cta h2{color:#fff;font-size:min(var(--fs-h2),7vw)}
+.nb{white-space:nowrap}
 .cta p{color:rgba(255,255,255,.8);margin-inline:auto;max-width:none}
-.cta .btn{margin-top:1.5rem}
-.site-footer{background:var(--paper-deep);border-top:1px solid var(--line);padding-block:2.6rem;font-size:var(--fs-small);color:var(--ink-soft)}
-.site-footer__inner{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.cta .eyebrow{color:var(--amber)}
+.cta .btn{margin-top:1.6rem}
+.site-footer{background:var(--paper-deep);border-top:1px solid var(--line);padding-block:2.2rem;font-size:var(--fs-small);color:var(--ink-soft)}
+.site-footer__inner{display:flex;flex-wrap:wrap;gap:.9rem 1.5rem;align-items:center;justify-content:space-between}
+.site-footer__info{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.1rem;margin:0}
+.site-footer__info strong{font-family:var(--font-display);font-weight:500;letter-spacing:.04em;color:var(--ink)}
 .site-footer a{text-decoration:none;color:var(--sea)}
-.totop{margin-left:auto}
+.site-footer a:hover{text-decoration:underline}
+.totop{margin-left:auto;white-space:nowrap}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -185,7 +218,7 @@ p{margin:.7rem 0 0}
     <nav class="mainnav" aria-label="サイト内ナビゲーション">
       <a href="#brands">ブランド</a>
       <a href="#museum">ミュージアム</a>
-      <a class="btn btn--citrus btn--sm" href="https://www.rakuten.co.jp/f222089-ito/" target="_blank" rel="noopener">楽天ふるさと納税</a>
+      <a class="btn btn--citrus btn--sm" href="https://www.rakuten.co.jp/f222089-ito/" target="_blank" rel="noopener"><span><span class="u-wide">楽天</span>ふるさと納税</span></a>
     </nav>
   </div>
 </header>
@@ -195,8 +228,8 @@ p{margin:.7rem 0 0}
   <div class="wrap hero__grid">
     <div>
       <p class="eyebrow">Ito City Official Portal</p>
-      <h1>海と温泉のまちの<br>すべてを、ひとつに。</h1>
-      <p class="lead">伊東市の地域ブランド、ふるさと納税、デジタルミュージアム。これまで別々に分かれていたページを1つにまとめました。人気の産品・お店・寄附・展示を、ここから一望できます。</p>
+      <h1>海と温泉のまちの<br>すべてを、<wbr>ひとつに。</h1>
+      <p class="lead">伊東市の<wbr>地域ブランド、<wbr>ふるさと納税、<wbr>デジタルミュージアム。<wbr>これまで<wbr>別々に<wbr>分かれていた<wbr>ページを<wbr>1つに<wbr>まとめました。<wbr>人気の<wbr>産品・<wbr>お店・<wbr>寄附・<wbr>展示を、<wbr>ここから<wbr>一望できます。</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#brands">ブランドを見る</a>
         <a class="btn btn--ghost" href="#museum">ミュージアムを体験する</a>
@@ -204,12 +237,58 @@ p{margin:.7rem 0 0}
       <p class="hero__meta">運営：伊東市 地域おこし協力隊</p>
     </div>
     <div class="hero__card">
-      <div class="hero__chip">
-        <small>注目返礼品</small>
-        <strong>楽天トラベルクーポン</strong>
-        <em>伊東市内の対象宿泊施設で利用可能</em>
+      <svg class="hero__scene" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="hs-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1B5F7F"/>
+            <stop offset=".55" stop-color="#4C97AB"/>
+            <stop offset="1" stop-color="#E4D7B5"/>
+          </linearGradient>
+          <radialGradient id="hs-glow" cx="384" cy="180" r="190" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#FFF4D6" stop-opacity=".95"/>
+            <stop offset=".28" stop-color="#FBD99A" stop-opacity=".6"/>
+            <stop offset="1" stop-color="#FBD99A" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="hs-sea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1A727B"/>
+            <stop offset=".4" stop-color="#0E5057"/>
+            <stop offset="1" stop-color="#082F34"/>
+          </linearGradient>
+        </defs>
+        <rect width="480" height="182" fill="url(#hs-sky)"/>
+        <rect width="480" height="182" fill="url(#hs-glow)"/>
+        <g fill="#fff">
+          <rect x="52" y="62" width="96" height="5" rx="2.5" opacity=".16"/>
+          <rect x="98" y="75" width="52" height="4" rx="2" opacity=".12"/>
+          <rect x="228" y="104" width="92" height="5" rx="2.5" opacity=".24"/>
+          <rect x="272" y="117" width="46" height="4" rx="2" opacity=".18"/>
+          <rect x="414" y="82" width="58" height="4" rx="2" opacity=".2"/>
+        </g>
+        <circle cx="384" cy="180" r="38" fill="#FFF6DD"/>
+        <path d="M0 180v-22c20-8 46-12 74-9 32 3 56 15 90 31z" fill="#246B7E"/>
+        <path d="M184 180c16-8 36-11 58-8 12 2 22 5 30 8z" fill="#3A8494" opacity=".85"/>
+        <rect y="180" width="480" height="180" fill="url(#hs-sea)"/>
+        <g fill="#F8D08A">
+          <rect x="338" y="185" width="92" height="3" rx="1.5" opacity=".95"/>
+          <rect x="352" y="194" width="64" height="3" rx="1.5" opacity=".8"/>
+          <rect x="332" y="204" width="104" height="3.5" rx="1.75" opacity=".62"/>
+          <rect x="360" y="215" width="48" height="3.5" rx="1.75" opacity=".5"/>
+          <rect x="342" y="227" width="84" height="4" rx="2" opacity=".38"/>
+          <rect x="366" y="240" width="36" height="4" rx="2" opacity=".28"/>
+          <rect x="350" y="254" width="68" height="4.5" rx="2.25" opacity=".2"/>
+        </g>
+        <path d="M-20 270q30-12 60 0t60 0 60 0 60 0 60 0 60 0 60 0 60 0 60 0V380H-20z" fill="#0B454C" fill-opacity=".55" stroke="#BFE5DF" stroke-opacity=".16"/>
+        <path d="M-50 302q40-14 80 0t80 0 80 0 80 0 80 0 80 0 80 0V380H-50z" fill="#093A40" fill-opacity=".7" stroke="#BFE5DF" stroke-opacity=".1"/>
+        <path d="M-30 334q50-14 100 0t100 0 100 0 100 0 100 0 100 0V380H-30z" fill="#072C31" fill-opacity=".85"/>
+      </svg>
+      <div class="hero__label">
+        <div class="hero__chip">
+          <small>注目返礼品</small>
+          <strong>楽天トラベルクーポン</strong>
+          <em>伊東市内の対象宿泊施設で利用可能</em>
+        </div>
+        <p class="hero__caption">温泉・海・宿・食のまち 伊東</p>
       </div>
-      <span>温泉・海・宿・食のまち 伊東</span>
     </div>
   </div>
 </section>
@@ -219,14 +298,14 @@ p{margin:.7rem 0 0}
     <div class="section__head">
       <p class="eyebrow">Brands</p>
       <h2>ブランド一覧</h2>
-      <p class="lead">各ブランドのマップ・Instagram・公式サイト・3D展示室からくわしい情報をご覧いただけます。</p>
+      <p class="lead">各ブランドの<wbr>マップ・<wbr>Instagram・<wbr>公式サイト・<wbr>3D展示室から<wbr>くわしい情報を<wbr>ご覧いただけます。</p>
     </div>
     <div class="grid grid--4">
       <article class="entry" id="goods">
-        <div class="entry__banner"><img src="museum/ban_itobrand.jpg" alt="いとうのいいもの バナー" loading="lazy"></div>
+        <div class="entry__banner"><img src="museum/ban_itobrand.jpg" alt="いとうのいいもの バナー" width="280" height="200" loading="lazy" decoding="async"></div>
         <div class="entry__body">
-          <p class="entry__tag">Goods — いとうのいいもの</p>
-          <h3>いとうのいいもの</h3>
+          <p class="entry__tag">Goods</p>
+          <h3>いとうの<wbr>いいもの</h3>
           <p>手仕事から生まれた工芸品や、新しい発想の逸品まで。伊東らしさが詰まったセレクトブランドです。</p>
           <div class="entry__links">
             <a class="btn btn--citrus btn--sm" href="https://www.google.com/maps/d/viewer?mid=1LHZKauJx5gOcHZKi9nA2IL30OBWT4AI&usp=sharing" target="_blank" rel="noopener">マップを見る</a>
@@ -236,9 +315,9 @@ p{margin:.7rem 0 0}
         </div>
       </article>
       <article class="entry" id="fish">
-        <div class="entry__banner"><img src="museum/ban_jizakana.jpg" alt="地魚王国 バナー" loading="lazy"></div>
+        <div class="entry__banner"><img src="museum/ban_jizakana.jpg" alt="地魚王国 バナー" width="280" height="200" loading="lazy" decoding="async"></div>
         <div class="entry__body">
-          <p class="entry__tag">Fish — 地魚王国</p>
+          <p class="entry__tag">Fish</p>
           <h3>地魚王国</h3>
           <p>相模湾であがった旬の地魚を、市内のお店で味わえます。伊東の海の恵みを知る入り口です。</p>
           <div class="entry__links">
@@ -250,10 +329,10 @@ p{margin:.7rem 0 0}
         </div>
       </article>
       <article class="entry" id="sweets">
-        <div class="entry__banner"><img src="museum/ban_okashi.jpg" alt="お菓子ぃ共和国 バナー" loading="lazy"></div>
+        <div class="entry__banner"><img src="museum/ban_okashi.jpg" alt="お菓子ぃ共和国 バナー" width="280" height="200" loading="lazy" decoding="async"></div>
         <div class="entry__body">
-          <p class="entry__tag">Sweets — お菓子ぃ共和国</p>
-          <h3>お菓子ぃ共和国</h3>
+          <p class="entry__tag">Sweets</p>
+          <h3>お菓子ぃ<wbr>共和国</h3>
           <p>市内の菓子店が集まる、甘くて楽しいブランド。手土産にも旅の思い出にもぴったりです。</p>
           <div class="entry__links">
             <a class="btn btn--citrus btn--sm" href="https://www.google.com/maps/d/viewer?mid=1Rr2L2r78OY1BUZuBhO8jXcmW_br2OUI&usp=sharing" target="_blank" rel="noopener">マップを見る</a>
@@ -264,24 +343,25 @@ p{margin:.7rem 0 0}
         </div>
       </article>
       <article class="entry" id="gift">
-        <div class="entry__banner"><img src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880" alt="ふるさと納税 バナー" loading="lazy"></div>
+        <div class="entry__banner"><img src="https://tshop.r10s.jp/f222089-ito/cabinet/imgrc0114484834.jpg?fitin=1620%3A2880" alt="ふるさと納税 バナー" width="1620" height="912" loading="lazy" decoding="async"></div>
         <div class="entry__body">
-          <p class="entry__tag">Gift — ふるさと納税（楽天）</p>
-          <h3>ふるさと納税</h3>
-          <p>伊東市への寄付で、地元の海産物やお菓子などの返礼品が届きます。楽天ふるさと納税から手続きできます。</p>
+          <p class="entry__tag">Gift</p>
+          <h3>ふるさと<wbr>納税</h3>
+          <p>伊東市への寄附で、地元の海産物やお菓子などの返礼品が届きます。楽天ふるさと納税から手続きできます。</p>
           <div class="entry__links">
             <a class="btn btn--citrus btn--sm" href="https://www.rakuten.co.jp/f222089-ito/" target="_blank" rel="noopener">楽天で見る</a>
-            <a class="btn btn--ghost btn--sm" href="https://www.instagram.com/ito_furusato.donation/" target="_blank" rel="noopener">Instagram</a>
             <a class="btn btn--ghost btn--sm" href="furusato/">特設ページ</a>
+            <a class="btn btn--ghost btn--sm" href="https://www.instagram.com/ito_furusato.donation/" target="_blank" rel="noopener">Instagram</a>
             <a class="btn btn--ghost btn--sm" href="museum/furusato/" target="_blank" rel="noopener">3D展示室</a>
           </div>
         </div>
       </article>
     </div>
     <div class="museum museum--panel" id="museum">
-      <div>
+      <div class="museum__text">
+        <p class="eyebrow">3D Digital Museum</p>
         <h3>ITO PEOPLE MUSEUM</h3>
-        <p>伊東で働く人と、まちのブランドを展示する3Dのデジタルミュージアム。画面をドラッグして見回し、気になる展示をクリックしてご覧ください。</p>
+        <p>伊東で働く人と、<wbr>まちのブランドを<wbr>展示する<wbr>3Dの<wbr>デジタルミュージアム。<wbr>画面を<wbr>ドラッグして<wbr>見回し、<wbr>気になる展示を<wbr>クリックして<wbr>ご覧ください。</p>
       </div>
       <a class="btn btn--brass" href="museum/" target="_blank" rel="noopener">3Dミュージアムに入る</a>
     </div>
@@ -290,9 +370,9 @@ p{margin:.7rem 0 0}
 
 <section class="section cta">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--amber)">Ito Fan Making</p>
-    <h2>伊東を、「また来たいまち」に。</h2>
-    <p class="lead" style="text-align:center">商品だけでなく、人・地域・旅の魅力を伝えるポータルへ。</p>
+    <p class="eyebrow">Ito Fan Making</p>
+    <h2>伊東を、<wbr><span class="nb">「また来たいまち」に。</span></h2>
+    <p class="lead">商品だけでなく、<wbr>人・地域・旅の<wbr>魅力を伝える<wbr>ポータルへ。</p>
     <a class="btn btn--citrus" href="https://www.rakuten.co.jp/f222089-ito/" target="_blank" rel="noopener">楽天ふるさと納税へ移動</a>
   </div>
 </section>
@@ -300,8 +380,11 @@ p{margin:.7rem 0 0}
 
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
-    <span>伊東 ITO CITY 総合ポータル ／ 運営：伊東市 地域おこし協力隊</span>
-    <span>提案用モックアップ</span>
+    <p class="site-footer__info">
+      <strong>伊東 ITO CITY 総合ポータル</strong>
+      <span>運営：伊東市 地域おこし協力隊</span>
+      <span>提案用モックアップ</span>
+    </p>
     <a class="totop" href="#top">ページtop ↑</a>
   </div>
 </footer>
