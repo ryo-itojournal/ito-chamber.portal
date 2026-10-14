@@ -166,6 +166,8 @@
     <img id="instagram-icon" src="../images.jpg">
     <img id="map-icon" src="../ダウンロード.jpg">
     <img id="search-icon" src="../icon-search.svg">
+    <!-- マスコット：クリームポンタ（公式イラストの切り抜き） -->
+    <img id="ponta-img" src="ponta.png">
 
   </a-assets>
 
@@ -794,7 +796,37 @@
   <a-cylinder position="6.155 0.95 -9.61" rotation="90 0 0" radius="0.30" height="0.19" color="#fff6ee"></a-cylinder>
   <a-torus position="6.155 0.95 -9.482" radius="0.285" radius-tubular="0.018" color="#c2185b"></a-torus>
   <!-- リンクの立体化：正面画像の台座 -->
-  
+
+
+  <!-- ===== マスコット：クリームポンタ（等身大パネル） =====
+       公式イラストを切り抜いた ponta.png を、台座の上に立てたパネルとして置いています。
+       3D モデルが用意できたら、この index.html と同じ場所に ponta.glb を置くだけで、
+       下のスクリプトがパネルの代わりにモデルを表示します（高さ 1.5m に自動調整）。 -->
+  <a-entity id="ponta" position="2.2 0 -7.3" rotation="0 -14 0">
+    <!-- 台座（部屋の台座ブロックと同じ意匠：本体＋天板縁＋接地影） -->
+    <a-cylinder position="0 0.11 0" radius="0.62" height="0.22" color="#fff6ee"></a-cylinder>
+    <a-cylinder position="0 0.225 0" radius="0.62" height="0.03" color="#c8a08a"></a-cylinder>
+    <a-cylinder position="0 0.006 0" radius="0.80" height="0.004" color="#c8a08a" material="transparent: true; opacity: 0.22; depthWrite: false"></a-cylinder>
+    <!-- 名札 -->
+    <a-box position="0 0.13 0.60" width="1.0" height="0.17" depth="0.04" color="#5b3324"></a-box>
+    <a-text value="クリームポンタ" position="0 0.13 0.625" align="center" color="#ffffff" width="0.92" data-chars="9"></a-text>
+    <!-- パネル本体（ゆっくり左右にふり向く） -->
+    <a-entity id="ponta-panel" position="0 0.24 0"
+      animation="property: rotation; from: 0 -5 0; to: 0 5 0; dir: alternate; dur: 3600; loop: true; easing: easeInOutSine">
+      <a-image src="#ponta-img" position="0 0.75 0" width="1.476" height="1.5"
+        material="shader: flat; transparent: true; alphaTest: 0.5; side: double"
+        class="clickable" data-url="https://ito-okashii-kyowakoku.com/" data-target="_blank"></a-image>
+      <!-- パネルの支え -->
+      <a-box position="0 0.42 -0.16" rotation="-18 0 0" width="0.34" height="0.86" depth="0.02" color="#d9c4b2"></a-box>
+      <!-- 接地の影 -->
+      <a-plane position="0 0.004 0.02" rotation="-90 0 0" width="1.3" height="0.34" color="#c8a08a" material="transparent: true; opacity: 0.28; depthWrite: false"></a-plane>
+    </a-entity>
+    <!-- 3D モデル（ponta.glb があるときだけ表示） -->
+    <a-entity id="ponta-model" position="0 0.24 0" visible="false"></a-entity>
+  </a-entity>
+  <!-- パネルを照らすスポット -->
+  <a-light type="spot" position="2.2 5.0 -5.4" target="#ponta-target" color="#fff3e2" intensity="6" angle="20" penumbra="0.45"></a-light>
+  <a-entity id="ponta-target" position="2.2 1.0 -7.3"></a-entity>
 
 </a-scene>
 
@@ -830,6 +862,36 @@
       });
 
     });
+
+    /* ---- クリームポンタ：ponta.glb が置かれていればパネルの代わりに 3D モデルを表示 ---- */
+    (function () {
+      var model = document.getElementById('ponta-model');
+      var panel = document.getElementById('ponta-panel');
+      if (!model || !panel || !window.fetch) { return; }
+
+      fetch('ponta.glb', { method: 'HEAD', cache: 'no-cache' }).then(function (res) {
+        if (!res.ok) { return; }
+        if (/text\/html/i.test(res.headers.get('content-type') || '')) { return; }
+
+        model.addEventListener('model-loaded', function (evt) {
+          /* 高さ 1.5m・台座の中央・足もとが台座の天板に乗るように自動調整 */
+          var box = new THREE.Box3().setFromObject(evt.detail.model);
+          var size = new THREE.Vector3();
+          box.getSize(size);
+          var s = 1.5 / Math.max(size.y, 0.001);
+          model.object3D.scale.set(s, s, s);
+          model.object3D.position.set(
+            -(box.min.x + box.max.x) / 2 * s,
+            0.24 - box.min.y * s,
+            -(box.min.z + box.max.z) / 2 * s
+          );
+          model.setAttribute('visible', 'true');
+          panel.setAttribute('visible', 'false');
+        });
+        model.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 24000; easing: linear');
+        model.setAttribute('gltf-model', 'url(ponta.glb)');
+      }).catch(function () {});
+    })();
 
   });
 </script>
